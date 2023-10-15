@@ -8,3 +8,34 @@ body{
   max-width: 2000px;
   margin: 0 auto;
 }
+
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Work Sans', sans-serif;
+}
+
+p,button{
+  font-family: 'Helvetica', sans-serif;
+}
+button{
+  background: none;
+  outline: none;
+  border: none;
+}
+.btn{
+  background: var(--color-primary-normal, #F26722);
+  display: flex;
+  padding: 16px 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  color: var(--color-surface-white, #FFF);
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 140%; 
+  text-transform: capitalize;
+  cursor: pointer;
+}

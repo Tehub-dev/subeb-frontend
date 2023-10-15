@@ -1,0 +1,37 @@
+
+.nav-container{
+    padding: 30px 0;
+}
+.desktop-nav{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo-list_container{
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+.nav-list{
+    display: flex;
+    gap: 35px;
+}
+.nav-list ul{
+    list-style: none;
+}
+.nav-list ul li{
+    font-family: Work Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: 0.15px;
+}
+.list-color{
+    color: white;
+}
+.normal-color{
+    color: var(--color-grey-grey-300, #767676);
+}
