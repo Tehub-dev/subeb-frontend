@@ -1,8 +1,11 @@
 import React from 'react'
+import Newsletter from '../../components/newsletter/Newsletter'
 
 const Aboutus = () => {
   return (
-    <div>Aboutus</div>
+    <div>
+      <Newsletter />
+    </div>
   )
 }
 
