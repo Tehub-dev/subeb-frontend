@@ -105,7 +105,7 @@ const Navbar = ({bgColor, listColor}) => {
           </div>
         </div>
         <div className="contact-us">
-            <Link to="/contactus" style={{textDecoration: "none"}}><button className="btn">contact us</button></Link>
+            <Link to="/contactus" style={{textDecoration: "none"}}><button className="btn" onClick={()=> setPrograms(false)}>contact us</button></Link>
         </div>
       </nav>
       <div className={programs ? "nav-programs" : "none"}>
