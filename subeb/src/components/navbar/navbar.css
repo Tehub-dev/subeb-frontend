@@ -1,6 +1,7 @@
 
 .nav-container{
     padding: 30px 0;
+    position: relative;
 }
 .desktop-nav{
     width: 90%;
@@ -28,10 +29,36 @@
     font-weight: 600;
     line-height: 140%; /* 25.2px */
     letter-spacing: 0.15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 .list-color{
     color: white;
 }
 .normal-color{
     color: var(--color-grey-grey-300, #767676);
+}
+.nav-programs p{
+    color: var(--color-grey-grey-900, #151515);
+    font-family: Helvetica;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    letter-spacing: 0.5px;
+    cursor: pointer;
+}
+.nav-programs{
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    background: white;
+    width: auto;
+    position: absolute;
+    left: 25%;
+    top: 65%;
 }

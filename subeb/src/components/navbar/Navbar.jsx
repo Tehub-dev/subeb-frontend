@@ -3,6 +3,7 @@ import logo from "../../assets/images/logo.png";
 
 import "./navbar.css";
 import { Link, useLocation } from "react-router-dom";
+import { ArrowDown2 } from "iconsax-react";
 
 const Navbar = ({bgColor, listColor}) => {
 
@@ -13,6 +14,7 @@ const Navbar = ({bgColor, listColor}) => {
 
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
+  const [programs, setPrograms] = useState(false);
 
   useEffect(() => {
     setActive(pathname.substring(1));
@@ -32,7 +34,6 @@ const Navbar = ({bgColor, listColor}) => {
     {
       id: "programs",
       name: "Programs",
-      link: "programs",
     },
     {
       id: "news",
@@ -46,24 +47,56 @@ const Navbar = ({bgColor, listColor}) => {
     },
   ];
 
+  const navPrograms = [
+    {
+      id: "sms",
+      name: "School Management System",
+    },
+    {
+      id: "library",
+      name: "E-Library",
+    },
+    {
+      id: "infrastructures",
+      name: "Infrastructures",
+    },
+    {
+      id: "recruitment",
+      name: "Recruitment",
+    },
+    {
+      id: "training",
+      name: "Training",
+    },
+  ]
+
+  const clickPrograms = (item) => {
+    if (item.id === "programs"){
+      setPrograms(!programs);
+    } else {
+      setPrograms(false);
+    }
+  }
+
   return (
     <div className="nav-container" style={{background: bgColor}}>
       <nav className="desktop-nav">
         <div className="logo-list_container">
           <div className="logo">
-            <Link to="/" style={{textDecoration: "none"}}><img src={logo} alt="logo" /></Link>
+            <Link to="/" style={{textDecoration: "none"}}><img src={logo} alt="logo" onClick={()=> setPrograms(false)} /></Link>
           </div>
           <div className="nav-list">
             {navLinks.map((item, idx) => {
               return (
                 <ul key={idx}>
-                  <Link to={"/" + item.link} style={{ textDecoration: "none" }}>
+                  <Link to={item.link && "/" + item.link} style={{ textDecoration: "none" }}>
                     <li
                       id={item.id}
-                      style={item.link === active ? activeLink : undefined}
+                      style={item.link === active && item.id !== "programs" ? activeLink : undefined}
                       className={listColor ? "list-color" : "normal-color"}
+                      onClick={() => clickPrograms(item)}
                     >
-                      {item.name}
+                      {item.name} {item.id === "programs" && <ArrowDown2 size={16} />}
                     </li>
                   </Link>
                 </ul>
@@ -75,6 +108,13 @@ const Navbar = ({bgColor, listColor}) => {
             <Link to="/contactus" style={{textDecoration: "none"}}><button className="btn">contact us</button></Link>
         </div>
       </nav>
+      <div className={programs ? "nav-programs" : "none"}>
+          {navPrograms.map((item,idx) => {
+            return (
+              <p key={idx}>{item.name}</p>
+            )
+          })}
+      </div>
     </div>
   );
 };
