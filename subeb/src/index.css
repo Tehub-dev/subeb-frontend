@@ -33,7 +33,6 @@ button{
   background: var(--color-primary-normal, #F26722);
   display: flex;
   padding: 16px 24px;
-  flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   gap: 8px;
