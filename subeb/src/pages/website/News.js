@@ -1,8 +1,11 @@
 import React from 'react'
+import NewsEvent from '../../components/news&events/NewsEvent'
 
 const News = () => {
   return (
-    <div>News</div>
+    <div>
+      <NewsEvent btnDisplay={"none"} />
+    </div>
   )
 }
 
