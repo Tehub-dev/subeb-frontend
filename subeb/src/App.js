@@ -14,6 +14,7 @@ import AuthLayout from "./components/layouts/AuthLayout";
 import SmsLogin from "./pages/app/sms-app/SmsLogin";
 import Teacherportal from "./pages/app/sms-app/Teacherportal";
 import TeacherDetails from "./components/teacher-portal/TeacherDetails";
+import SchoolDetails from "./components/teacher-portal/SchoolDetails";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/smslogin" element={<SmsLogin />} />
           <Route path="/teacherportal" element={<Teacherportal />} />
           <Route path="/personaldetails" element={<TeacherDetails />} />
+          <Route path="/schooldetails" element={<SchoolDetails />} />
         </Route>
 
 
