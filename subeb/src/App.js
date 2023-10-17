@@ -8,6 +8,12 @@ import Programs from "./pages/website/Programs";
 import Gallery from "./pages/website/Gallery";
 import SiteLayout from "./components/layouts/SiteLayout";
 import Contactus from "./pages/website/Contactus";
+import NoPage from "./pages/NoPage";
+import SmsLP from "./pages/app/sms-app/SmsLP";
+import AuthLayout from "./components/layouts/AuthLayout";
+import SmsLogin from "./pages/app/sms-app/SmsLogin";
+import Teacherportal from "./pages/app/sms-app/Teacherportal";
+import TeacherDetails from "./components/teacher-portal/TeacherDetails";
 
 
 function App() {
@@ -22,6 +28,16 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contactus" element={<Contactus />} />
         </Route>
+
+        <Route path="/smslanding" element={<SmsLP />} />
+        <Route element={<AuthLayout />}>
+          <Route path="/smslogin" element={<SmsLogin />} />
+          <Route path="/teacherportal" element={<Teacherportal />} />
+          <Route path="/personaldetails" element={<TeacherDetails />} />
+        </Route>
+
+
+        <Route path="*" element={<NoPage />} />
       </Routes>
     </div>
   );

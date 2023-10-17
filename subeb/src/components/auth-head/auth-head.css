@@ -1,0 +1,33 @@
+
+.auth-head h3{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: var(--color-grey-grey-700, #242424);
+    font-family: Work Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: 0.15px;
+    padding: 30px 0;
+}
+.auth-head h2{
+    color: var(--color-grey-grey-700, #242424);
+    font-family: Work Sans;
+    font-size: 31px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 43.4px */
+    letter-spacing: 0.25px;
+}
+.auth-head p{
+    color: var(--color-grey-grey-400, #5C5C5C);
+    font-family: Helvetica;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    letter-spacing: 0.5px;
+    padding: 10px 0;
+}
