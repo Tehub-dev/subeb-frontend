@@ -1,0 +1,28 @@
+
+.auth-layout{
+    min-height: 100vh;
+    display: flex;
+}
+.outlet-space{
+    width: 70%;
+}
+.outlet-space_div{
+    /* border: 1px solid red; */
+    width: 60%;
+    margin: 90px auto 80px 100px;
+}
+.auth-style{
+    width: 30%;
+    background: var(--color-primary-normal, #F26722);
+    position: relative;
+}
+.elipse{
+    position: absolute;
+    right: 0;
+    height: 100%;
+}
+.auth-pic{
+    position: absolute;
+    left: -50%;
+    top: 20%;
+}
