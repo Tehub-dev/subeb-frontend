@@ -30,3 +30,6 @@
     background: var(--color-surface-white, #FFF);
     box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 }
+.custom-input_input input{
+    width: 100%;
+}
