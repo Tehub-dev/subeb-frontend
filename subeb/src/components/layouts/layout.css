@@ -26,3 +26,20 @@
     left: -50%;
     top: 20%;
 }
+
+/* admin nav */
+.admin-layout{
+    display: flex;
+}
+.side-nav{
+    padding: 40px 20px;
+    /* border: 1px solid green; */
+    width: 20%;
+    height: 100vh;
+    background: var(--color-surface-light-hover, #F5F7F9);
+}
+.outlet-side{
+    padding: 40px;
+    width: 80%;
+    min-height: 100vh;
+}
