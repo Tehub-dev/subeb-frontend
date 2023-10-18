@@ -1,0 +1,25 @@
+
+.teacher-login_register{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 0;
+}
+.teacher-login_register h3{
+    border: 1px solid var(--color-primary-light, #FEF0E9);
+    background: var(--color-surface-white, #FFF);
+    padding: 20px;
+    color: var(--color-grey-grey-600, #2E2E2E);
+    font-family: Work Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 30.8px */
+    width: 80%;
+}
+.teacher-form{
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

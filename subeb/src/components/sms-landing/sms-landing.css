@@ -1,0 +1,90 @@
+.sms-landing{
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    width: 100%;
+    /* border: 1px solid red; */
+}
+.elips2{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    z-index: -10;
+}
+.elips1{
+    position: absolute;
+    right: 0;
+    height: 100%;
+    z-index: -10;
+}
+.sms-landing_body{
+    width: 80%;
+    margin: 100px auto;
+}
+.sms-landing_body-head h3{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: var(--color-grey-grey-700, #242424);
+    font-family: Work Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: 0.15px;
+    /* border: 1px solid red; */
+    padding: 30px 0;
+}
+.sms-landing_body-head h2{
+    color: var(--color-grey-grey-700, #242424);
+    font-family: Work Sans;
+    font-size: 31px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 43.4px */
+    letter-spacing: 0.25px;
+}
+.sms-landing_body-head p{
+    color: var(--color-grey-grey-400, #5C5C5C);
+    padding: 10px 0;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    letter-spacing: 0.5px;
+}
+.portal-logins{
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 0;
+}
+.each-portal{
+    width: 25%;
+    display: flex;
+    padding: 40px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    border: 1px solid var(--color-primary-light, #FEF0E9);
+    background: var(--color-surface-white, #FFF);
+    cursor: pointer;
+}
+.each-portal h4{
+    color: var(--color-grey-grey-600, #2E2E2E);
+    font-family: Work Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 30.8px */
+}
+.each-portal p{
+    color: var(--color-grey-grey-400, #5C5C5C);
+    font-family: Helvetica;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    letter-spacing: 0.5px;
+    padding-top: 20px;
+}

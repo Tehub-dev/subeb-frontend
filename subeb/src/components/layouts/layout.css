@@ -1,0 +1,45 @@
+
+.auth-layout{
+    min-height: 100vh;
+    display: flex;
+}
+.outlet-space{
+    width: 70%;
+}
+.outlet-space_div{
+    /* border: 1px solid red; */
+    width: 60%;
+    margin: 90px auto 60px 100px;
+}
+.auth-style{
+    width: 30%;
+    background: var(--color-primary-normal, #F26722);
+    position: relative;
+}
+.elipse{
+    position: absolute;
+    right: 0;
+    height: 100%;
+}
+.auth-pic{
+    position: absolute;
+    left: -50%;
+    top: 20%;
+}
+
+/* admin nav */
+.admin-layout{
+    display: flex;
+}
+.side-nav{
+    padding: 40px 20px;
+    /* border: 1px solid green; */
+    width: 20%;
+    height: 100vh;
+    background: var(--color-surface-light-hover, #F5F7F9);
+}
+.outlet-side{
+    padding: 40px;
+    width: 80%;
+    min-height: 100vh;
+}
