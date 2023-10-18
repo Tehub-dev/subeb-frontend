@@ -1,3 +1,4 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,400;1,500;1,600&display=swap');
 .contact {
     width: 90%;
     margin: 0 auto;
@@ -70,12 +71,12 @@ padding: 40px 0 0 40px;
 }
 span {
     color: var(--color-surface-white, #FFF);
-font-family: Poppins;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-display: flex;
-align-items: flex-start;
-gap: 25px;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
 }

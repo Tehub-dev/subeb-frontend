@@ -21,6 +21,9 @@ function Contact() {
             <span><img src={envelope} alt="" /> demo@gmail.com</span>
             <span><img src={map} alt="" /> Ondo State.</span>
         </div>
+        <div className='contact-form'>
+           
+        </div>
     </div>
     </div>
     </div>
