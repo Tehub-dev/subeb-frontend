@@ -4,7 +4,7 @@ import pillar2 from "../../assets/images/pillarImg2.png"
 import pillar3 from "../../assets/images/pillarImg3.png"
 
 import "./pillar.css"
-function pillar() {
+function Pillar() {
   return (
     <div className='pillar'>
       <h4>Our Pillar</h4>
@@ -18,4 +18,4 @@ function pillar() {
   )
 }
 
-export default pillar
+export default Pillar

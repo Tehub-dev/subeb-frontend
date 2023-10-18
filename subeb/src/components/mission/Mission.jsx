@@ -4,7 +4,7 @@ import mission1 from "../../assets/images/mission-img1.png"
 import mission2 from "../../assets/images/mission-img2.png"
 import mission3 from "../../assets/images/mission-img3.png"
 
-function mission() {
+function Mission() {
   return (
     <div className='mission'>
       <h3>Mission</h3>
@@ -18,4 +18,4 @@ function mission() {
   )
 }
 
-export default mission
+export default Mission
