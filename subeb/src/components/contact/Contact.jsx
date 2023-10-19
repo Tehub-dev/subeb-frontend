@@ -2,7 +2,8 @@ import React from 'react'
 import phone from "../../assets/images/phone.png"
 import envelope from "../../assets/images/envelope.png"
 import map from "../../assets/images/map-pin.png"
-
+import ellipse from "../../assets/images/Ellipse.png"
+import ellipse1 from "../../assets/images/Ellipse1.png"
 import "./contact.css"
 
 function Contact() {
@@ -20,6 +21,10 @@ function Contact() {
             <span><img src={phone} alt="" /> +234012 3456 789</span>
             <span><img src={envelope} alt="" /> demo@gmail.com</span>
             <span><img src={map} alt="" /> Ondo State.</span>
+            <div className='card-img'>
+                <img className='ellipse' src={ellipse} alt="" />
+                <img src={ellipse1} alt="" />
+            </div>
         </div>
         </div>
            <form className='contact-form'>
@@ -30,7 +35,7 @@ function Contact() {
                 </div>
                 <div>
                     <label htmlFor="lastname">Last Name</label>
-                    <input type="text" name="lastname" placeholder='First Name' />
+                    <input type="text" name="lastname" placeholder='Last Name' />
                 </div>
             </div>
             <div className='form-name'>
