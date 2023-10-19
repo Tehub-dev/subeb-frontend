@@ -1,0 +1,43 @@
+.carousel {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px 80px 0px;
+}
+.carousel .slide-hidden {
+    display: none;
+}
+.carousel .arrow {
+    position: absolute
+}
+.carousel .arrow :hover {
+    cursor: pointer;
+}
+.left {
+    left: 8rem;
+}
+.right {
+    right: 8rem;
+}
+.carousel .indicators {
+    position: absolute;
+    bottom: 6rem;
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    background: var(--color-primary-normal, #F26722);
+}
+.carousel .indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 6px;
+    background: var(--White, #FFF);
+    cursor: pointer;
+}
+.carousel .indicator-inactive {
+    background-color: grey;
+}

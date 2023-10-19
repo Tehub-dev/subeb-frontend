@@ -1,0 +1,32 @@
+.vision {
+    display: flex;
+    padding: 80px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.vision h4 {
+    color: var(--color-grey-grey-700, #242424);
+    text-align: center;
+    font-family: Work Sans;
+    font-size: 31px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 43.4px */
+    letter-spacing: 0.25px;
+}
+.vision p {
+    color: var(--color-grey-grey-400, #5C5C5C);
+    text-align: center;
+    font-family: Helvetica;
+    width: 780px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    letter-spacing: 0.5px;
+}
+.vision img {
+    padding-left: 8px;
+}
