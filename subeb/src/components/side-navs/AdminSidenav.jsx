@@ -80,8 +80,9 @@ const AdminSidenav = () => {
             <Link
               to={item.link && "/" + item.link}
               style={{ textDecoration: "none" }}
+              key={idx}
             >
-              <div key={idx} className="each-link" style={item.link === active ? activeLink : undefined}>
+              <div className="each-link" style={item.link === active ? activeLink : undefined}>
                 <img src={item.link === active ? item.icon2 : item.icon} alt="icon" />
                 <p style={{color: item.link === active && "white"}}>{item.name}</p>
               </div>

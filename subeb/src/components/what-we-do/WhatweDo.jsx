@@ -34,8 +34,11 @@ const WhatweDo = () => {
 
     const openWhatFaq = (item) =>{
         setItemId(item.id);
-        if(itemId === item.id){
-            setOpenFaq(!openFaq);
+        if(item.id){
+            setOpenFaq(true);
+        }
+        if(openFaq && itemId === item.id){
+            setOpenFaq(false);
         }
     };
 
