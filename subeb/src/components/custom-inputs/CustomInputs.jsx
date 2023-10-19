@@ -14,6 +14,7 @@ export const Input = ({
   formChange,
   formId,
   formValue,
+  iconLeft
 }) => {
   const inputChange = (e) => {
     if (formChange) {
@@ -25,6 +26,7 @@ export const Input = ({
     <div className="custom-input">
       <label>{inputLabel}</label>
       <div className="custom-input_input">
+        {iconLeft}
         <img src={imgleft} alt={imgLeftAlt} />
         <input
           onChange={(e) => inputChange(e)}
