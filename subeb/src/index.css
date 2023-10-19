@@ -46,3 +46,12 @@ button, input, select{
   text-transform: capitalize;
   cursor: pointer;
 }
+.nopage{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.nopage h1{
+  text-align: center;
+}
