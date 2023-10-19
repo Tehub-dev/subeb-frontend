@@ -7,6 +7,7 @@ import DocUpload from '../doc-upload/DocUpload';
 import arrowUp from "../../assets/images/arrow-up-tray.png";
 import emptyUpload from "../../assets/images/emptyUpload.png";
 import Empty from '../empty-state/Empty';
+import { Button } from '../custom-inputs/CustomInputs';
 
 const LessNotesPopup = ({display, setDisplay}) => {
 
@@ -41,12 +42,12 @@ const LessNotesPopup = ({display, setDisplay}) => {
                     <DocUpload />
                 </div>
                 <div className="upload-btn">
-                    <button className="btn">Upload <img src={arrowUp} alt="icon" /></button>
+                    <Button btnText={"Upload"} btnImg={arrowUp} />
                 </div>
             </div>}
 
             {active === "Recent" && <div className="recent">
-                <Empty emptyText={"No uploads yet"} emptyImg={emptyUpload} emptyWidth={"80%"}  />
+                <Empty emptyText={"No uploads yet"} emptyImg={emptyUpload} emptyWidth={"80%"} emptyMargin={"0 auto"} />
             </div>} 
         </div>
     </Popup>

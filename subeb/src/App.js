@@ -27,6 +27,12 @@ import SchoolLesson from "./pages/app/sms-app/school-admin/SchoolLesson";
 import TeachersReg from "./pages/app/sms-app/school-admin/TeachersReg";
 import TeachersAtt from "./pages/app/sms-app/school-admin/TeachersAtt";
 import AcademicCalSch from "./pages/app/sms-app/school-admin/AcademicCalSch";
+import TeachersLayout from "./components/layouts/TeachersLayout";
+import TeachersOverview from "./pages/app/sms-app/teachers/TeachersOverview";
+import TeachersLesson from "./pages/app/sms-app/teachers/TeachersLesson";
+import StudentReg from "./pages/app/sms-app/teachers/StudentReg";
+import StudentAtt from "./pages/app/sms-app/teachers/StudentAtt";
+import AcademicCalTch from "./pages/app/sms-app/teachers/AcademicCalTch";
 
 
 function App() {
@@ -64,6 +70,14 @@ function App() {
           <Route path="/teachers-reg" element={<TeachersReg />} />
           <Route path="/teachers-att" element={<TeachersAtt />} />
           <Route path="/academic-cal-sch" element={<AcademicCalSch />} />
+        </Route>
+
+        <Route element={<TeachersLayout />}>
+          <Route path="/teacher-overview" element={<TeachersOverview />} />
+          <Route path="/teacher-lesson-notes" element={<TeachersLesson />} />
+          <Route path="/student-reg" element={<StudentReg />} />
+          <Route path="/student-att" element={<StudentAtt />} />
+          <Route path="/academic-cal-tch" element={<AcademicCalTch />} />
         </Route>
 
 

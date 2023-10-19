@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./empty.css";
+import { Button } from "../custom-inputs/CustomInputs";
 
 const Empty = ({
   emptyBtn,
@@ -22,9 +23,7 @@ const Empty = ({
       </div>
       <h2>{emptyTitle}</h2>
       <p>{emptyText}</p>
-      {emptyBtn && <button className="btn" onClick={btnClick}>
-        {emptyBtn} <img src={emptyIcon} alt="icon" />{" "}
-      </button>}
+      {emptyBtn && <Button btnClick={btnClick} btnText={emptyBtn} btnImg={emptyIcon} />}
     </div>
   );
 };
