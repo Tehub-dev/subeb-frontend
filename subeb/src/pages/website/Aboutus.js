@@ -4,14 +4,12 @@ import Carousel from '../../components/carousel/Carousel'
 import Mission from '../../components/mission/Mission'
 import Vision from '../../components/vision/Vision'
 import Pillar from '../../components/pillar/Pillar'
+// import { slides } from '../../data/carouselData.json'
 
 const Aboutus = () => {
-  const slides = [
-    {}
-  ]
   return (
     <div>
-      <Carousel slides={slides}/>
+      <Carousel />
       <Mission />
       <Vision />
       <Pillar />

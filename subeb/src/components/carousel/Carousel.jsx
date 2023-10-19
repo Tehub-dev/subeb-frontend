@@ -1,15 +1,13 @@
 import React from 'react'
-// import { useState } from 'react'
 import "./carousel.css"
 
-function Carousel({ slides }) {
-  //   const [currentIndex, setCurrentUser] = useState(0);
+function Carousel() {
     
-  // return (
-  //   <div className='carousel'>
-  //     <div className='caro_img' style={{backgroundImage: 'url(${slides[currentIndex].url})'}}></div>
-  //   </div>
-  // )
+  return (
+    <div className='carousel'>
+
+    </div>
+  )
 }
 
 export default Carousel
