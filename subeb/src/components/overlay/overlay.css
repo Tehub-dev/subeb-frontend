@@ -1,0 +1,9 @@
+
+.overlay{
+    background: rgba(52, 64, 84, 0.50);
+    backdrop-filter: blur(4px);
+    position: fixed;
+    min-height: 100vh;
+    width: 80%;
+    margin-left: 20%;
+}

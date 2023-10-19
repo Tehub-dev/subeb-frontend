@@ -14,11 +14,18 @@ import bookWhite from "../../assets/images/bookWhite.png";
 
 import "./side-nav.css";
 import { Link, useLocation } from "react-router-dom";
+import useOverlay from "../../hooks/useOverlay";
 
 const AdminSidenav = () => {
     
   const activeLink = {
     background: "#F26722"
+  };
+
+  const { setDisplayOverlay} = useOverlay();
+
+  const clickLinks = () => {
+    setDisplayOverlay(false);
   };
 
   const { pathname } = useLocation();
@@ -82,7 +89,7 @@ const AdminSidenav = () => {
               style={{ textDecoration: "none" }}
               key={idx}
             >
-              <div className="each-link" style={item.link === active ? activeLink : undefined}>
+              <div onClick={clickLinks} className="each-link" style={item.link === active ? activeLink : undefined}>
                 <img src={item.link === active ? item.icon2 : item.icon} alt="icon" />
                 <p style={{color: item.link === active && "white"}}>{item.name}</p>
               </div>
@@ -91,7 +98,7 @@ const AdminSidenav = () => {
         })}
       </div>
       <div className="logot-btn">
-        <div className="logout each-link">
+        <div className="logout each-link" onClick={clickLinks}>
             <img src={logout} alt="icon" />
             <p style={{color: "red"}}>Logout</p>
         </div>

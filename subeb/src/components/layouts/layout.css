@@ -37,9 +37,11 @@
     width: 20%;
     height: 100vh;
     background: var(--color-surface-light-hover, #F5F7F9);
+    position: fixed;
 }
 .outlet-side{
     padding: 40px;
     width: 80%;
+    margin-left: 20%;
     min-height: 100vh;
 }
