@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Popup from './Popup';
 
 import "./popup.css";
@@ -17,6 +17,12 @@ const LessNotesPopup = ({display, setDisplay}) => {
     }
 
     const [active, setActive] = useState("New Upload");
+
+    useEffect(() => {
+        if (!display){
+            setActive("New Upload")
+        }
+    }, [display]);
 
     const popupTabs = ["New Upload", "Recent"];
 
