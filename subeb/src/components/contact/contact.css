@@ -30,9 +30,7 @@
     margin: 0 auto;
 }
 .contact-body {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    display: flex;
     gap: 40px;
     margin-bottom: 66px;
 }
@@ -43,12 +41,12 @@
 }
 .contact-info h4 {
     color: var(--color-surface-white, #FFF);
-font-family: Work Sans;
-font-size: 22px;
-font-style: normal;
-font-weight: 600;
-line-height: 140%; /* 30.8px */
-padding: 40px 0 0 40px;
+    font-family: Work Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 30.8px */
+    padding: 40px 0 0 40px;
 }
 .contact-info p {
     color: var(--color-surface-white, #FFF);
@@ -79,4 +77,60 @@ span {
     display: flex;
     align-items: flex-start;
     gap: 25px;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 40px;
+    padding-top: 40px;
+}
+label {
+    color: var(--color-grey-grey-600, #2E2E2E);
+    font-family: Work Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: 0.1px;
+}
+input {
+    border: 1px solid var(--color-grey-grey-100, #C0C0C0);
+    background: var(--color-surface-white, #FFF);
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    width: 320px;
+    display: flex;
+    padding: 16px 14px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+}
+.form-name {
+    display: flex;
+    gap: 20px;
+}
+textarea {
+    color: var(--color-grey-grey-400, #5C5C5C);
+    font-size: 16px;
+    font-family: Helvetica;
+    font-style: normal;
+    line-height: 140%; /* 22.4px */
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    flex: 1 0 0;
+    align-self: stretch;
+    display: flex;
+    padding: 10px 14px;
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border: 1px solid var(--color-grey-grey-100, #C0C0C0);
+    background: var(--color-surface-white, #FFF);
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    width: 660px;
+    height: 128px;
+}
+button {
+  align-self: flex-end;
 }

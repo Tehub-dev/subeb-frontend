@@ -21,11 +21,35 @@ function Contact() {
             <span><img src={envelope} alt="" /> demo@gmail.com</span>
             <span><img src={map} alt="" /> Ondo State.</span>
         </div>
-        <div className='contact-form'>
-           
         </div>
-    </div>
-    </div>
+           <form className='contact-form'>
+            <div className='form-name'>
+                <div>
+                    <label htmlFor="firstname">First Name</label>
+                    <input type="text" name="firstname" placeholder='First Name' />
+                </div>
+                <div>
+                    <label htmlFor="lastname">Last Name</label>
+                    <input type="text" name="lastname" placeholder='First Name' />
+                </div>
+            </div>
+            <div className='form-name'>
+                <div>
+                    <label htmlFor="email">Email Address</label>
+                    <input type="email" name="email" placeholder='Email Address' />
+                </div>
+                <div>
+                    <label htmlFor="phone">Phone Number</label>
+                    <input type="tel" name="phone" id="" />
+                </div>
+            </div>
+            <div>
+                <label htmlFor="textarea">Message</label>
+                <textarea name="textarea" placeholder='Enter a message...'></textarea>
+            </div>
+            <button  className='btn' type="submit">Send Message</button>
+           </form>
+        </div>
     </div>
   )
 }
