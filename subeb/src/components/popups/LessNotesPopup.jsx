@@ -5,9 +5,10 @@ import "./popup.css";
 import SearchSelect from '../custom-inputs/SearchSelect';
 import DocUpload from '../doc-upload/DocUpload';
 import arrowUp from "../../assets/images/arrow-up-tray.png";
-import emptyUpload from "../../assets/images/emptyUpload.png";
-import Empty from '../empty-state/Empty';
+// import emptyUpload from "../../assets/images/emptyUpload.png";
+// import Empty from '../empty-state/Empty';
 import { Button } from '../custom-inputs/CustomInputs';
+import RecentUploads from '../recent-uploads/RecentUploads';
 
 const LessNotesPopup = ({display, setDisplay}) => {
 
@@ -53,7 +54,8 @@ const LessNotesPopup = ({display, setDisplay}) => {
             </div>}
 
             {active === "Recent" && <div className="recent">
-                <Empty emptyText={"No uploads yet"} emptyImg={emptyUpload} emptyWidth={"80%"} emptyMargin={"0 auto"} />
+                {/* <Empty emptyText={"No uploads yet"} emptyImg={emptyUpload} emptyWidth={"80%"} emptyMargin={"0 auto"} /> */}
+                <RecentUploads />
             </div>} 
         </div>
     </Popup>

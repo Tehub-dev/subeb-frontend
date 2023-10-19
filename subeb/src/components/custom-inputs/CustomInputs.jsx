@@ -43,13 +43,13 @@ export const Input = ({
   );
 };
 
-export const Button = ({ btnClick, leftIcon, rightIcon, btnImg, btnText }) => {
+export const Button = ({ btnClick, leftIcon, rightIcon, btnImg, btnText, btnClass }) => {
   return (
-    <button className="btn" onClick={btnClick}>
+    <button className={!btnClass ? "btn" : btnClass} onClick={btnClick}>
       {leftIcon}
       {btnText}
       {rightIcon}
-      <img src={btnImg} alt="icon" />
+      {btnImg && <img src={btnImg} alt="icon" />}
     </button>
   );
 };
