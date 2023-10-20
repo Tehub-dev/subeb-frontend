@@ -43,9 +43,9 @@ export const Input = ({
   );
 };
 
-export const Button = ({ btnClick, leftIcon, rightIcon, btnImg, btnText, btnClass }) => {
+export const Button = ({ btnClick, leftIcon, rightIcon, btnImg, btnText, btnClass, btnColor }) => {
   return (
-    <button className={!btnClass ? "btn" : btnClass} onClick={btnClick}>
+    <button className={!btnClass ? "btn" : btnClass} onClick={btnClick} style={{color: btnColor}}>
       {leftIcon}
       {btnText}
       {rightIcon}
