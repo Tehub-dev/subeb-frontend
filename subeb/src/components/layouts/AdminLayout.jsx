@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import "./layout.css";
 import AdminSidenav from '../side-navs/AdminSidenav';
@@ -11,7 +11,24 @@ const AdminLayout = () => {
 
   const {displayOverlay} = useOverlay();
 
+  const navigate = useNavigate();
+
     const { pathname } = useLocation();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const checkUserToken = () => {
+      const userToken = JSON.parse(localStorage.getItem("atk"));
+      if (!userToken || userToken === "undefined" || userToken?.accountType !== "Super Admin") {
+        setIsLoggedIn(false);
+        return navigate("/smslogin");
+      }
+      setIsLoggedIn(true);
+    };
+    
+    useEffect(() => {
+      checkUserToken();
+      // eslint-disable-next-line 
+    }, [isLoggedIn]);
   
     useEffect(() => {
       window.scrollTo({
@@ -22,6 +39,7 @@ const AdminLayout = () => {
   
   
   return (
+    isLoggedIn ?
     <div className='admin-layout'>
         <div className="side-nav">
             <AdminSidenav />
@@ -31,7 +49,7 @@ const AdminLayout = () => {
             <SearchComp />
             <Outlet />
         </div>
-    </div>
+    </div> : null
   )
 }
 

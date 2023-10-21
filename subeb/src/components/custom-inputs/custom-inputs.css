@@ -55,6 +55,9 @@
     align-items: flex-start;
     margin: 0 auto;
     gap: 0.625rem;
+    min-height: auto;
+    max-height: 300px;
+    overflow-y: auto;
     border: 1px solid #E6E6E6;
     background: var(--stockkeepercolours-white, #FFF);
   }
@@ -112,3 +115,10 @@
     text-transform: capitalize;
   }
   
+  .spinner{
+    padding: 0 20px;
+  }
+  .spinner img{
+    width: 30px;
+    height: 30px;
+  }

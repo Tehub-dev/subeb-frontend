@@ -41,8 +41,8 @@ const SmsLanding = () => {
             <div className="portal-logins">
                 {portals.map((item,idx) => {
                     return(
-                        <Link className="each-portal" to={item.id === "admin" || item.id === "school-admin" ? "/smslogin" : "/teacherportal"} style={{textDecoration: "none"}}>
-                            <div key={idx} >
+                        <Link key={idx} className="each-portal" to={item.id === "admin" || item.id === "school-admin" ? "/smslogin" : "/teacherportal"} style={{textDecoration: "none"}}>
+                            <div>
                                 <h4>{item.title}</h4>
                                 <p>{item.text}</p>
                             </div>

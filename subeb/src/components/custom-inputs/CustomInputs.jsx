@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import "./custom-inputs.css";
 import { ArrowDown2 } from "iconsax-react";
+import spin from "../../assets/images/spin.gif";
 
 export const Input = ({
   inputLabel,
@@ -16,6 +17,8 @@ export const Input = ({
   formId,
   formValue,
   iconLeft,
+  error,
+  phone
 }) => {
   const inputChange = (e) => {
     if (formChange) {
@@ -33,29 +36,64 @@ export const Input = ({
           onChange={(e) => inputChange(e)}
           id={formId}
           value={formValue}
-          type={password ? "password" : "text"}
+          type={password ? "password" : phone ? 'number' : "text"}
           placeholder={inputPlaceholder}
         />
         <img src={imgRight} alt={imgRightAlt} />
         {icon}
       </div>
+      {error && <h5 style={{ color: "red" }}>{error}</h5>}
     </div>
   );
 };
 
-export const Button = ({ btnClick, leftIcon, rightIcon, btnImg, btnText, btnClass, btnColor }) => {
+export const Button = ({
+  btnClick,
+  leftIcon,
+  rightIcon,
+  btnImg,
+  btnText,
+  btnClass,
+  btnColor,
+  error,
+  loading,
+}) => {
+  const submitClick = (e) => {
+    e.preventDefault();
+    if (btnClick) {
+      btnClick();
+    }
+  };
+
   return (
-    <button className={!btnClass ? "btn" : btnClass} onClick={btnClick} style={{color: btnColor}}>
-      {leftIcon}
-      {btnText}
-      {rightIcon}
-      {btnImg && <img src={btnImg} alt="icon" />}
-    </button>
+    <>
+      <button
+        className={!btnClass ? "btn" : btnClass}
+        onClick={submitClick}
+        style={{ color: btnColor }}
+      >
+        {loading ? (
+          <div className="spinner"><img src={spin} alt="spin" /></div>
+        ) : (
+          <>
+            {leftIcon}
+            {btnText}
+            {rightIcon}
+            {btnImg && <img src={btnImg} alt="icon" />}
+          </>
+        )}
+      </button>
+      {error && <h5 style={{ color: "red", paddingTop: "10px" }}>{error}</h5>}
+    </>
   );
 };
 
-export const SelectInput = ({selectBg, placeholder, setPlaceholder, opsArr}) => {
-
+export const SelectInput = ({
+  selectBg,
+  placeholder,
+  setPlaceholder,
+  opsArr,
+}) => {
   const [showOps, setShowOps] = useState(false);
 
   const clickShow = () => {
@@ -63,15 +101,15 @@ export const SelectInput = ({selectBg, placeholder, setPlaceholder, opsArr}) => 
   };
 
   const clickOptions = (item) => {
-    if (setPlaceholder){
+    if (setPlaceholder) {
       setPlaceholder(item);
       setShowOps(false);
     }
-  }
+  };
 
   return (
     <div className="select-cont">
-      <div className="select-input" style={{background: selectBg}}>
+      <div className="select-input" style={{ background: selectBg }}>
         <div className="select-placeholder" onClick={clickShow}>
           <h2>{placeholder}</h2>
           <ArrowDown2 size={14} />
@@ -80,7 +118,19 @@ export const SelectInput = ({selectBg, placeholder, setPlaceholder, opsArr}) => 
       <div className={opsArr && showOps ? "select-options" : "none"}>
         {opsArr &&
           opsArr.map((item, idx) => {
-            return <div key={idx} className="each-option" onClick={()=> clickOptions(item)} style={{borderLeft: placeholder === item ? "4px solid #f08227" : undefined}}><p>{item}</p></div>;
+            return (
+              <div
+                key={idx}
+                className="each-option"
+                onClick={() => clickOptions(item)}
+                style={{
+                  borderLeft:
+                    placeholder === item ? "4px solid #f08227" : undefined,
+                }}
+              >
+                <p>{item}</p>
+              </div>
+            );
           })}
       </div>
     </div>

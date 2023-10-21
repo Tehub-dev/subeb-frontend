@@ -23,8 +23,8 @@ const LessonNotes = () => {
   return (
     <div>
       {/* <Empty emptyTitle={"No Lesson Notes"} emptyImg={emptyNotes} emptyText={"Start Uploading Lesson Notes"} emptyBtn={"Upload Lesson Notes"} emptyIcon={arrowUp} btnClick={clickUpload} />
-      <LessNotesPopup display={lessonModal} setDisplay={setLessonModal} /> */}
-      {/* <LessonSubjects /> */}
+      <LessNotesPopup display={lessonModal} setDisplay={setLessonModal} />
+      <LessonSubjects /> */}
       {/* <LessonClasses /> */}
       <LessonWeeks />
     </div>

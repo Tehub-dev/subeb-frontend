@@ -12,7 +12,8 @@ const SearchSelect = ({
   optionsArray,
   optionClick,
   formValue,
-  clickDrop
+  clickDrop,
+  formId
 }) => {
   const [isSelect, setIsSelect] = useState("");
   const handleOptionClick = (item) => {
@@ -36,6 +37,7 @@ const SearchSelect = ({
         inputPlaceholder={placeholder}
         formChange={dataChange}
         formValue={formValue}
+        formId={formId}
         icon={<ArrowDown2 onClick={clickDropMenu} style={{cursor: "pointer"}} />}
       />
       <div className={searching ? "dropdown-plate" : undefined}>
