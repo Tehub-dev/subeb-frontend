@@ -6,6 +6,10 @@
     padding: 14px;
     align-items: center;
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 0px 2px rgba(83, 180, 131, 0.40), 0px 2px 5px 0px rgba(83, 180, 131, 0.08);
+    position: fixed;
+    top: 0;
+    right: 10%;
+    z-index: 10;
 }
 .success-alert h3{
     color: var(--color-success-normal, #049C29);
@@ -29,6 +33,10 @@
     padding: 14px;
     background: var(--color-error-light, #FDE6E7);
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 0px 2px rgba(243, 65, 65, 0.40), 0px 2px 5px 0px rgba(243, 65, 65, 0.08);
+    position: fixed;
+    top: 0;
+    right: 10%;
+    z-index: 10;
 }
 .error-alert .close-x{
     color: #EB060B;

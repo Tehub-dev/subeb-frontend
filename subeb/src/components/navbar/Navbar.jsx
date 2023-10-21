@@ -112,7 +112,7 @@ const Navbar = ({bgColor, listColor}) => {
       <div className={programs ? "nav-programs" : "none"}>
           {navPrograms.map((item,idx) => {
             return (
-              <Link to={item.link && "/" + item.link} style={{ textDecoration: "none" }}><p key={idx}>{item.name}</p></Link>
+              <Link key={idx} to={item.link && "/" + item.link} style={{ textDecoration: "none" }}><p>{item.name}</p></Link>
             )
           })}
       </div>

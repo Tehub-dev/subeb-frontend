@@ -13,7 +13,7 @@ import book from "../../assets/images/book.png";
 import bookWhite from "../../assets/images/bookWhite.png";
 
 import "./side-nav.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useOverlay from "../../hooks/useOverlay";
 
 const AdminSidenav = () => {
@@ -22,11 +22,18 @@ const AdminSidenav = () => {
     background: "#F26722"
   };
 
+  const navigate = useNavigate();
+
   const { setDisplayOverlay} = useOverlay();
 
   const clickLinks = () => {
     setDisplayOverlay(false);
   };
+
+  const logoutClick = () => {
+    localStorage.clear();
+    navigate("/smslogin");
+  }
 
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
@@ -98,7 +105,7 @@ const AdminSidenav = () => {
         })}
       </div>
       <div className="logot-btn">
-        <div className="logout each-link" onClick={clickLinks}>
+        <div className="logout each-link" onClick={logoutClick}>
             <img src={logout} alt="icon" />
             <p style={{color: "red"}}>Logout</p>
         </div>
