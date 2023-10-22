@@ -218,6 +218,7 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
                 key={idx}
                 to={item.link && "/" + item.link}
                 style={{ textDecoration: "none" }}
+                onClick={()=> setDisplayOverlay(false)}
               >
                 <p>{item.name}</p>
               </Link>
