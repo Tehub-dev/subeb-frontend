@@ -9,6 +9,7 @@
     transform: translateX(0); /* Start at the center */
     transition: transform 2s ease-in; /* Smooth ease-in-out transition over 2 seconds */
     animation: moveRightToLeft 0.5s linear alternate;
+    z-index: 5;
 }
 
 @keyframes moveRightToLeft {
