@@ -4,6 +4,7 @@ import logo from "../../assets/images/logo.png";
 import "./navbar.css";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowDown2, CloseSquare, HambergerMenu } from "iconsax-react";
+import useOverlay from "../../hooks/useOverlay";
 
 const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
   const activeLink = {
@@ -16,6 +17,7 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
   const [programs, setPrograms] = useState(false);
   const [programsMob, setProgramsMob] = useState(false);
   const [displayMenu, setDisplayMenu] = useState(false);
+  const { displayOverlay, setDisplayOverlay } = useOverlay();
 
   useEffect(() => {
     setActive(pathname.substring(1));
@@ -73,9 +75,10 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
   ];
 
   const clickMenu = (item) => {
-    if(item.id !== "programs"){
+    if (item.id !== "programs") {
       setDisplayMenu(!displayMenu);
-      setPrograms(false);
+      setProgramsMob(false);
+      setDisplayOverlay(!displayOverlay);
     }
   };
 
@@ -152,14 +155,14 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
         })}
       </div>
       <div className="mobile-menu_cont">
-        <nav className="mobile-nav" style={{background: mobileBg}}>
+        <nav className="mobile-nav" style={{ background: mobileBg }}>
           <div className="mobile-logo">
             <Link to="/" style={{ textDecoration: "none" }}>
               <img src={logo} alt="logo" />
             </Link>
           </div>
           <div className="menu-bar">
-            <HambergerMenu onClick={clickMenu} style={{color: homeMobile}} />
+            <HambergerMenu onClick={clickMenu} style={{ color: homeMobile }} />
           </div>
         </nav>
         <div className={displayMenu ? "mobile-menu" : "none"}>
@@ -181,7 +184,10 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
                         : undefined
                     }
                     className={listColor ? "list-color" : "normal-color"}
-                    onClick={() => {clickProgramsMob(item); clickMenu(item)}}
+                    onClick={() => {
+                      clickProgramsMob(item);
+                      clickMenu(item);
+                    }}
                   >
                     {item.name}{" "}
                     {item.id === "programs" && <ArrowDown2 size={16} />}
@@ -190,6 +196,20 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
               </ul>
             );
           })}
+          <div className="contact-us">
+            <Link to="/contactus" style={{ textDecoration: "none" }}>
+              <button
+                className="btn"
+                onClick={() => {
+                  setProgramsMob(false);
+                  setDisplayMenu(false);
+                  setDisplayOverlay(false);
+                }}
+              >
+                contact us
+              </button>
+            </Link>
+          </div>
         </div>
         <div className={programsMob ? "nav-programs" : "none"}>
           {navPrograms.map((item, idx) => {

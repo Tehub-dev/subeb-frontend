@@ -137,4 +137,7 @@
         top: 210%;
         z-index: 21;
     }
+    .nav-programs p{
+        font-size: 14px;
+    }
 }
