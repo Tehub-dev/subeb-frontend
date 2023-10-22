@@ -11,7 +11,7 @@ export const SuccessAlert = ({message, display, setDisplay}) => {
     if (setDisplay){
       setTimeout(function() {
         setDisplay(false);
-      }, 3000);
+      }, 4000);
     }
     // eslint-disable-next-line
   }, [display]);
@@ -31,7 +31,7 @@ export const ErrorAlert = ({message, display, setDisplay}) => {
     if (setDisplay){
       setTimeout(function() {
         setDisplay(false);
-      }, 3000);
+      }, 4000);
     }
     // eslint-disable-next-line
   }, [display]);

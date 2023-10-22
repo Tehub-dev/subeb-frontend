@@ -37,3 +37,19 @@
     line-height: 140%; /* 22.4px */
     letter-spacing: 0.5px;
 }
+
+@media (max-width: 900px) {
+    .footer-container{
+        padding: 40px 0;
+    }
+    .footer{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .footer-list{
+        flex-wrap: wrap;
+        gap: 40px;
+        width: 50%;
+        padding: 20px 0 40px;
+    }
+}

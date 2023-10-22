@@ -1,7 +1,7 @@
 import React from 'react';
 
 import "./programs.css";
-import { ArrowRight } from 'iconsax-react';
+import { ArrowDown, ArrowRight } from 'iconsax-react';
 
 const OurPrograms = () => {
 
@@ -23,12 +23,14 @@ const OurPrograms = () => {
         },
     ]
 
+    const windowWidth = window.innerWidth;
+
   return (
     <div className='programs-section'>
         <div className="programs-top">
-            <h2>Our <br /> Programs <ArrowRight size={44} /></h2>
+            <h2>Our <br /> Programs {windowWidth > "900px" ? <ArrowRight size={44} /> : <ArrowDown size={44} />}</h2>
         </div>
-        <div className="programs-bottom">
+        <div className={windowWidth > "900px" ? "programs-bottom" : "mobile-programs"}>
             {programsArr.map((item,idx) => {
                 return(
                     <div className="each-program" key={idx}>

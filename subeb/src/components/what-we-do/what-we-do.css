@@ -58,3 +58,25 @@
     /* background: white; */
     padding: 20px;
 }
+
+@media (max-width: 900px) {
+    .whatwe-do{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .whatwe-do_head h2{
+        font-size: 26px;
+    }
+    .whatwe-do_head p{
+        font-size: 14px;
+    }
+    .whatwe-do_faq{
+        width: 100%;
+    }
+    .each-whatwe_do h3{
+        font-size: 16px;
+    }
+    .faq-p{
+        font-size: 14px;
+    }
+}

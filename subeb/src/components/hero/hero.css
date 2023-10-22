@@ -32,3 +32,26 @@
     padding: 20px 0 40px;
     width: 65%;
 }
+
+@media (max-width: 900px) {
+    .hero-container{
+        flex-direction: column;
+        width: 90%;
+        margin: 0 auto;
+        gap: 20px;
+    }
+    .hero-left h1{
+        font-size: 31px;
+        width: 100%;
+    }
+    .hero-left p{
+        font-size: 14px;
+        width: 100%;
+    }
+    .hero-right{
+        width: 100%;
+    }
+    .hero-right img{
+        width: 100%;
+    }
+}
