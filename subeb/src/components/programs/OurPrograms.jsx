@@ -28,9 +28,9 @@ const OurPrograms = () => {
   return (
     <div className='programs-section'>
         <div className="programs-top">
-            <h2>Our <br /> Programs {windowWidth > "900px" ? <ArrowRight size={44} /> : <ArrowDown size={44} />}</h2>
+            <h2>Our <br /> Programs {windowWidth > 900 ? <ArrowRight size={44} /> : <ArrowDown size={44} />}</h2>
         </div>
-        <div className={windowWidth > "900px" ? "programs-bottom" : "mobile-programs"}>
+        <div className={windowWidth > 900 ? "programs-bottom" : "mobile-programs"}>
             {programsArr.map((item,idx) => {
                 return(
                     <div className="each-program" key={idx}>

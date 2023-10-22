@@ -7,7 +7,7 @@ const LogoDiv = () => {
 
     const mobileWindow = window.innerWidth;
 
-    const logoImg = mobileWindow > "900px" ? [logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo] : [logo, logo, logo, logo, logo];
+    const logoImg = mobileWindow > 900 ? [logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo] : [logo, logo, logo, logo, logo];
 
 
 
