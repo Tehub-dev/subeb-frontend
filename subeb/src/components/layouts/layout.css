@@ -45,3 +45,19 @@
     margin-left: 20%;
     min-height: 100vh;
 }
+
+@media (max-width: 900px) {
+    .auth-style{
+        display: none;
+    }
+    .outlet-space{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .outlet-space_div{
+        width: 100%;
+        margin: 0 !important;
+        padding: 50px 0;
+    }
+
+}

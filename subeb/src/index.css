@@ -109,3 +109,10 @@ button, input, select{
   line-height: 140%; 
   cursor: pointer;
 }
+
+@media (max-width: 900px) {
+  .btn{
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+}

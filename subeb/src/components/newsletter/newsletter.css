@@ -40,3 +40,22 @@
 .newsletter-input button{
     margin-top: 30px;
 }
+
+@media (max-width: 900px) {
+    .newsletter-head{
+        width: 90%;
+        margin: 0 auto;
+    }
+    .newsletter-head h2{
+        font-size: 26px;
+    }
+    .newsletter-head p{
+        font-size: 14px;
+        width: 100%;
+    }
+    .newsletter-input{
+        width: 90%;
+        margin: 0 auto;
+        flex-direction: column;
+    }
+}

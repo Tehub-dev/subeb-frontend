@@ -106,6 +106,9 @@ const SchoolDetails = () => {
         );
       }
     }
+   else {
+    setSearching(false);
+  }
     if (e.target.id === "sch") {
       if (e.target.value) {
         setSchSearch(true);
@@ -117,6 +120,9 @@ const SchoolDetails = () => {
         );
       }
     }
+   else {
+    setSchSearch(false);
+  }
     if (e.target.id === "class") {
       if (e.target.value) {
         setClassSearch(true);
@@ -128,7 +134,7 @@ const SchoolDetails = () => {
         );
       }
     } else {
-      setSearching(false);
+      setClassSearch(false);
     }
   };
 

@@ -17,7 +17,7 @@ const SiteLayout = () => {
 
   return (
     <div>
-        <Navbar bgColor={pathname === "/" ? "#162625" : undefined} listColor={pathname === "/" ? true : false} />
+        <Navbar bgColor={pathname === "/" ? "#162625" : undefined} mobileBg={pathname === "/" ? "#162625" : undefined} homeMobile={pathname === "/" ? "white" : undefined} listColor={pathname === "/" ? true : false} />
         <Outlet />
         <Footer />
     </div>
