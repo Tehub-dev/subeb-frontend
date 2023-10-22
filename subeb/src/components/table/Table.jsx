@@ -1,0 +1,105 @@
+import React from 'react'
+import './table.css'
+import DataTable from 'react-data-table-component';
+
+function Table() {
+    const columns = [
+        {
+            name: 'School Name',
+            selector: row => row.schoolName
+        },
+        {
+            name: 'LGA',
+            selector: row => row.lga
+        },
+        {
+            name: 'School Admin',
+            selector: row => row.SchoolAdmin
+        }
+    ];
+
+    const data = [
+        {
+            id: 1,
+            schoolName: `SAINT JOHN'S CHRIST APOSTOLIC CHURCH PRIMARY SCHOOL, IKARE`,
+            lga:`AKOKO-NORTH-EAST`,
+            SchoolAdmin:`Olivia Rhye`
+        },
+        {
+            id: 2,
+            schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
+            lga:`AKOKO-NORTH-EAST`,
+            SchoolAdmin:`Olivia Rhye`
+        },
+        {
+            id: 3,
+            schoolName: `SAINT JAME'S ANGLICAN PRIMARY SCHOOL, UGBE- AKOKO`,
+            lga:`AKOKO-NORTH-EAST`,
+            SchoolAdmin:`Olivia Rhye`
+        },
+        {
+            id: 4,
+            schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
+            lga:`AKOKO-NORTH-WEST`,
+            SchoolAdmin:`Olivia Rhye`
+        },
+        {
+            id: 5,
+            schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
+            lga:`AKOKO-NORTH-EAST`,
+            SchoolAdmin:`Olivia Rhye`
+        }
+    ];
+
+    const customStyles = {
+        rows:{ 
+            style: {
+                color: '#242424',
+                fontFamily: 'Work Sans',
+                fontSize: '14px',
+                fontStyle: 'normal',
+                fontWeight: '500',
+                lineHeight: '140%',
+                letterSpacing: '0.1px',
+                whiteSpace: 'break-spaces'
+            },
+        },
+        headCells: {
+            style: {
+                color: '#5C5C5C',
+                fontFamily: 'Helvetica',
+                fontSize: '12px',
+                fontStyle: 'normal',
+                fontWeight: '400',
+                lineHeight: '140%', /* 16.8px */
+                letterSpacing: '0.4px',
+            },
+        },
+        cells: {
+            style: {
+                display: 'flex',
+                height: '72px',
+                padding: 'var(--16, 16px) var(--24, 24px)',
+                alignItems: 'center',
+                gap: '12px',
+                alignSelf: 'stretch',
+                borderBottom: '#EBEEF2',
+                background: '#F5F7F9',
+            },
+        },
+    };
+    
+  return (
+    <div className='table_comp'> 
+    <DataTable
+        columns={columns}
+        data={data}
+        pagination
+        customStyles={customStyles}
+    >
+    </DataTable>
+    </div>
+  )
+}
+
+export default Table
