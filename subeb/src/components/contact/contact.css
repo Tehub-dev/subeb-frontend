@@ -145,3 +145,31 @@
 .contact-form button {
   align-self: flex-end;
 }
+@media (max-width: 900px) {
+    .contact {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    .contact-head p {
+        width: auto;
+    }
+    .contact-body {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .form-name {
+        display: flex;
+        flex-direction: column;
+    }
+    .contact-info {
+        width: 342px;
+    }
+    .contact-form {
+        align-items: start;
+    }
+    .contact-form textarea {
+        width: 342px;
+    }
+}

@@ -6,6 +6,7 @@
     align-items: center;
     gap: 40px;
 }
+
 .mission h3 {
     color: var(--color-grey-grey-700, #242424);
     text-align: center;
@@ -13,9 +14,11 @@
     font-size: 31px;
     font-style: normal;
     font-weight: 600;
-    line-height: 140%; /* 43.4px */
+    line-height: 140%;
+    /* 43.4px */
     letter-spacing: 0.25px;
 }
+
 .mission p {
     color: var(--color-grey-grey-400, #5C5C5C);
     text-align: center;
@@ -24,9 +27,34 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 140%; /* 22.4px */
+    line-height: 140%;
+    /* 22.4px */
     letter-spacing: 0.5px;
 }
+
 .mission img {
     padding-left: 8px;
+}
+
+@media (max-width: 900px) {
+    .mission {
+        display: flex;
+        padding: 10px;
+    }
+
+    .mission img {
+        margin-bottom: 20px;
+    }
+
+    .mission p {
+        color: var(--color-grey-grey-400, #5C5C5C);
+        text-align: center;
+        font-family: Helvetica;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 140%;
+        letter-spacing: 0.25px;
+        width: auto;
+    }
 }

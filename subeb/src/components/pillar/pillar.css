@@ -6,6 +6,7 @@
     align-items: center;
     gap: 40px;
 }
+
 .pillar h4 {
     color: var(--color-grey-grey-700, #242424);
     text-align: center;
@@ -13,9 +14,11 @@
     font-size: 31px;
     font-style: normal;
     font-weight: 600;
-    line-height: 140%; /* 43.4px */
+    line-height: 140%;
+    /* 43.4px */
     letter-spacing: 0.25px;
 }
+
 .pillar p {
     color: var(--color-grey-grey-400, #5C5C5C);
     text-align: center;
@@ -24,42 +27,68 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 140%; /* 22.4px */
+    line-height: 140%;
+    /* 22.4px */
     letter-spacing: 0.5px;
 }
+
 .value-card {
     display: flex;
-justify-content: space-between;
-align-items: flex-start;
-gap: 40px;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
 }
+
 .card-box {
     display: flex;
-width: 265px;
-height: 320px;
-padding: 40px 20px;
-flex-direction: column;
-align-items: flex-start;
-border: 1px solid var(--color-grey-grey-50, #EBEBEB);
-background: var(--color-surface-white, #FFF);
+    width: 265px;
+    height: 320px;
+    padding: 40px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid var(--color-grey-grey-50, #EBEBEB);
+    background: var(--color-surface-white, #FFF);
 }
+
 .value-card h3 {
     color: var(--color-grey-grey-600, #2E2E2E);
-font-family: Work Sans;
-font-size: 22px;
-font-style: normal;
-font-weight: 600;
-line-height: 140%; /* 30.8px */
+    font-family: Work Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    /* 30.8px */
 }
+
 .value-card p {
     color: var(--color-grey-grey-400, #5C5C5C);
     margin-top: 8px;
     text-align: start;
-font-family: Helvetica;
-font-size: 16px;
-width: 225px;
-font-style: normal;
-font-weight: 400;
-line-height: 140%; /* 22.4px */
-letter-spacing: 0.5px;
+    font-family: Helvetica;
+    font-size: 16px;
+    width: 225px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    /* 22.4px */
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 900px) {
+    .pillar {
+        display: flex;
+        padding: 10px;
+    }
+
+    .value-card {
+        display: flex;
+        width: 342px;
+        padding: var(--24, 24px) 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .pillar p {
+        width: auto;
+    }
 }
