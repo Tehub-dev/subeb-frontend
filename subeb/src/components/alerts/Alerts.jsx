@@ -72,7 +72,7 @@ export const DeletePopup = ({display, title, text, cancelBtn, deleteBtn}) => {
       <p>{text}</p>
       <div className="update-btn">
         <Button btnText={"cancel"} btnClass={"btn-small-white"} btnClick={cancelBtn} />
-        <Button btnText={"update"} btnClass={"btn-red"} btnClick={deleteBtn} />
+        <Button btnText={"remove"} btnClass={"btn-red"} btnClick={deleteBtn} />
       </div>
     </div>
   )

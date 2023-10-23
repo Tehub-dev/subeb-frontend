@@ -1,0 +1,54 @@
+
+.profile-cont{
+    border: 1px solid var(--color-surface-normal-active, #EBEEF2);
+    background: var(--color-surface-white, #FFF);
+    box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.06), 0px 1px 3px 0px rgba(16, 24, 40, 0.10);
+    padding: 20px;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.personal-head{
+    padding-bottom: 30px;
+}
+.personal-head h3{
+    color: var(--color-grey-grey-500, #333);
+    font-family: Work Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: 0.15px;
+}
+.personal-head p{
+    color: var(--color-grey-grey-300, #767676);
+    font-family: Helvetica;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: 0.25px;
+}
+.personal-info_input-cont{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 30px;
+    border: 1px solid  #EBEBEB;
+    border-top: none;
+}
+.personal-input{
+    width: 47%;
+}
+.personal-btn{
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 16px 30px;
+    padding-right: 50px;
+    border: 1px solid  #EBEBEB;
+}
+.line-btw{
+    border: 1px solid  #EBEBEB;
+}

@@ -1,0 +1,55 @@
+
+.notification-cont{
+    border-radius: 4px;
+    border: 1px solid var(--color-surface-normal-active, #EBEEF2);
+    background: var(--color-surface-white, #FFF);
+    margin: 40px 0;
+}
+.not-head{
+    border-bottom: 1px solid var(--color-surface-normal-active, #EBEEF2);
+    padding: 20px 24px;
+}
+.not-head h3{
+    color: var(--color-grey-grey-700, #242424);
+    font-family: Work Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: 0.15px;
+}
+.not-head h3 span{
+    color: var(--color-primary-normal, #F26722);
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 16.8px */
+    letter-spacing: 0.4px;
+    background: var(--color-primary-light, #FEF0E9);
+    padding: 2px 8px;
+    margin-left: 5px;
+}
+.each-data{
+    border-bottom: 1px solid var(--color-surface-normal-active, #EBEEF2);
+    padding: 20px 24px;
+}
+.each-data h4{
+    color: var(--color-grey-grey-700, #242424);
+    font-family: Work Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: 0.1px;
+}
+.each-data p{
+    color: var(--color-grey-grey-200, #A1A1A1);
+    font-family: Helvetica;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 16.8px */
+    letter-spacing: 0.4px;
+}

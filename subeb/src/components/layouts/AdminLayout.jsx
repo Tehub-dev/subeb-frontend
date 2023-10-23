@@ -36,6 +36,13 @@ const AdminLayout = () => {
         behavior: "smooth"
       });
     }, [pathname]);
+
+    const clickProfile = () => {
+      navigate("/admin-profile");
+    }
+    const clickNot = () => {
+      navigate("/admin-notifications");
+    }
   
   
   return (
@@ -46,7 +53,7 @@ const AdminLayout = () => {
         </div>
         <Overlay display={displayOverlay} />
         <div className="outlet-side">
-            <SearchComp />
+            <SearchComp clickNot={clickNot} clickProfile={clickProfile}  />
             <Outlet />
         </div>
     </div> : null
