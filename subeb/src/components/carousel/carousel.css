@@ -41,3 +41,29 @@
 .carousel .indicator-inactive {
     background-color: grey;
 }
+
+@media (max-width: 900px) {
+    .carousel {
+        padding-bottom: 40px;
+    }
+    .carousel img {
+        object-fit: scale-down;
+        max-width: 100%;
+        max-height: auto;
+        padding: 10px;
+    }
+    .left {
+        left: 0rem;
+    }
+    .right {
+        right: 0rem;
+    }
+    .arrow {
+        width: 60px;
+    }
+    .carousel .indicators {
+        gap: 8px;
+        bottom: 4rem;
+        padding: 5px;
+    }
+}
