@@ -88,3 +88,29 @@
     letter-spacing: 0.5px;
     padding-top: 20px;
 }
+
+@media (max-width: 900px) {
+    .elips1, .elips2{
+        display: none;
+    }
+    .sms-landing_body{
+        width: 90%;
+        margin: 40px auto;
+    }
+    .sms-landing_body-head h3{
+        font-size: 18px;
+    }
+    .sms-landing_body-head h2{
+        font-size: 26px;
+    }
+    .sms-landing_body-head p{
+        font-size: 14px;
+    }
+    .portal-logins{
+        flex-direction: column;
+        gap: 25px;
+    }
+    .each-portal{
+        width: 80%;
+    }
+}

@@ -13,13 +13,27 @@ import book from "../../assets/images/book.png";
 import bookWhite from "../../assets/images/bookWhite.png";
 
 import "./side-nav.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useOverlay from "../../hooks/useOverlay";
 
 const AdminSidenav = () => {
     
   const activeLink = {
     background: "#F26722"
   };
+
+  const navigate = useNavigate();
+
+  const { setDisplayOverlay} = useOverlay();
+
+  const clickLinks = () => {
+    setDisplayOverlay(false);
+  };
+
+  const logoutClick = () => {
+    localStorage.clear();
+    navigate("/smslogin");
+  }
 
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
@@ -80,8 +94,9 @@ const AdminSidenav = () => {
             <Link
               to={item.link && "/" + item.link}
               style={{ textDecoration: "none" }}
+              key={idx}
             >
-              <div key={idx} className="each-link" style={item.link === active ? activeLink : undefined}>
+              <div onClick={clickLinks} className="each-link" style={item.link === active ? activeLink : undefined}>
                 <img src={item.link === active ? item.icon2 : item.icon} alt="icon" />
                 <p style={{color: item.link === active && "white"}}>{item.name}</p>
               </div>
@@ -90,7 +105,7 @@ const AdminSidenav = () => {
         })}
       </div>
       <div className="logot-btn">
-        <div className="logout each-link">
+        <div className="logout each-link" onClick={logoutClick}>
             <img src={logout} alt="icon" />
             <p style={{color: "red"}}>Logout</p>
         </div>

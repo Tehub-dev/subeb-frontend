@@ -5,7 +5,11 @@ import "./logo-div.css";
 
 const LogoDiv = () => {
 
-    const logoImg = [logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo];
+    const mobileWindow = window.innerWidth;
+
+    const logoImg = mobileWindow > 900 ? [logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo] : [logo, logo, logo, logo, logo];
+
+
 
   return (
     <div className='logo-div'>

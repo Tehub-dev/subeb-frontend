@@ -1,0 +1,65 @@
+import React, { useEffect, useState } from 'react';
+import Popup from './Popup';
+
+import "./popup.css";
+import SearchSelect from '../custom-inputs/SearchSelect';
+import DocUpload from '../doc-upload/DocUpload';
+import arrowUp from "../../assets/images/arrow-up-tray.png";
+// import emptyUpload from "../../assets/images/emptyUpload.png";
+// import Empty from '../empty-state/Empty';
+import { Button } from '../custom-inputs/CustomInputs';
+import RecentUploads from '../recent-uploads/RecentUploads';
+
+const LessNotesPopup = ({display, setDisplay}) => {
+
+    const activeStyle = {
+        background: "#F26722",
+        color: "white"
+    }
+
+    const [active, setActive] = useState("New Upload");
+
+    useEffect(() => {
+        if (!display){
+            setActive("New Upload")
+        }
+    }, [display]);
+
+    const popupTabs = ["New Upload", "Recent"];
+
+    const clickTabs = (item) => {
+        setActive(item);
+    }
+
+  return (
+    <Popup display={display} setDisplay={setDisplay}>
+        <div className='lesson-notes_popup'>
+            <div className="popup-tabs">
+                {popupTabs.map((item,idx) => {
+                    return(
+                        <div key={idx} onClick={() => clickTabs(item)} className="each-tabs" style={active === item ? activeStyle : undefined}>{item}</div>
+                    )
+                })}
+            </div>
+            {active === "New Upload" && <div className="new-upload">
+                <SearchSelect formLabel={"Subject"} placeholder={"Select Subject"} />
+                <SearchSelect formLabel={"Class"} placeholder={"Select Class"} />
+                <SearchSelect formLabel={"Week"} placeholder={"Select Week"} />
+                <div className="doc-upload">
+                    <DocUpload />
+                </div>
+                <div className="upload-btn">
+                    <Button btnText={"Upload"} btnImg={arrowUp} />
+                </div>
+            </div>}
+
+            {active === "Recent" && <div className="recent">
+                {/* <Empty emptyText={"No uploads yet"} emptyImg={emptyUpload} emptyWidth={"80%"} emptyMargin={"0 auto"} /> */}
+                <RecentUploads />
+            </div>} 
+        </div>
+    </Popup>
+  )
+}
+
+export default LessNotesPopup

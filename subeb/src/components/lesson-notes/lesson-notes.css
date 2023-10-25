@@ -1,0 +1,87 @@
+
+.lesson-sub_head{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 30px 0;
+}
+.lesson-sub_head p{
+    color: var(--color-grey-grey-300, #767676);
+    font-family: Work Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: 0.1px;
+}
+.subjects-cont{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.each-subjects{
+    border: 1px solid var(--color-surface-light-hover, #F5F7F9);
+    background: var(--color-surface-white, #FFF);
+    display: flex;
+    padding: 20px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    cursor: pointer;
+}
+.each-subjects h3{
+    color: var(--color-grey-grey-600, #2E2E2E);
+    font-family: Work Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: 0.15px;
+}
+.each-subjects p{
+    color: var(--color-grey-grey-400, #5C5C5C);
+    font-family: Work Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: 0.25px;
+}
+.subjects-btn{
+    display: flex;
+    justify-content: flex-end;
+    padding: 50px 0 0;
+}
+
+/* lesson class  */
+.lesson-class_head{
+    padding: 30px 0;
+}
+
+/* lesson weeks  */
+.lesson-weeks_head{
+    display: flex;
+    gap: 20px;
+}
+.each-week{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--color-surface-light-hover, #F5F7F9);
+    background: var(--color-surface-white, #FFF);
+    padding: 20px 16px;
+    gap: 20px;
+}
+.each-week_btn{
+    display: flex;
+    gap: 20px;
+}
+.each-week h3{
+    color: var(--color-grey-grey-600, #2E2E2E);
+    font-family: Work Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 25.2px */
+    letter-spacing: 0.15px;
+}

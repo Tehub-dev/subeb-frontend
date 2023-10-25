@@ -27,6 +27,18 @@ import SchoolLesson from "./pages/app/sms-app/school-admin/SchoolLesson";
 import TeachersReg from "./pages/app/sms-app/school-admin/TeachersReg";
 import TeachersAtt from "./pages/app/sms-app/school-admin/TeachersAtt";
 import AcademicCalSch from "./pages/app/sms-app/school-admin/AcademicCalSch";
+import TeachersLayout from "./components/layouts/TeachersLayout";
+import TeachersOverview from "./pages/app/sms-app/teachers/TeachersOverview";
+import TeachersLesson from "./pages/app/sms-app/teachers/TeachersLesson";
+import StudentReg from "./pages/app/sms-app/teachers/StudentReg";
+import StudentAtt from "./pages/app/sms-app/teachers/StudentAtt";
+import AcademicCalTch from "./pages/app/sms-app/teachers/AcademicCalTch";
+import AdminProfile from "./pages/app/sms-app/admin/AdminProfile";
+import AdminNots from "./pages/app/sms-app/admin/AdminNots";
+import SchAdminProf from "./pages/app/sms-app/school-admin/SchAdminProf";
+import SchAdminNots from "./pages/app/sms-app/school-admin/SchAdminNots";
+import TeachNots from "./pages/app/sms-app/teachers/TeachNots";
+import TeachProfile from "./pages/app/sms-app/teachers/TeachProfile";
 
 
 function App() {
@@ -56,6 +68,8 @@ function App() {
           <Route path="/school-admin" element={<SchoolAdmins />} />
           <Route path="/school-mgt" element={<SchoolMgt />} />
           <Route path="/academic-cal" element={<AcademicCal />} />
+          <Route path="/admin-profile" element={<AdminProfile />} />
+          <Route path="/admin-notifications" element={<AdminNots />} />
         </Route>
 
         <Route element={<SchoolLayout />}>
@@ -64,6 +78,18 @@ function App() {
           <Route path="/teachers-reg" element={<TeachersReg />} />
           <Route path="/teachers-att" element={<TeachersAtt />} />
           <Route path="/academic-cal-sch" element={<AcademicCalSch />} />
+          <Route path="/sch-admin-profile" element={<SchAdminProf />} />
+          <Route path="/sch-admin-nots" element={<SchAdminNots />} />
+        </Route>
+
+        <Route element={<TeachersLayout />}>
+          <Route path="/teacher-overview" element={<TeachersOverview />} />
+          <Route path="/teacher-lesson-notes" element={<TeachersLesson />} />
+          <Route path="/student-reg" element={<StudentReg />} />
+          <Route path="/student-att" element={<StudentAtt />} />
+          <Route path="/academic-cal-tch" element={<AcademicCalTch />} />
+          <Route path="/teach-profile" element={<TeachProfile />} />
+          <Route path="/teach-nots" element={<TeachNots />} />
         </Route>
 
 

@@ -1,0 +1,28 @@
+
+.overlay{
+    background: rgba(52, 64, 84, 0.50);
+    backdrop-filter: blur(4px);
+    position: fixed;
+    min-height: 100vh;
+    width: 80%;
+    margin-left: 20%;
+    transform: translateX(0); /* Start at the center */
+    transition: transform 2s ease-in; /* Smooth ease-in-out transition over 2 seconds */
+    animation: moveRightToLeft 0.5s linear alternate;
+    z-index: 5;
+}
+
+@keyframes moveRightToLeft {
+    0% {
+      transform: translateX(100%); /* Start off the screen to the right */
+    }
+    100% {
+      transform: translateX(0); /* Move to the left (0% represents the starting point) */
+    }
+}
+  
+  
+  
+  
+  
+  

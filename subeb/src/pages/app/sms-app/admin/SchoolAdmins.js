@@ -1,11 +1,9 @@
 import React from 'react'
-// import Table from '../../../../components/table/Table'
-import Table1 from '../../../../components/table/Table1'
+import Table from '../../../../components/table/Table'
 const SchoolAdmins = () => {
   return (
     <div>
-      {/* <Table /> */}
-      <Table1 />
+      <Table />
     </div>
   )
 }

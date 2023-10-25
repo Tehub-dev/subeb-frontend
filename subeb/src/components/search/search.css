@@ -1,0 +1,23 @@
+
+.search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-input{
+    width: 45%;
+}
+.profile-icons{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.user-icon, .bell-icon{
+    width: 24px;
+    height: 24px;
+}
+.icon-cont{
+    border: 1px solid var(--color-grey-grey-50, #EBEBEB);
+    padding: 10px;
+    cursor: pointer;
+}
