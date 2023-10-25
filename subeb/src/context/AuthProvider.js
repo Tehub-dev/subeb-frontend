@@ -5,10 +5,11 @@ const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
 
     const [displayOverlay, setDisplayOverlay] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
 
   return (
     <AuthContext.Provider
-      value={{displayOverlay, setDisplayOverlay}}
+      value={{displayOverlay, setDisplayOverlay, selectedFile, setSelectedFile}}
     >
       {children}
     </AuthContext.Provider>

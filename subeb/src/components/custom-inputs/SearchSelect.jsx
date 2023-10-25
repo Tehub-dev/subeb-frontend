@@ -13,7 +13,8 @@ const SearchSelect = ({
   optionClick,
   formValue,
   clickDrop,
-  formId
+  formId,
+  error
 }) => {
   const [isSelect, setIsSelect] = useState("");
   const handleOptionClick = (item) => {
@@ -57,6 +58,7 @@ const SearchSelect = ({
             );
           })}
       </div>
+      <h5 style={{color: "red", paddingTop: "5px"}}>{error}</h5>
     </div>
   );
 };
