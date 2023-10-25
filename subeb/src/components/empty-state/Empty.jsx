@@ -12,6 +12,7 @@ const Empty = ({
   btnClick,
   emptyMargin,
   emptyWidth,
+  emptyRightIcon
 }) => {
   return (
     <div
@@ -23,7 +24,7 @@ const Empty = ({
       </div>
       <h2>{emptyTitle}</h2>
       <p>{emptyText}</p>
-      {emptyBtn && <Button btnClick={btnClick} btnText={emptyBtn} btnImg={emptyIcon} />}
+      {emptyBtn && <Button btnClick={btnClick} btnText={emptyBtn} btnImg={emptyIcon} rightIcon={emptyRightIcon} />}
     </div>
   );
 };
