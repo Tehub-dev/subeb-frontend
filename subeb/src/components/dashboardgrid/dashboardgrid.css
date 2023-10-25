@@ -1,0 +1,60 @@
+.dashboard {
+    display: flex;
+    width: 631px;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.dashboard .card {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--8, 8px);
+    flex: 1 0 0;
+}
+
+.dashboard h3 {
+    color: var(--color-grey-grey-700, #242424);
+
+    /* Text/Subtitle/Subtitle2 */
+    font-family: Work Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%;
+    /* 19.6px */
+    letter-spacing: 0.1px;
+}
+
+.dashboard .card-des {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    row-gap: var(--8, 8px);
+    align-self: stretch;
+    flex-wrap: wrap;
+}
+
+.dashboard .card .card-des .num {
+    color: var(--color-grey-grey-700, #242424);
+    font-family: Work Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+}
+
+.dashboard .card-des .raise {
+    color: var(--color-success-normal, #049C29);
+
+    /* Text/Caption/Caption */
+    font-family: Helvetica;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    /* 16.8px */
+    letter-spacing: 0.4px;
+}
