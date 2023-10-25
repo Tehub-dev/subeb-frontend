@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
 
 const SchoolMgt = () => {
   return (
-    <div>SchoolMgt</div>
+    <div>
+      school mgt
+    </div>
   )
 }
 

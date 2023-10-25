@@ -83,3 +83,15 @@
     /* border: 1px solid red; */
     padding: 20px 0;
 }
+
+/* add sch admin popup  */
+.sch-admin_input{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.sch-admin_btn{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
