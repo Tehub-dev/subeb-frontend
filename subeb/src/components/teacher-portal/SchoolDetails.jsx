@@ -179,7 +179,7 @@ const SchoolDetails = () => {
           setSearching={setSearching}
           dataChange={selectChange}
           optionClick={optionClick}
-          formValue={item.name}
+          formValue={item?.name}
           clickDrop={clickDropDown}
           formId={"lga"}
         />
@@ -192,7 +192,7 @@ const SchoolDetails = () => {
           searching={schSearch}
           setSearching={setSchSearch}
           optionClick={schOptClick}
-          formValue={schItem.name}
+          formValue={schItem?.name}
           clickDrop={clickSchDd}
         />
         <SearchSelect
@@ -204,7 +204,7 @@ const SchoolDetails = () => {
           searching={classSearch}
           setSearching={setClassSearch}
           optionClick={classOptClick}
-          formValue={classItem.name}
+          formValue={classItem?.name}
           clickDrop={clickClassDd}
         />
         <div className="form-btn">

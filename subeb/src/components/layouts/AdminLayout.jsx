@@ -6,10 +6,13 @@ import AdminSidenav from '../side-navs/AdminSidenav';
 import SearchComp from '../search/SearchComp';
 import Overlay from '../overlay/Overlay';
 import useOverlay from "../../hooks/useOverlay";
+import { AxiosGet } from '../../axios/axios';
 
 const AdminLayout = () => {
 
   const {displayOverlay} = useOverlay();
+  const classUrl = "lookup/classes/";
+  const subjectUrl = "lookup/subjects/";
 
   const navigate = useNavigate();
 
@@ -43,6 +46,25 @@ const AdminLayout = () => {
     const clickNot = () => {
       navigate("/admin-notifications");
     }
+
+    const getClass = () => {
+        AxiosGet(classUrl).then((res) => {
+            // console.log(res);
+            localStorage.setItem("classes", JSON.stringify(res.data));
+        })
+    }
+    const getSubjects = () => {
+        AxiosGet(subjectUrl).then((res) => {
+            // console.log(res);
+            localStorage.setItem("subj", JSON.stringify(res.data));
+        })
+    }
+
+    useEffect(()=> {
+      getClass();
+      getSubjects();
+      // eslint-disable-next-line 
+    }, []);
   
   
   return (

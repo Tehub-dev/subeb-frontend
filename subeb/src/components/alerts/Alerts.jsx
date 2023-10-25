@@ -3,6 +3,7 @@ import { XIcon } from "@heroicons/react/solid";
 import { ExclamationIcon } from '@heroicons/react/outline';
 import check from "../../assets/images/check-circle.png";
 import errorT from "../../assets/images/alert-triangle.png";
+import spinner from "../../assets/images/spin.gif";
 
 import "./alerts.css";
 import { TickCircle } from 'iconsax-react';
@@ -64,7 +65,7 @@ export const UpdatePopup = ({display, title, text, cancelBtn, updateBtn}) => {
 }
 
 
-export const DeletePopup = ({display, title, text, cancelBtn, deleteBtn}) => {
+export const DeletePopup = ({display, title, text, cancelBtn, deleteBtn, btnText}) => {
   return(
     <div className={display ? "update-popup" : "none"}>
       <div className="error-icon"><img src={errorT} alt="error" /></div>
@@ -72,8 +73,16 @@ export const DeletePopup = ({display, title, text, cancelBtn, deleteBtn}) => {
       <p>{text}</p>
       <div className="update-btn">
         <Button btnText={"cancel"} btnClass={"btn-small-white"} btnClick={cancelBtn} />
-        <Button btnText={"remove"} btnClass={"btn-red"} btnClick={deleteBtn} />
+        <Button btnText={btnText ? btnText : "remove"} btnClass={"btn-red"} btnClick={deleteBtn} />
       </div>
+    </div>
+  )
+}
+
+export const LoadingSpin = () => {
+  return(
+    <div className="loading-spin">
+      <div className="spinner-img"><img src={spinner} alt="spin" /></div>
     </div>
   )
 }

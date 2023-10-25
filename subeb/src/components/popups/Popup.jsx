@@ -17,7 +17,7 @@ const Popup = ({ children, display, setDisplay }) => {
           }
         }}
       >
-        <XIcon className="close-x" />
+        <XIcon className="close-xs" />
       </div>
       {children}
     </div>

@@ -56,6 +56,7 @@ const Login = () => {
               if(res.data.accountType === "Teacher"){
                 navigate("/teacher-overview");
               }
+              window.location.reload();
             }, 2000);
         }
         setIsLoading(false);

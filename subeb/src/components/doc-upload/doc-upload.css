@@ -6,6 +6,7 @@
     align-items: center;
     height: 200px;
     cursor: pointer;
+    width: 100%;
 }
 .upload-doc p{
     color: var(--color-grey-grey-200, #A1A1A1);

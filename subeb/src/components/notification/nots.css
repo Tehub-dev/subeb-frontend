@@ -34,6 +34,9 @@
 .each-data{
     border-bottom: 1px solid var(--color-surface-normal-active, #EBEEF2);
     padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .each-data h4{
     color: var(--color-grey-grey-700, #242424);
