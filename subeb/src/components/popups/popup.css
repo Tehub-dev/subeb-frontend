@@ -4,7 +4,8 @@
     min-height: auto;
     max-height: 90vh;
     /* height: 80%; */
-    width: 40%;
+    min-width: 40%;
+    max-width: 70%;
     position: fixed;
     left: 40%;
     top: 5%;
