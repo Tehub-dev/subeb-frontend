@@ -6,13 +6,14 @@ import AdminSidenav from '../side-navs/AdminSidenav';
 import SearchComp from '../search/SearchComp';
 import Overlay from '../overlay/Overlay';
 import useOverlay from "../../hooks/useOverlay";
-import { AxiosGet } from '../../axios/axios';
+import { AxiosAuthGet, AxiosGet } from '../../axios/axios';
 
 const AdminLayout = () => {
 
   const {displayOverlay} = useOverlay();
   const classUrl = "lookup/classes/";
   const subjectUrl = "lookup/subjects/";
+  const schoolUrl = "schools/";
 
   const navigate = useNavigate();
 
@@ -59,10 +60,17 @@ const AdminLayout = () => {
             localStorage.setItem("subj", JSON.stringify(res.data));
         })
     }
+    const getSchools = () => {
+        AxiosAuthGet(schoolUrl).then((res) => {
+            // console.log(res);
+            localStorage.setItem("sch", JSON.stringify(res.data));
+        })
+    }
 
     useEffect(()=> {
       getClass();
       getSubjects();
+      getSchools();
       // eslint-disable-next-line 
     }, []);
   

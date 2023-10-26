@@ -5,12 +5,15 @@ import "./popup.css";
 import SearchSelect from "../custom-inputs/SearchSelect";
 import DocUpload from "../doc-upload/DocUpload";
 import arrowUp from "../../assets/images/arrow-up-tray.png";
-// import emptyUpload from "../../assets/images/emptyUpload.png";
-// import Empty from '../empty-state/Empty';
+import emptyUpload from "../../assets/images/emptyUpload.png";
+import Empty from '../empty-state/Empty';
 import { Button } from "../custom-inputs/CustomInputs";
 import RecentUploads from "../recent-uploads/RecentUploads";
 import useSelectFile from "../../hooks/UseSelectFile";
-import { AxiosFormData } from "../../axios/axios";
+import { AxiosAuthGet, AxiosFormData } from "../../axios/axios";
+import useOverlay from "../../hooks/useOverlay";
+import useSuccessDisplay from "../../hooks/useSuccessDisplay";
+import useSuccessMsg from "../../hooks/useSuccessMsg";
 
 const LessNotesPopup = ({ display, setDisplay }) => {
   const activeStyle = {
@@ -18,6 +21,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
     color: "white",
   };
   const url = "lesson-notes/";
+  const recentUrl = "lesson-notes/recent/";
   const { selectedFile, setSelectedFile } = useSelectFile();
   const classes = JSON.parse(localStorage.getItem("classes"));
   const subjects = JSON.parse(localStorage.getItem("subj"));
@@ -84,6 +88,9 @@ const LessNotesPopup = ({ display, setDisplay }) => {
     },
   ];
   const [loading, setLoading] = useState(false);
+  const [recentNotes, setRecentNotes] = useState();
+  const {setSuccessDisplay} = useSuccessDisplay();
+  const {setSuccessMsg} = useSuccessMsg();
 
   const [errSub, setErrSub] = useState("");
   const [errClass, setErrClass] = useState("");
@@ -102,6 +109,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
   const [weekArr, setWeekArr] = useState(weeks);
   const [weekItem, setWeekItem] = useState();
   const [weekSearch, setWeekSearch] = useState(false);
+  const { setDisplayOverlay} = useOverlay();
 
   useEffect(() => {
     if (!display) {
@@ -115,6 +123,10 @@ const LessNotesPopup = ({ display, setDisplay }) => {
 
   const clickTabs = (item) => {
     setActive(item);
+  };
+  const clickUpload = (item) => {
+    setDisplay(false);
+    setDisplayOverlay(false);
   };
 
   const selectChange = (e) => {
@@ -195,14 +207,17 @@ const LessNotesPopup = ({ display, setDisplay }) => {
 
   const uploadNote = () => {
     setLoading(true);
-    console.log(dataObj);
     AxiosFormData(url, dataObj)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
+        setSuccessDisplay(true);
+        setSuccessMsg(res.message);
+        setDisplay(false);
+        setDisplayOverlay(false);
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err.response);
+        // console.log(err.response);
         for (let i = 0; i < err?.response?.data?.errors?.length; i++) {
           if (err?.response?.data?.errors[i]?.fieldName === "subjectId") {
             setErrSub(err.response.data.errors[i].error);
@@ -220,6 +235,14 @@ const LessNotesPopup = ({ display, setDisplay }) => {
         setLoading(false);
       });
   };
+
+  useEffect(() => {
+    AxiosAuthGet(recentUrl).then((res) => {
+      // console.log(res);
+      setRecentNotes(res.data);
+    })
+    // eslint-disable-next-line 
+  }, [])
 
   return (
     <Popup display={display} setDisplay={setDisplay}>
@@ -249,7 +272,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
               setSearching={setSubSearch}
               dataChange={selectChange}
               optionClick={subOptClick}
-              formValue={subItem?.name}
+              formValue={subItem?.name || ""}
               clickDrop={subDd}
               error={errSub}
             />
@@ -262,7 +285,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
               setSearching={setClassSearch}
               dataChange={selectChange}
               optionClick={classOptClick}
-              formValue={classItem?.name}
+              formValue={classItem?.name || ""}
               clickDrop={classDd}
               error={errClass}
             />
@@ -275,7 +298,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
               setSearching={setWeekSearch}
               dataChange={selectChange}
               optionClick={weekOptClick}
-              formValue={weekItem?.name}
+              formValue={weekItem?.name || ""}
               clickDrop={weekDd}
               error={errWeek}
             />
@@ -295,8 +318,8 @@ const LessNotesPopup = ({ display, setDisplay }) => {
 
         {active === "Recent" && (
           <div className="recent">
-            {/* <Empty emptyText={"No uploads yet"} emptyImg={emptyUpload} emptyWidth={"80%"} emptyMargin={"0 auto"} /> */}
-            <RecentUploads />
+            {recentNotes?.length === 0 && <Empty emptyText={"No uploads yet"} emptyImg={emptyUpload} emptyWidth={"80%"} emptyMargin={"0 auto"} />}
+            {recentNotes !== 0 && <RecentUploads uploadData={recentNotes} viewAll={clickUpload} />}
           </div>
         )}
       </div>

@@ -2,54 +2,40 @@ import React from 'react'
 import './table.css'
 import DataTable from 'react-data-table-component';
 
-function Table() {
-    const columns = [
-        {
-            name: 'School Name',
-            selector: row => row.schoolName
-        },
-        {
-            name: 'LGA',
-            selector: row => row.lga
-        },
-        {
-            name: 'School Admin',
-            selector: row => row.SchoolAdmin
-        }
-    ];
+function Table({columns, data}) {
 
-    const data = [
-        {
-            id: 1,
-            schoolName: `SAINT JOHN'S CHRIST APOSTOLIC CHURCH PRIMARY SCHOOL, IKARE`,
-            lga:`AKOKO-NORTH-EAST`,
-            SchoolAdmin:`Olivia Rhye`
-        },
-        {
-            id: 2,
-            schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
-            lga:`AKOKO-NORTH-EAST`,
-            SchoolAdmin:`Olivia Rhye`
-        },
-        {
-            id: 3,
-            schoolName: `SAINT JAME'S ANGLICAN PRIMARY SCHOOL, UGBE- AKOKO`,
-            lga:`AKOKO-NORTH-EAST`,
-            SchoolAdmin:`Olivia Rhye`
-        },
-        {
-            id: 4,
-            schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
-            lga:`AKOKO-NORTH-WEST`,
-            SchoolAdmin:`Olivia Rhye`
-        },
-        {
-            id: 5,
-            schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
-            lga:`AKOKO-NORTH-EAST`,
-            SchoolAdmin:`Olivia Rhye`
-        }
-    ];
+    // const data = [
+    //     {
+    //         id: 1,
+    //         schoolName: `SAINT JOHN'S CHRIST APOSTOLIC CHURCH PRIMARY SCHOOL, IKARE`,
+    //         lga:`AKOKO-NORTH-EAST`,
+    //         SchoolAdmin:`Olivia Rhye`,
+    //     },
+    //     {
+    //         id: 2,
+    //         schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
+    //         lga:`AKOKO-NORTH-EAST`,
+    //         SchoolAdmin:`Olivia Rhye`
+    //     },
+    //     {
+    //         id: 3,
+    //         schoolName: `SAINT JAME'S ANGLICAN PRIMARY SCHOOL, UGBE- AKOKO`,
+    //         lga:`AKOKO-NORTH-EAST`,
+    //         SchoolAdmin:`Olivia Rhye`
+    //     },
+    //     {
+    //         id: 4,
+    //         schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
+    //         lga:`AKOKO-NORTH-WEST`,
+    //         SchoolAdmin:`Olivia Rhye`
+    //     },
+    //     {
+    //         id: 5,
+    //         schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
+    //         lga:`AKOKO-NORTH-EAST`,
+    //         SchoolAdmin:`Olivia Rhye`
+    //     }
+    // ];
 
     const customStyles = {
         rows:{ 
@@ -73,6 +59,7 @@ function Table() {
                 fontWeight: '400',
                 lineHeight: '140%', /* 16.8px */
                 letterSpacing: '0.4px',
+                padding: 'var(--16, 16px) var(--24, 24px)',
             },
         },
         cells: {
