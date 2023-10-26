@@ -6,10 +6,28 @@ import Notification from '../notification/Notification';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Barchart({ chartData }) {
+    const options = {
+       scales: {
+        x: {
+            grid: {
+                display: false,
+            }
+        },
+        y: {
+            grid: {
+                display: false,
+            }
+        }
+       } 
+  }
     return (
         <div className='bar'>
-            <Bar data={chartData} />
+            <div className="child">
+            <Bar data={chartData} options={options}/>
+            </div>
+            <div className="child">
             <Notification />
+            </div>
         </div>
     )
 }

@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Search from '../../../../components/search/SearchComp';
 import Barchart from '../../../../components/charts/Barchart';
 import { UserData, StuData } from '../../../../components/charts/Data';
-import HorizontalBar from '../../../../components/charts/HorizontalBar';
 import DashboardGrid from '../../../../components/dashboardgrid/DashboardGrid';
+import Chart from '../../../../components/charts/Chart';
 
 const SchoolOverview = () => {
   const [userData, setUserData] = useState({
@@ -13,6 +13,7 @@ const SchoolOverview = () => {
       label: 'Student Attendance',
       data: UserData.map((data) => data.student),
       backgroundColor: "#F26722",
+      barThickness: 20
     }]
   }) 
 
@@ -22,6 +23,7 @@ const SchoolOverview = () => {
       label: 'Student Attendance',
       data: StuData.map((data) => data.student),
       backgroundColor: "#F26722",
+      barThickness: 20
     }]
   }) 
 
@@ -31,7 +33,7 @@ const SchoolOverview = () => {
       <DashboardGrid />
       <div style={{ width: 630}}>
       <Barchart chartData={userData} />
-      <HorizontalBar  chartData={stuData} />
+      <Chart />
       </div>
       </div>
   )
