@@ -1,5 +1,5 @@
 import React from 'react';
-import './chart.css'; // Import your CSS file for styling
+import './chart.css'; //
 
 const UserData = [
   {
