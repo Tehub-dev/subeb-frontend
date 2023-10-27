@@ -82,7 +82,6 @@
 
     .value-card {
         display: flex;
-        width: 342px;
         padding: var(--24, 24px) 20px;
         flex-direction: column;
         align-items: flex-start;

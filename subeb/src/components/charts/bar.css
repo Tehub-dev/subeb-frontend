@@ -1,0 +1,17 @@
+.bar {
+    display: flex;
+    margin: 40px 0;
+}
+.bar canvas {
+    width: 631px;
+}
+.bar .child {
+    flex: 1;
+}
+.bar .child:first-child {
+    margin-right: 24px;
+}
+.bar .notification-cont {
+    width: 370px;
+    margin: 0;
+}
