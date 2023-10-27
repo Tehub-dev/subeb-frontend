@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import "./nots.css";
 import { AxiosAuthGet } from "../../axios/axios";
 import { LoadingSpin } from "../alerts/Alerts";
+import { useLocation } from "react-router-dom";
 
 const Notification = () => {
   const url = "notifications/";
 
+  const { pathname } = useLocation();
   const [nots, setNots] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,7 +22,7 @@ const Notification = () => {
     // eslint-disable-next-line
   }, []);
 
-  return isLoading ? (
+  return isLoading && pathname.includes("notification") ? (
     <LoadingSpin />
   ) : (
     <div className="notification-cont">

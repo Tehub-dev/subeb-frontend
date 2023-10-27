@@ -17,8 +17,8 @@ const AddSchAdmin = ({ display, setDisplay }) => {
   const updateUrl = `school-admin/${adminId}/`
   const schools = JSON.parse(localStorage.getItem("sch"));
   const {setSuccessDisplay} = useSuccessDisplay();
-  const { setDisplayOverlay} = useOverlay();
   const {setSuccessMsg} = useSuccessMsg();
+  const { setDisplayOverlay} = useOverlay();
   const [errFname, setErrFname] = useState("");
   const [errLname, setErrLname] = useState("");
   const [errEmail, setErrEmail] = useState("");
@@ -119,6 +119,7 @@ const AddSchAdmin = ({ display, setDisplay }) => {
       setIsLoading(false);
       setSuccessDisplay(true);
       setSuccessMsg(res.message);
+      localStorage.removeItem("adminId");
       setDisplay(false);
       setIsEdit(false);
       setDisplayOverlay(false);

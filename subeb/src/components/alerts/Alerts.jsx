@@ -50,7 +50,7 @@ export const ErrorAlert = ({message, display, setDisplay}) => {
 }
 
 
-export const UpdatePopup = ({display, title, text, cancelBtn, updateBtn}) => {
+export const UpdatePopup = ({display, title, text, cancelBtn, updateBtn, updateLoad}) => {
   return(
     <div className={display ? "update-popup" : "none"}>
       <div className="check-icon"><img src={check} alt="check" /></div>
@@ -58,14 +58,14 @@ export const UpdatePopup = ({display, title, text, cancelBtn, updateBtn}) => {
       <p>{text}</p>
       <div className="update-btn">
         <Button btnText={"cancel"} btnClass={"btn-small-white"} btnClick={cancelBtn} />
-        <Button btnText={"update"} btnClass={"btn-green"} btnClick={updateBtn} />
+        <Button btnText={"update"} btnClass={"btn-green"} btnClick={updateBtn} loading={updateLoad} />
       </div>
     </div>
   )
 }
 
 
-export const DeletePopup = ({display, title, text, cancelBtn, deleteBtn, btnText}) => {
+export const DeletePopup = ({display, title, text, cancelBtn, deleteBtn, btnText, deleteLoad}) => {
   return(
     <div className={display ? "update-popup" : "none"}>
       <div className="error-icon"><img src={errorT} alt="error" /></div>
@@ -73,7 +73,7 @@ export const DeletePopup = ({display, title, text, cancelBtn, deleteBtn, btnText
       <p>{text}</p>
       <div className="update-btn">
         <Button btnText={"cancel"} btnClass={"btn-small-white"} btnClick={cancelBtn} />
-        <Button btnText={btnText ? btnText : "remove"} btnClass={"btn-red"} btnClick={deleteBtn} />
+        <Button btnText={btnText ? btnText : "remove"} btnClass={"btn-red"} btnClick={deleteBtn} loading={deleteLoad} />
       </div>
     </div>
   )

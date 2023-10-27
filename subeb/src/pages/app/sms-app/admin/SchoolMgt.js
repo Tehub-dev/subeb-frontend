@@ -1,9 +1,10 @@
 import React from 'react';
+import SchMgt from '../../../../components/school-mgt/SchMgt';
 
 const SchoolMgt = () => {
   return (
     <div>
-      school mgt
+      <SchMgt />
     </div>
   )
 }
