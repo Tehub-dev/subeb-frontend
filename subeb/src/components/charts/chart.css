@@ -1,3 +1,9 @@
+.studentper-class{
+    background: var(--primary-light, #F7F9FB);
+    padding: 20px;
+    width: 60%;
+}
+
 .chart h1 {
     color: var(--color-grey-grey-700, #242424);
     font-family: Work Sans;
@@ -26,23 +32,18 @@
     background: var(--color-surface-white-active, #F26722);
 }
 
-.chart {
-    display: flex;
-    width: 631px;
-    height: 229px;
-    min-width: 400px;
-    padding: 20px;
-    flex-direction: column;
-    gap: var(--16, 16px);
-    flex-shrink: 0;
-    font-family: Helvetica;
+.chart-cont{
+    border: 1px solid var(--color-surface-normal-active, #EBEEF2);
+    margin-top: 20px;
 }
 
-.chart-cont .day {
+.day{
+    border-bottom: 1px solid var(--color-surface-normal-active, #EBEEF2);
     display: flex;
-    align-items: flex-start;
+    padding: var(--4, 4px);
+    align-items: center;
+    gap: 12px;
     align-self: stretch;
-    padding: 5px;
 }
 
 .chart-cont .day .class {
