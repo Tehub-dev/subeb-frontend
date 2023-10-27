@@ -53,7 +53,7 @@ const ProgressBar = ({ data }) => {
 
 const Chart = () => {
   return (
-    <div className='chart'>
+    <div className='chart studentper-class'>
       <h1>Student per Class</h1>
       <ProgressBar data={UserData} />
     </div>
