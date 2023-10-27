@@ -33,10 +33,8 @@ const SchoolOverview = () => {
     <div>
       <Search />
       <DashboardGrid />
-      <div style={{ width: 630}}>
       <Barchart chartData={userData} />
       <Chart />
-      </div>
       </div>
   )
 }
