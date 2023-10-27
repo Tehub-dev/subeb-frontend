@@ -96,3 +96,15 @@
     display: flex;
     justify-content: center;
 }
+
+/* add sch pop up */
+.add-sch_inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.add-sch_btn{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0;
+}

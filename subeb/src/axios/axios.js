@@ -59,9 +59,9 @@ export async function AxiosAuthPut(url, dataObject) {
   }
 }
 
-export async function AxiosDelete(url) {
+export async function AxiosDelete(url, dataObject) {
   try {
-    const res = await axios.delete(`${baseUrl}${url}`, authConfig);
+    const res = await axios.delete(`${baseUrl}${url}`, dataObject, authConfig);
     return res.data;
   } catch (err) {
     throw err;
