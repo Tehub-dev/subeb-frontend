@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react';
-import Search from '../../../../components/search/SearchComp';
 import Barchart from '../../../../components/charts/Barchart';
 import { UserData } from '../../../../components/charts/Data';
 import DashboardGrid from '../../../../components/dashboardgrid/DashboardGrid';
@@ -19,19 +18,9 @@ const SchoolOverview = () => {
     }]
   }) 
 
-  // const [stuData, setStuData] = useState({
-  //   labels: StuData.map((data) => data.day),
-  //   datasets: [{
-  //     label: 'Student Attendance',
-  //     data: StuData.map((data) => data.student),
-  //     backgroundColor: "#F26722",
-  //     barThickness: 20
-  //   }]
-  // }) 
 
   return (
     <div>
-      <Search />
       <DashboardGrid />
       <Barchart chartData={userData} />
       <Chart />

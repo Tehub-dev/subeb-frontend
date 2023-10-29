@@ -37,3 +37,6 @@
     line-height: 140%; /* 19.6px */
     letter-spacing: 0.1px;
 }
+.btn-close {
+    margin-left: 50px;
+}

@@ -21,3 +21,12 @@
     padding: 10px;
     cursor: pointer;
 }
+
+@media (max-width: 900px) {
+
+    /* .search{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    } */
+}
