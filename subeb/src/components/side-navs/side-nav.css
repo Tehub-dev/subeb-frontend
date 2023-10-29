@@ -38,5 +38,11 @@
     letter-spacing: 0.1px;
 }
 .btn-close {
-    margin-left: 50px;
+    display: none;
+}
+@media (max-width: 900px) {
+    .btn-close {
+        display: block;
+        margin-left: 50px;
+    }
 }

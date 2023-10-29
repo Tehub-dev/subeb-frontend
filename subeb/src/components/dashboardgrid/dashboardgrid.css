@@ -62,5 +62,6 @@
 @media (max-width: 900px) {
     .dashboard {
         display: flex;
+        width: 400px;
     }
 }
