@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react';
-import Search from '../../../../components/search/SearchComp';
 import Barchart from '../../../../components/charts/Barchart';
 import { UserData } from '../../../../components/charts/Data';
 import DashboardGrid from '../../../../components/dashboardgrid/DashboardGrid';
@@ -31,7 +30,6 @@ const SchoolOverview = () => {
 
   return (
     <div>
-      <Search />
       <DashboardGrid />
       <Barchart chartData={userData} />
       <Chart />

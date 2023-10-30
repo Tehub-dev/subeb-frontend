@@ -6,7 +6,7 @@ import "./adcal.css";
 import "../schAdmin/sch-admin.css";
 import Table from '../table/Table';
 
-const AcadCal = ({acadData, clickAdd}) => {
+const AcadCal = ({acadData, clickAdd, teacher}) => {
 
     const columns = [
         {
@@ -28,14 +28,14 @@ const AcadCal = ({acadData, clickAdd}) => {
       <div className="head-left">
         <SelectInput placeholder={"First Term"} />
       </div>
-      <div className="head-right">
+      {!teacher && <div className="head-right">
         <Button
           btnText={"Edit"}
           btnClass={"btn-small"}
           rightIcon={<Edit size={16} />}
           btnClick={clickAdd}
         />
-      </div>
+      </div>}
     </div>
       <div className="admin-body">
         <div className="admin-body_head">

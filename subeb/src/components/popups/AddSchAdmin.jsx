@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Popup from "./Popup";
 import { Button, Input } from "../custom-inputs/CustomInputs";
 import SearchSelect from "../custom-inputs/SearchSelect";
@@ -13,12 +13,13 @@ import useIsEdit from "../../hooks/useIsEdit";
 const AddSchAdmin = ({ display, setDisplay }) => {
   const url = "school-admin/";
   const adminId = localStorage.getItem("adminId");
-  const {isEdit, setIsEdit} = useIsEdit();
-  const updateUrl = `school-admin/${adminId}/`
+  const singleAdmin = JSON.parse(localStorage.getItem("singleAdmin"));
+  const { isEdit, setIsEdit } = useIsEdit();
+  const updateUrl = `school-admin/${adminId}/`;
   const schools = JSON.parse(localStorage.getItem("sch"));
-  const {setSuccessDisplay} = useSuccessDisplay();
-  const {setSuccessMsg} = useSuccessMsg();
-  const { setDisplayOverlay} = useOverlay();
+  const { setSuccessDisplay } = useSuccessDisplay();
+  const { setSuccessMsg } = useSuccessMsg();
+  const { setDisplayOverlay } = useOverlay();
   const [errFname, setErrFname] = useState("");
   const [errLname, setErrLname] = useState("");
   const [errEmail, setErrEmail] = useState("");
@@ -82,66 +83,79 @@ const AddSchAdmin = ({ display, setDisplay }) => {
   const dataObj = {
     ...data,
     schoolId: schId,
-  }
+  };
 
   const addAdmin = () => {
     setIsLoading(true);
-    AxiosAuthPost(url, dataObj).then((res) => {
-      // console.log(res);
-      setIsLoading(false);
-      setSuccessDisplay(true);
-      setSuccessMsg(res.message);
-      setDisplay(false);
-      setDisplayOverlay(false);
-    }).catch((err) => {
-      // console.log(err.response);
-      for (let i = 0; i < err?.response?.data?.errors?.length; i++) {
-        if (err?.response?.data?.errors[i]?.fieldName === "firstName") {
-          setErrFname(err.response.data.errors[i].error);
+    AxiosAuthPost(url, dataObj)
+      .then((res) => {
+        // console.log(res);
+        setIsLoading(false);
+        setSuccessDisplay(true);
+        setSuccessMsg(res.message);
+        setDisplay(false);
+        setDisplayOverlay(false);
+      })
+      .catch((err) => {
+        // console.log(err.response);
+        for (let i = 0; i < err?.response?.data?.errors?.length; i++) {
+          if (err?.response?.data?.errors[i]?.fieldName === "firstName") {
+            setErrFname(err.response.data.errors[i].error);
+          }
+          if (err?.response?.data?.errors[i]?.fieldName === "lastName") {
+            setErrLname(err.response.data.errors[i].error);
+          }
+          if (err?.response?.data?.errors[i]?.fieldName === "phoneNumber") {
+            setErrPhone(err.response.data.errors[i].error);
+          }
+          if (err?.response?.data?.errors[i]?.fieldName === "schoolId") {
+            setErrSch(err.response.data.errors[i].error);
+          }
         }
-        if (err?.response?.data?.errors[i]?.fieldName === "lastName") {
-          setErrLname(err.response.data.errors[i].error);
-        }
-        if (err?.response?.data?.errors[i]?.fieldName === "phoneNumber") {
-          setErrPhone(err.response.data.errors[i].error);
-        }
-        if (err?.response?.data?.errors[i]?.fieldName === "schoolId") {
-          setErrSch(err.response.data.errors[i].error);
-        }
-      }
-      setIsLoading(false);
-    })
-  }
+        setIsLoading(false);
+      });
+  };
   const editAdmin = () => {
     setIsLoading(true);
-    AxiosAuthPut(updateUrl, dataObj).then((res) => {
-      // console.log(res);
-      setIsLoading(false);
-      setSuccessDisplay(true);
-      setSuccessMsg(res.message);
-      localStorage.removeItem("adminId");
-      setDisplay(false);
-      setIsEdit(false);
-      setDisplayOverlay(false);
-    }).catch((err) => {
-      // console.log(err.response);
-      for (let i = 0; i < err?.response?.data?.errors?.length; i++) {
-        if (err?.response?.data?.errors[i]?.fieldName === "firstName") {
-          setErrFname(err.response.data.errors[i].error);
+    AxiosAuthPut(updateUrl, dataObj)
+      .then((res) => {
+        // console.log(res);
+        setIsLoading(false);
+        setSuccessDisplay(true);
+        setSuccessMsg(res.message);
+        localStorage.removeItem("adminId");
+        setDisplay(false);
+        setIsEdit(false);
+        setDisplayOverlay(false);
+      })
+      .catch((err) => {
+        // console.log(err.response);
+        for (let i = 0; i < err?.response?.data?.errors?.length; i++) {
+          if (err?.response?.data?.errors[i]?.fieldName === "firstName") {
+            setErrFname(err.response.data.errors[i].error);
+          }
+          if (err?.response?.data?.errors[i]?.fieldName === "lastName") {
+            setErrLname(err.response.data.errors[i].error);
+          }
+          if (err?.response?.data?.errors[i]?.fieldName === "phoneNumber") {
+            setErrPhone(err.response.data.errors[i].error);
+          }
+          if (err?.response?.data?.errors[i]?.fieldName === "schoolId") {
+            setErrSch(err.response.data.errors[i].error);
+          }
         }
-        if (err?.response?.data?.errors[i]?.fieldName === "lastName") {
-          setErrLname(err.response.data.errors[i].error);
-        }
-        if (err?.response?.data?.errors[i]?.fieldName === "phoneNumber") {
-          setErrPhone(err.response.data.errors[i].error);
-        }
-        if (err?.response?.data?.errors[i]?.fieldName === "schoolId") {
-          setErrSch(err.response.data.errors[i].error);
-        }
-      }
-      setIsLoading(false);
-    })
-  }
+        setIsLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    localStorage.removeItem("singleAdmin");
+    setErrFname("");
+    setErrLname("");
+    setErrPhone("");
+    setErrSch("");
+    // eslint-disable-next-line
+  }, [display]);
 
   return (
     <Popup display={display} setDisplay={setDisplay}>
@@ -149,7 +163,9 @@ const AddSchAdmin = ({ display, setDisplay }) => {
         <div className="sch-admin_input">
           <Input
             inputLabel={"First Name"}
-            inputPlaceholder={"Enter First name"}
+            inputPlaceholder={
+              singleAdmin ? singleAdmin?.firstName : "Enter First name"
+            }
             formChange={handleDataChange}
             formId={"firstName"}
             formValue={data.firstName}
@@ -157,7 +173,9 @@ const AddSchAdmin = ({ display, setDisplay }) => {
           />
           <Input
             inputLabel={"Last Name"}
-            inputPlaceholder={"Enter Last name"}
+            inputPlaceholder={
+              singleAdmin ? singleAdmin?.lastName : "Enter Last name"
+            }
             formChange={handleDataChange}
             formId={"lastName"}
             formValue={data.lastName}
@@ -165,7 +183,9 @@ const AddSchAdmin = ({ display, setDisplay }) => {
           />
           <Input
             inputLabel={"Phone Number"}
-            inputPlaceholder={"Enter Phone Number"}
+            inputPlaceholder={
+              singleAdmin ? singleAdmin?.phoneNumber : "Enter Phone Number"
+            }
             formChange={handleDataChange}
             formId={"phoneNumber"}
             formValue={data.phoneNumber}
@@ -174,7 +194,9 @@ const AddSchAdmin = ({ display, setDisplay }) => {
           />
           <Input
             inputLabel={"Email Address"}
-            inputPlaceholder={"Enter Email Address"}
+            inputPlaceholder={
+              singleAdmin ? singleAdmin?.email : "Enter Email Address"
+            }
             formChange={handleDataChange}
             formId={"email"}
             formValue={data.email}
@@ -182,7 +204,7 @@ const AddSchAdmin = ({ display, setDisplay }) => {
           />
           <SearchSelect
             formLabel={"School"}
-            placeholder={"Select School"}
+            placeholder={singleAdmin ? singleAdmin?.school?.schoolName : "Select School"}
             formId={"school"}
             optionsArray={schArr}
             searching={schSearch}
