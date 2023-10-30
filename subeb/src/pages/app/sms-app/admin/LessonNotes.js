@@ -74,11 +74,11 @@ const LessonNotes = () => {
         />
       )}
       <LessNotesPopup display={lessonModal} setDisplay={setLessonModal} />
-      <LessonSubjects
+      {lessonNotes?.length !== 0 && <LessonSubjects
         lessonSubjects={lessonNotes}
         clickBtn={clickUpload}
         clickSubject={clickSubject}
-      />
+      />}
     </div>
   );
 };

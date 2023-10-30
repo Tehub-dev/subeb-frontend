@@ -32,6 +32,7 @@ const SchAdmin = ({ adminData }) => {
     setDisplayOverlay(true);
     setAdminEdit(true);
     localStorage.setItem("adminId", row.id);
+    localStorage.setItem("singleAdmin", JSON.stringify(row));
     setIsEdit(true);
   };
   const cancelEdit = () => {

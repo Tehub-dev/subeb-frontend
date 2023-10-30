@@ -59,7 +59,7 @@ const LessonClasses = () => {
       id: item.id,
       name: item.class
     }));
-    navigate("/lesson-notes-weeks");
+    navigate("/sch-lesson-weeks");
   }
 
   useEffect(() => {

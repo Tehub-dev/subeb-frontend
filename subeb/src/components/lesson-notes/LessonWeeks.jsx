@@ -7,7 +7,7 @@ import useOverlay from "../../hooks/useOverlay";
 import { AxiosAuthGet } from "../../axios/axios";
 import LessNotesPopup from "../popups/LessNotesPopup";
 
-const LessonWeeks = () => {
+const LessonWeeks = ({teacher}) => {
   const url = "lesson-notes/subjects";
   const selectSubject = JSON.parse(localStorage.getItem("selectSub"));
   const selectClass = JSON.parse(localStorage.getItem("selectClass"));
@@ -164,7 +164,7 @@ const LessonWeeks = () => {
           return (
             <div key={idx} className="each-week">
               <h3>{item.name}</h3>
-              <div className="each-week_btn">
+              {!teacher && <div className="each-week_btn">
                 <Button
                   btnText={"Update"}
                   btnClass={"btn-small"}
@@ -176,7 +176,14 @@ const LessonWeeks = () => {
                   btnClass={"btn-small-white"}
                   btnClick={clickRemove}
                 />
-              </div>
+              </div>}
+              {teacher && <div className="each-week_btn">
+                <Button
+                  btnText={"Download"}
+                  btnClass={"btn-small"}
+                  // btnClick={() => clickUpdate(item)}
+                />
+              </div>}
             </div>
           );
         })}

@@ -4,7 +4,7 @@ import "./lesson-notes.css";
 import { Button, SelectInput } from '../custom-inputs/CustomInputs';
 import upload from "../../assets/images/arrow-up-tray.png";
 
-const LessonSubjects = ({lessonSubjects, clickBtn, clickSubject}) => {
+const LessonSubjects = ({lessonSubjects, clickBtn, clickSubject, teachers}) => {
 
   return (
     <div className='lesson-subjects'>
@@ -22,9 +22,9 @@ const LessonSubjects = ({lessonSubjects, clickBtn, clickSubject}) => {
                 )
             })}
         </div>
-        <div className="subjects-btn">
+        {!teachers && <div className="subjects-btn">
             <Button btnText={"Upload Lesson Notes"} btnImg={upload} btnClick={clickBtn} />
-        </div>
+        </div>}
     </div>
   )
 }

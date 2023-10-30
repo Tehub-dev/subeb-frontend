@@ -79,6 +79,8 @@ function App() {
         <Route element={<SchoolLayout />}>
           <Route path="/school-overview" element={<SchoolOverview />} />
           <Route path="/school-lesson-notes" element={<SchoolLesson />} />
+          <Route path="/sch-lesson-class" element={<LessonClasses />} />
+          <Route path="/sch-lesson-weeks" element={<LessonWeeks teacher={true} />} />
           <Route path="/teachers-reg" element={<TeachersReg />} />
           <Route path="/teachers-att" element={<TeachersAtt />} />
           <Route path="/academic-cal-sch" element={<AcademicCalSch />} />

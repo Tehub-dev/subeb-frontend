@@ -56,6 +56,9 @@ const Login = () => {
               if(res.data.accountType === "Teacher"){
                 navigate("/teacher-overview");
               }
+              if(res.data.accountType === "Headmaster"){
+                navigate("/school-overview");
+              }
               window.location.reload();
             }, 2000);
         }
