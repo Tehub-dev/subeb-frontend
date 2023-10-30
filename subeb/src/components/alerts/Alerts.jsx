@@ -50,7 +50,7 @@ export const ErrorAlert = ({message, display, setDisplay}) => {
 }
 
 
-export const UpdatePopup = ({display, title, text, cancelBtn, updateBtn, updateLoad}) => {
+export const UpdatePopup = ({display, title, text, cancelBtn, updateBtn, updateLoad, btnText}) => {
   return(
     <div className={display ? "update-popup" : "none"}>
       <div className="check-icon"><img src={check} alt="check" /></div>
@@ -58,7 +58,7 @@ export const UpdatePopup = ({display, title, text, cancelBtn, updateBtn, updateL
       <p>{text}</p>
       <div className="update-btn">
         <Button btnText={"cancel"} btnClass={"btn-small-white"} btnClick={cancelBtn} />
-        <Button btnText={"update"} btnClass={"btn-green"} btnClick={updateBtn} loading={updateLoad} />
+        <Button btnText={btnText ? btnText : "update"} btnClass={"btn-green"} btnClick={updateBtn} loading={updateLoad} />
       </div>
     </div>
   )
