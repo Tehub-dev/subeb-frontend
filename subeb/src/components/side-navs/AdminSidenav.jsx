@@ -40,6 +40,9 @@ const AdminSidenav = () => {
 
   useEffect(() => {
     setActive(pathname.substring(1));
+    if(pathname.includes("lesson")){
+      setActive("lesson-notes")
+    }
   }, [pathname]);
 
   const navLinks = [

@@ -39,6 +39,8 @@ import SchAdminProf from "./pages/app/sms-app/school-admin/SchAdminProf";
 import SchAdminNots from "./pages/app/sms-app/school-admin/SchAdminNots";
 import TeachNots from "./pages/app/sms-app/teachers/TeachNots";
 import TeachProfile from "./pages/app/sms-app/teachers/TeachProfile";
+import LessonClasses from "./components/lesson-notes/LessonClasses";
+import LessonWeeks from "./components/lesson-notes/LessonWeeks";
 
 
 function App() {
@@ -65,6 +67,8 @@ function App() {
         <Route element={<AdminLayout />}>
           <Route path="/adminoverview" element={<AdminOverview />} />
           <Route path="/lesson-notes" element={<LessonNotes />} />
+          <Route path="/lesson-notes-class" element={<LessonClasses />} />
+          <Route path="/lesson-notes-weeks" element={<LessonWeeks />} />
           <Route path="/school-admin" element={<SchoolAdmins />} />
           <Route path="/school-mgt" element={<SchoolMgt />} />
           <Route path="/academic-cal" element={<AcademicCal />} />

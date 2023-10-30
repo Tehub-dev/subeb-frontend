@@ -8,11 +8,14 @@ export const AuthProvider = ({ children }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [successDisplay, setSuccessDisplay] = useState(false);
     const [successMsg, setSuccessMsg] = useState("");
+    const [selectSubject, setSelectSubject] = useState();
+    const [selectClass, setSelectClass] = useState();
     const [isEdit, setIsEdit] = useState(false);
+    const [backSub, setBackSub] = useState(false);
 
   return (
     <AuthContext.Provider
-      value={{displayOverlay, setDisplayOverlay, selectedFile, setSelectedFile,successMsg, setSuccessMsg,successDisplay, setSuccessDisplay,isEdit, setIsEdit}}
+      value={{displayOverlay, setDisplayOverlay, selectedFile, setSelectedFile,successMsg, setSuccessMsg,successDisplay, setSuccessDisplay,isEdit, setIsEdit, selectSubject, setSelectSubject,backSub, setBackSub,selectClass, setSelectClass}}
     >
       {children}
     </AuthContext.Provider>
