@@ -1,0 +1,11 @@
+.acad-cal {
+  padding: 30px 0;
+}
+.mid-term {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.mid-term span {
+  margin-top: 20px ;
+}

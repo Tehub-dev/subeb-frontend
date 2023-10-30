@@ -7,11 +7,13 @@ import SearchComp from '../search/SearchComp';
 import Overlay from '../overlay/Overlay';
 import useOverlay from "../../hooks/useOverlay";
 import { AxiosAuthGet, AxiosGet } from '../../axios/axios';
+import useSuccessDisplay from '../../hooks/useSuccessDisplay';
 
 const AdminLayout = () => {
 
   const {displayOverlay} = useOverlay();
   const classUrl = "lookup/classes/";
+  const lgaUrl = "lookup/lgas/";
   const subjectUrl = "lookup/subjects/";
   const schoolUrl = "schools/";
 
@@ -19,6 +21,7 @@ const AdminLayout = () => {
 
     const { pathname } = useLocation();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const { successDisplay} = useSuccessDisplay();
 
     const checkUserToken = () => {
       const userToken = JSON.parse(localStorage.getItem("atk"));
@@ -66,13 +69,21 @@ const AdminLayout = () => {
             localStorage.setItem("sch", JSON.stringify(res.data));
         })
     }
+    
+    const getLga = () =>{
+      AxiosGet(lgaUrl)
+      .then((res) => {
+        localStorage.setItem("lga", JSON.stringify(res.data));
+      })
+    }  
 
     useEffect(()=> {
       getClass();
       getSubjects();
       getSchools();
+      getLga();
       // eslint-disable-next-line 
-    }, []);
+    }, [successDisplay]);
   
   
   return (

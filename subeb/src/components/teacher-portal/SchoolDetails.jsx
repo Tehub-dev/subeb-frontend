@@ -146,6 +146,10 @@ const SchoolDetails = () => {
     setSchItem(item);
     setSchId(item.id);
   };
+  const clickSchDd = () => {
+    setSchArr(schData);
+    setSchSearch(!schSearch);
+  };
   const classOptClick = (item) => {
     setClassItem(item);
     setClassId(item.id);
@@ -153,10 +157,6 @@ const SchoolDetails = () => {
   const clickDropDown = () => {
     setArray(lga);
     setSearching(!searching);
-  };
-  const clickSchDd = () => {
-    setSchArr(schData);
-    setSchSearch(!schSearch);
   };
   const clickClassDd = () => {
     setClassArr(classData);
