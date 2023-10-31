@@ -12,7 +12,7 @@ const ProgressBar = ({ data }) => {
           <div className="progress-bar">
             <div
               className="progress-fill"
-              style={{ width: `${(item.classCount / 100) * 100}%` }}
+              style={{ width: `${(item.percentage / 100) * 100}%` }}
             ></div>
           </div>
           <div className="per">{item.percentage}%</div>
