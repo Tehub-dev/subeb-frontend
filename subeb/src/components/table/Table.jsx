@@ -4,39 +4,6 @@ import DataTable from 'react-data-table-component';
 
 function Table({columns, data}) {
 
-    // const data = [
-    //     {
-    //         id: 1,
-    //         schoolName: `SAINT JOHN'S CHRIST APOSTOLIC CHURCH PRIMARY SCHOOL, IKARE`,
-    //         lga:`AKOKO-NORTH-EAST`,
-    //         SchoolAdmin:`Olivia Rhye`,
-    //     },
-    //     {
-    //         id: 2,
-    //         schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
-    //         lga:`AKOKO-NORTH-EAST`,
-    //         SchoolAdmin:`Olivia Rhye`
-    //     },
-    //     {
-    //         id: 3,
-    //         schoolName: `SAINT JAME'S ANGLICAN PRIMARY SCHOOL, UGBE- AKOKO`,
-    //         lga:`AKOKO-NORTH-EAST`,
-    //         SchoolAdmin:`Olivia Rhye`
-    //     },
-    //     {
-    //         id: 4,
-    //         schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
-    //         lga:`AKOKO-NORTH-WEST`,
-    //         SchoolAdmin:`Olivia Rhye`
-    //     },
-    //     {
-    //         id: 5,
-    //         schoolName: `ST JOSEPH CAC OKELA PRIMARY SCHOOL, IKARE.`,
-    //         lga:`AKOKO-NORTH-EAST`,
-    //         SchoolAdmin:`Olivia Rhye`
-    //     }
-    // ];
-
     const customStyles = {
         rows:{ 
             style: {

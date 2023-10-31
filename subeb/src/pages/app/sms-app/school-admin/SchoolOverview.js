@@ -1,40 +1,72 @@
-import React from 'react'
-import { useState } from 'react';
-import Barchart from '../../../../components/charts/Barchart';
-import { UserData } from '../../../../components/charts/Data';
-import DashboardGrid from '../../../../components/dashboardgrid/DashboardGrid';
-import Chart from '../../../../components/charts/Chart';
+import React, { useEffect, useState } from "react";
+import DashboardGrid from "../../../../components/dashboardgrid/DashboardGrid";
+import Barchart from "../../../../components/charts/Barchart";
+import Chart from "../../../../components/charts/Chart";
+import { AxiosAuthGet } from "../../../../axios/axios";
+import { LoadingSpin } from "../../../../components/alerts/Alerts";
+import { weeks } from "../../../../components/charts/Data";
 
 const SchoolOverview = () => {
-  const [userData, 
+  const [desktopData, setDesktopData] = useState();
+  const [studentData, setStudentData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [plTerm, setPlTerm] = useState("First Term");
+  const [plWeek, setPlWeek] = useState("Week 1");
+  const weekArr = weeks
+  const termArr = [
+    {
+      id: "First Term",
+      name: "First Term"
+    },
+    {
+      id: "Second Term",
+      name: "Second Term"
+    },
+    {
+      id: "Third Term",
+      name: "Third Term"
+    },
+  ]
+  const url = `dashboard/?week=${plWeek}&term=${plTerm}`;
+  
+  useEffect(() => {
+    setIsLoading(true);
+    AxiosAuthGet(url)
+    .then((res) => {
+      // console.log(res);
+      setDesktopData(res.data);
+      setStudentData(res.data.studentAttendance);
+      setIsLoading(false);
+    })
+    .catch((err) => {
+      setIsLoading(false);
+      // console.log(err.response);
+    });
+    // eslint-disable-next-line
+  }, [plTerm, plWeek]);
+  
+  const [
+    userData,
     // setUserData
   ] = useState({
-    labels: UserData.map((data) => data.day),
-    datasets: [{
-      label: 'Student Attendance',
-      data: UserData.map((data) => data.student),
-      backgroundColor: "#F26722",
-      barThickness: 20
-    }]
-  }) 
-
-  // const [stuData, setStuData] = useState({
-  //   labels: StuData.map((data) => data.day),
-  //   datasets: [{
-  //     label: 'Student Attendance',
-  //     data: StuData.map((data) => data.student),
-  //     backgroundColor: "#F26722",
-  //     barThickness: 20
-  //   }]
-  // }) 
-
+    labels: ["Monday", "Tuesday", "Wednessday", "Thursday", "Friday"],
+    datasets: [
+      {
+        label: "Student Attendance",
+        data: studentData && studentData.map((data) => data.dayCount),
+        backgroundColor: "#F26722",
+        barThickness: 20,
+      },
+    ],
+  });
   return (
+    isLoading ? <LoadingSpin /> :
     <div>
-      <DashboardGrid />
-      <Barchart chartData={userData} />
-      <Chart />
-      </div>
-  )
+      <DashboardGrid school={desktopData?.countsData?.schoolCount} teacher={desktopData?.countsData?.teacherCount} student={desktopData?.countsData?.studentCount} isTeacher={true} />
+      <Barchart chartData={userData} desktopNot={desktopData?.notifications} termPl={plTerm} setTermPl={setPlTerm} opsArr={termArr} weekArr={weekArr} weekPl={plWeek} setWeekPl={setPlWeek} />
+      <Chart UserData={desktopData?.studentPerClass} />
+    </div>
+  );
 }
 
 export default SchoolOverview

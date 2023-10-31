@@ -5,7 +5,7 @@ import { AxiosAuthGet } from "../../axios/axios";
 import { LoadingSpin } from "../alerts/Alerts";
 import { useLocation } from "react-router-dom";
 
-const Notification = () => {
+const Notification = ({desktopNot}) => {
   const url = "notifications/";
 
   const { pathname } = useLocation();
@@ -28,12 +28,19 @@ const Notification = () => {
     <div className="notification-cont">
       <div className="not-head">
         <h3>
-          Notifications <span>{nots?.notificationCount}</span>
+          Notifications <span>{desktopNot ? desktopNot?.notificationCount : nots?.notificationCount}</span>
         </h3>
       </div>
       <div className="not-data">
-        {nots &&
-          nots?.notificationData.map((item, idx) => {
+        {desktopNot ?
+          desktopNot?.notificationData.map((item, idx) => {
+            return (
+              <div key={idx} className="each-data">
+                <h4>{item.title}</h4>
+                <p>{item.content}</p>
+              </div>
+            );
+          }) : nots?.notificationData.map((item, idx) => {
             return (
               <div key={idx} className="each-data">
                 <h4>{item.title}</h4>

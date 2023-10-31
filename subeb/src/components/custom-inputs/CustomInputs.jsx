@@ -141,3 +141,25 @@ export const SelectInput = ({
     </div>
   );
 };
+
+export const CheckBox = ({ checkboxChange, id, checkValue, checked }) => {
+  const handleCheckboxChange = (e) => {
+    if (checkboxChange) {
+      checkboxChange(e);
+    }
+  };
+  return (
+    <div>
+      <label className="container">
+        <input
+          type="checkbox"
+          id={id}
+          value={checkValue}
+          checked={checked}
+          onChange={handleCheckboxChange}
+        />
+        <span className="checkmark"></span>
+      </label>
+    </div>
+  );
+};
