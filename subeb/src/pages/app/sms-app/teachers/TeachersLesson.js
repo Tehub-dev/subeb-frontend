@@ -28,7 +28,7 @@ const TeachersLesson = () => {
     setIsLoading(true);
     AxiosAuthGet(url)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setLessonNotes(res.data.map(item => ({
           id: item.subjectId,
           subject: item.subjectName,
@@ -37,7 +37,7 @@ const TeachersLesson = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        console.log(err.response);
+        // console.log(err.response);
       });
     // eslint-disable-next-line
   }, []);

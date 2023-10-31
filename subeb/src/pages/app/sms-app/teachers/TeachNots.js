@@ -1,8 +1,9 @@
 import React from 'react'
+import Notification from '../../../../components/notification/Notification'
 
 const TeachNots = () => {
   return (
-    <div>TeachNots</div>
+    <Notification />
   )
 }
 

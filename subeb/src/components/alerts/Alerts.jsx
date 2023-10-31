@@ -3,6 +3,7 @@ import { XIcon } from "@heroicons/react/solid";
 import { ExclamationIcon } from '@heroicons/react/outline';
 import check from "../../assets/images/check-circle.png";
 import errorT from "../../assets/images/alert-triangle.png";
+import user from "../../assets/images/user-group.png";
 import spinner from "../../assets/images/spin.gif";
 
 import "./alerts.css";
@@ -59,6 +60,20 @@ export const UpdatePopup = ({display, title, text, cancelBtn, updateBtn, updateL
       <div className="update-btn">
         <Button btnText={"cancel"} btnClass={"btn-small-white"} btnClick={cancelBtn} />
         <Button btnText={btnText ? btnText : "update"} btnClass={"btn-green"} btnClick={updateBtn} loading={updateLoad} />
+      </div>
+    </div>
+  )
+}
+
+export const RegPopup = ({display, title, text, cancelBtn, regBtn, regLoad, btnText}) => {
+  return(
+    <div className={display ? "update-popup" : "none"}>
+      <div className="reg-icon"><img src={user} alt="user" /></div>
+      <h2>{title}</h2>
+      <p>{text}</p>
+      <div className="update-btn">
+        <Button btnText={"cancel"} btnClass={"btn-small-white"} btnClick={cancelBtn} />
+        <Button btnText={btnText ? btnText : "Register"} btnClass={"btn-small"} btnClick={regBtn} loading={regLoad} />
       </div>
     </div>
   )

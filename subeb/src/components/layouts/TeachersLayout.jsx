@@ -37,10 +37,10 @@ const TeachersLayout = () => {
   }, [isLoggedIn]);
 
   const clickProfile = () => {
-    navigate("/admin-profile");
+    navigate("/teach-profile");
   }
   const clickNot = () => {
-    navigate("/admin-notifications");
+    navigate("/teach-nots");
   }
 
 
