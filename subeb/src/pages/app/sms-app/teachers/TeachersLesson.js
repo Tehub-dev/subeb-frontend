@@ -22,7 +22,7 @@ const TeachersLesson = () => {
       name: item.subject
     }));
     localStorage.setItem("subId", item.id);
-    navigate("/lesson-notes-class");
+    navigate("/stu-lesson-weeks");
   };
   useEffect(() => {
     setIsLoading(true);

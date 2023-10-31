@@ -32,6 +32,9 @@ const TeacherSidenav = () => {
   
     useEffect(() => {
       setActive(pathname.substring(1));
+      if(pathname.includes("lesson")){
+        setActive("teacher-lesson-notes")
+      }
     }, [pathname]);
   
     const navLinks = [

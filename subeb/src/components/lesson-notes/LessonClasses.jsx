@@ -6,7 +6,7 @@ import { AxiosAuthGet } from "../../axios/axios";
 import { LoadingSpin } from "../alerts/Alerts";
 import { useNavigate } from "react-router-dom";
 
-const LessonClasses = () => {
+const LessonClasses = ({teacher}) => {
   const url = "lesson-notes/subjects";
   const [subjects, setSubjects] = useState();
   const selectSubject = JSON.parse(localStorage.getItem("selectSub"));
@@ -59,7 +59,11 @@ const LessonClasses = () => {
       id: item.id,
       name: item.class
     }));
-    navigate("/sch-lesson-weeks");
+    if(teacher){
+      navigate("/sch-lesson-weeks");
+    } else{
+      navigate("/lesson-notes-weeks");
+    }
   }
 
   useEffect(() => {

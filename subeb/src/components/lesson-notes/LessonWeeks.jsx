@@ -7,7 +7,7 @@ import useOverlay from "../../hooks/useOverlay";
 import { AxiosAuthGet } from "../../axios/axios";
 import LessNotesPopup from "../popups/LessNotesPopup";
 
-const LessonWeeks = ({teacher}) => {
+const LessonWeeks = ({teacher, student}) => {
   const url = "lesson-notes/subjects";
   const selectSubject = JSON.parse(localStorage.getItem("selectSub"));
   const selectClass = JSON.parse(localStorage.getItem("selectClass"));
@@ -18,8 +18,10 @@ const LessonWeeks = ({teacher}) => {
   const [placeholder, setPlaceholder] = useState(selectSubject?.name);
   const [plClass, setPlClass] = useState(selectClass?.name);
   const subId = localStorage.getItem("subClassId");
+  const subjectId = localStorage.getItem("subId");
   const classId = localStorage.getItem("classId");
   const weeksUrl = `lesson-notes/subjects/${subId}/classes/${classId}/weeks/`;
+  const stuUrl = `lesson-notes/subjects/${subjectId}/weeks/`;
   const [lessonModal, setLessonModal] = useState(false);
 
   const getSubjects = () => {
@@ -50,7 +52,7 @@ const LessonWeeks = ({teacher}) => {
   };
   const getWeeks = () => {
     setIsLoading(true);
-    AxiosAuthGet(weeksUrl).then((res) => {
+    AxiosAuthGet(student ? stuUrl : weeksUrl).then((res) => {
       //   console.log(res);
       setWeeks(
         res.data.map((item) => ({
@@ -63,7 +65,9 @@ const LessonWeeks = ({teacher}) => {
 
   useEffect(() => {
     getSubjects();
-    getClasses();
+    if(!student){
+      getClasses();
+    }
     getWeeks();
     // eslint-disable-next-line
   }, [subId, classId]);
@@ -152,12 +156,12 @@ const LessonWeeks = ({teacher}) => {
           setPlaceholder={setPlaceholder}
           optionClick={clickDd}
         />
-        <SelectInput
+        {!student && <SelectInput
           opsArr={classes}
           placeholder={plClass}
           setPlaceholder={setPlClass}
           optionClick={clickDdClass}
-        />
+        />}
       </div>
       <div className="weeks-cont subjects-cont">
         {lessonWeeks?.map((item, idx) => {

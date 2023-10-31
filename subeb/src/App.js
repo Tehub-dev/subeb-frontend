@@ -79,7 +79,7 @@ function App() {
         <Route element={<SchoolLayout />}>
           <Route path="/school-overview" element={<SchoolOverview />} />
           <Route path="/school-lesson-notes" element={<SchoolLesson />} />
-          <Route path="/sch-lesson-class" element={<LessonClasses />} />
+          <Route path="/sch-lesson-class" element={<LessonClasses teacher={true} />} />
           <Route path="/sch-lesson-weeks" element={<LessonWeeks teacher={true} />} />
           <Route path="/teachers-reg" element={<TeachersReg />} />
           <Route path="/teachers-att" element={<TeachersAtt />} />
@@ -93,6 +93,7 @@ function App() {
           <Route path="/teacher-lesson-notes" element={<TeachersLesson />} />
           <Route path="/student-reg" element={<StudentReg />} />
           <Route path="/student-att" element={<StudentAtt />} />
+          <Route path="/stu-lesson-weeks" element={<LessonWeeks teacher={true} student={true} />} />
           <Route path="/academic-cal-tch" element={<AcademicCalTch />} />
           <Route path="/teach-profile" element={<TeachProfile />} />
           <Route path="/teach-nots" element={<TeachNots />} />
