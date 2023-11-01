@@ -35,7 +35,7 @@ const AttendStu = () => {
     setIsLoading(true);
     AxiosAuthGet(url)
       .then((res) => {
-        //   console.log(res);
+        // console.log(res);
         setTeachData(res.data.attendanceData);
         setPlWeek(res.data.week);
         setIsLoading(false);
@@ -220,7 +220,7 @@ const AttendStu = () => {
   const columns = [
     {
       name: "Full Name",
-      selector: (row) => row?.firstName + " " + row?.lastname,
+      selector: (row) => row?.firstName + " " + row?.lastName,
       sortable: true,
       width: "300px",
     },
