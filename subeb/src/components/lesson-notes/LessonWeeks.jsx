@@ -7,7 +7,7 @@ import useOverlay from "../../hooks/useOverlay";
 import { AxiosAuthGet } from "../../axios/axios";
 import LessNotesPopup from "../popups/LessNotesPopup";
 
-const LessonWeeks = ({teacher, student}) => {
+const LessonWeeks = ({ teacher, student }) => {
   const url = "lesson-notes/subjects";
   const selectSubject = JSON.parse(localStorage.getItem("selectSub"));
   const selectClass = JSON.parse(localStorage.getItem("selectClass"));
@@ -65,7 +65,7 @@ const LessonWeeks = ({teacher, student}) => {
 
   useEffect(() => {
     getSubjects();
-    if(!student){
+    if (!student) {
       getClasses();
     }
     getWeeks();
@@ -92,6 +92,26 @@ const LessonWeeks = ({teacher, student}) => {
         name: item.name,
       })
     );
+  };
+
+  const clickDownload = (item) => {
+    AxiosAuthGet(
+      `lesson-notes/subjects/${subjectId}/weeks/download/?week=${item.name}`
+    )
+      .then((res) => {
+        // console.log(res);
+
+        const pdfUrl = res.data[0].file;;
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.download = "document.pdf"; // specify the filename
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+      .catch((err) => {
+        // console.log(err.response);
+      });
   };
 
   const lessonWeeks = weeks;
@@ -132,8 +152,9 @@ const LessonWeeks = ({teacher, student}) => {
     setDisplayOverlay(false);
   };
 
-  return (
-    isLoading ? <LoadingSpin /> :
+  return isLoading ? (
+    <LoadingSpin />
+  ) : (
     <div className="lesson-weeks">
       <LessNotesPopup display={lessonModal} setDisplay={setLessonModal} />
       <UpdatePopup
@@ -156,38 +177,44 @@ const LessonWeeks = ({teacher, student}) => {
           setPlaceholder={setPlaceholder}
           optionClick={clickDd}
         />
-        {!student && <SelectInput
-          opsArr={classes}
-          placeholder={plClass}
-          setPlaceholder={setPlClass}
-          optionClick={clickDdClass}
-        />}
+        {!student && (
+          <SelectInput
+            opsArr={classes}
+            placeholder={plClass}
+            setPlaceholder={setPlClass}
+            optionClick={clickDdClass}
+          />
+        )}
       </div>
       <div className="weeks-cont subjects-cont">
         {lessonWeeks?.map((item, idx) => {
           return (
             <div key={idx} className="each-week">
               <h3>{item.name}</h3>
-              {!teacher && <div className="each-week_btn">
-                <Button
-                  btnText={"Update"}
-                  btnClass={"btn-small"}
-                  btnClick={() => clickUpdate(item)}
-                />
-                <Button
-                  btnText={"Remove"}
-                  btnColor={"red"}
-                  btnClass={"btn-small-white"}
-                  btnClick={clickRemove}
-                />
-              </div>}
-              {teacher && <div className="each-week_btn">
-                <Button
-                  btnText={"Download"}
-                  btnClass={"btn-small"}
-                  // btnClick={() => clickUpdate(item)}
-                />
-              </div>}
+              {!teacher && (
+                <div className="each-week_btn">
+                  <Button
+                    btnText={"Update"}
+                    btnClass={"btn-small"}
+                    btnClick={() => clickUpdate(item)}
+                  />
+                  <Button
+                    btnText={"Remove"}
+                    btnColor={"red"}
+                    btnClass={"btn-small-white"}
+                    btnClick={clickRemove}
+                  />
+                </div>
+              )}
+              {teacher && (
+                <div className="each-week_btn">
+                  <Button
+                    btnText={"Download"}
+                    btnClass={"btn-small"}
+                    btnClick={() => clickDownload(item)}
+                  />
+                </div>
+              )}
             </div>
           );
         })}

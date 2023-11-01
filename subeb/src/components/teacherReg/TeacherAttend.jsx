@@ -5,26 +5,29 @@ import "./teacher-reg.css";
 import { Button, CheckBox, SelectInput } from "../custom-inputs/CustomInputs";
 import Table from "../table/Table";
 import { days, weeks } from "../charts/Data";
-import { AxiosAuthGet } from "../../axios/axios";
+import { AxiosAuthGet, AxiosAuthPost } from "../../axios/axios";
+import { LoadingSpin, SuccessAlert } from "../alerts/Alerts";
+import useSuccessDisplay from "../../hooks/useSuccessDisplay";
+import useSuccessMsg from "../../hooks/useSuccessMsg";
 
 const TeacherAttend = () => {
-  const [
-    // isLoading
-    , setIsLoading] = useState(false);
-  const [isDownload,
-    //  setIsDownload
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDownload, 
+    // setIsDownload
 ] = useState(false);
-  const [checkIn, setCheckIn] = useState(false);
-  const [rowId, setRowId] = useState("");
-  const [rowOutId, setRowOutId] = useState("");
-  const [checkOut, setCheckOut] = useState(false);
+  const { successDisplay, setSuccessDisplay } = useSuccessDisplay();
+  const { successMsg, setSuccessMsg } = useSuccessMsg();
   const [teachData, setTeachData] = useState();
+  const [teacherId, setTeacherId] = useState("");
+  const [teacherSingle, setTeacherSingle] = useState();
   const [plDays, setPlDays] = useState("Monday");
   const [plWeek, setPlWeek] = useState("Week 1");
   const weekArr = weeks;
   const daysArr = days;
   const url = `teachers/attendance/?week=${plWeek}&day=${plDays}&download=${isDownload}`;
-//   const postUrl = "teachers/attendance/";
+  const postUrl = "teachers/attendance/";
+  const [checkOutValues, setCheckOutValues] = useState([]);
+  const [checkInValues, setCheckInValues] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,6 +35,8 @@ const TeacherAttend = () => {
       .then((res) => {
         // console.log(res);
         setTeachData(res.data.attendanceData);
+        setPlDays(res.data.day);
+        setPlWeek(res.data.week);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -41,26 +46,66 @@ const TeacherAttend = () => {
     // eslint-disable-next-line
   }, [plDays, plWeek]);
 
-  const clickCheckIn = (row) => {
-    setRowId(row.teacherId);
-    setCheckIn(!checkIn)
-    // console.log(row);
-};
-const clickCheckOut = (row) => {
-    setRowOutId(row.teacherId);
-    setCheckOut(!checkOut)
-    // console.log(row);
+  const clickCheckIn = (e,row) => {
+    setTeacherId(row?.teacherId);
+    setTeacherSingle(row);
+    const { value, checked } = e.target;
+    if (checked) {
+      // Add the checked value to the array
+      setCheckInValues((prevValues) => [...prevValues, value]);
+    } else {
+      // Remove the unchecked value from the array
+      setCheckInValues((prevValues) =>
+        prevValues.filter((item) => item !== value)
+      );
+    }
   };
 
-//   console.log(checkIn);
-//   console.log(checkOut);
+  const clickCheckOut = (e,row) => {
+    setTeacherId(row?.teacherId);
+    setTeacherSingle(row);
+    const { value, checked } = e.target;
+    if (checked) {
+      // Add the checked value to the array
+      setCheckOutValues((prevValues) => [...prevValues, value]);
+    } else {
+      // Remove the unchecked value from the array
+      setCheckOutValues((prevValues) =>
+        prevValues.filter((item) => item !== value)
+      );
+    }
+  };
+
+  const dataObj = {
+    week: plWeek,
+    day: "Wednesday",
+    checkIn: teacherSingle?.attendance?.checkIn && !checkInValues.includes(teacherId) ? teacherSingle?.attendance?.checkIn : checkInValues.includes(teacherId) ? true : false,
+    checkOut: teacherSingle?.attendance?.checkOut && !checkOutValues.includes(teacherId) ? teacherSingle?.attendance?.checkOut : checkOutValues.includes(teacherId) ? true : false,
+    teacherId: teacherId
+  }
+
+  useEffect(() => {
+    // console.log(dataObj);
+    setIsLoading(true);
+    AxiosAuthPost(postUrl, dataObj).then((res) => {
+        // console.log(res);
+        setSuccessDisplay(true);
+        setSuccessMsg(res.message);
+        setIsLoading(false);
+    }).catch((err) => {
+        // console.log(err.response);
+        setIsLoading(false);
+    })
+    // eslint-disable-next-line
+  }, [checkInValues,checkOutValues]);
 
   const CustomCell1 = ({ row }) => (
     <div>
       <CheckBox
         id={"check-in"}
-        checked={rowId === row?.teacherId && checkIn}
-        checkboxChange={() => clickCheckIn(row)}
+        checked={checkInValues.length === 0 ? row?.attendance.checkIn : checkInValues.includes(row?.teacherId) && true}
+        checkValue={row?.teacherId}
+        checkboxChange={(e) => clickCheckIn(e,row)}
       />
     </div>
   );
@@ -68,8 +113,9 @@ const clickCheckOut = (row) => {
     <div>
       <CheckBox
         id={"check-out"}
-        checked={rowOutId === row?.teacherId && checkOut}
-        checkboxChange={() => clickCheckOut(row)}
+        checked={checkOutValues.length === 0 ? row?.attendance.checkOut : checkOutValues.includes(row?.teacherId) && true}
+        checkValue={row?.teacherId}
+        checkboxChange={(e) => clickCheckOut(e,row)}
       />
     </div>
   );
@@ -99,7 +145,13 @@ const clickCheckOut = (row) => {
 
 
   return (
+    isLoading ? <LoadingSpin /> :
     <div className="teacher-attend">
+    <SuccessAlert
+      display={successDisplay}
+      setDisplay={setSuccessDisplay}
+      message={successMsg}
+    />
       <div className="sch-admin_head">
         <div className="head-left">
           <SelectInput
