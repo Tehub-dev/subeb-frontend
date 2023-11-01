@@ -1,8 +1,11 @@
 import React from 'react'
+import AttendStu from '../../../../components/teacherReg/AttendStu'
 
 const StudentAtt = () => {
   return (
-    <div>StudentAtt</div>
+    <div>
+      <AttendStu />
+    </div>
   )
 }
 
