@@ -123,7 +123,7 @@ const TeacherAttend = () => {
   const columns = [
     {
       name: "Full Name",
-      selector: (row) => row?.firstName + " " + row?.lastname,
+      selector: (row) => row?.firstName + " " + row?.lastName,
       sortable: true,
     },
     {
