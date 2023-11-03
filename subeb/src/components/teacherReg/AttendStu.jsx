@@ -131,9 +131,9 @@ const AttendStu = () => {
   const clickDownload = () =>{
     setIsDownload(true);
     setIsDLoading(true);
-    AxiosAuthGet(url)
+    AxiosAuthGet(`students/attendance/?week=${plWeek}&download=${isDownload}`)
       .then((res) => {
-        // console.log(res);
+        console.log(res);
 
         // Replace this with your Base64 PDF data
         const base64PdfData = res.data.download.file;
@@ -154,7 +154,7 @@ const AttendStu = () => {
         setIsDLoading(false);
       })
       .catch((err) => {
-        // console.log(err.response);
+        console.log(err.response);
         setIsDLoading(false);
       });
   };
@@ -372,7 +372,7 @@ const AttendStu = () => {
       <div className="admin-body">
         <div className="admin-body_head">
           <h3>
-            Teachers <span>{teachData?.length}</span>
+            Students <span>{teachData?.length}</span>
           </h3>
         </div>
         <Table columns={columns} data={teachData} />
