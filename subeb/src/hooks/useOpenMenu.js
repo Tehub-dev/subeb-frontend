@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 
-const useBackSub = () => {
+const useOpenMenu = () => {
     return useContext(AuthContext);
 }
 
-export default useBackSub;
+export default useOpenMenu;

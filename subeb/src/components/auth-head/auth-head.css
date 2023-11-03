@@ -1,4 +1,8 @@
 
+.auth-head h3 img{
+    width: 100px;
+    height: 100px;
+}
 .auth-head h3{
     display: flex;
     gap: 5px;

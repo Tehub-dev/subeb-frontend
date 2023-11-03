@@ -44,21 +44,20 @@ const SchoolOverview = () => {
     });
     // eslint-disable-next-line
   }, [plTerm, plWeek]);
+
+  const barData = studentData?.map((data) => data.dayCount)
   
-  const [
-    userData,
-    // setUserData
-  ] = useState({
+  const userData= {
     labels: ["Monday", "Tuesday", "Wednessday", "Thursday", "Friday"],
     datasets: [
       {
         label: "Student Attendance",
-        data: studentData && studentData.map((data) => data.dayCount),
+        data: barData,
         backgroundColor: "#F26722",
         barThickness: 20,
       },
     ],
-  });
+  };
   return (
     isLoading ? <LoadingSpin /> :
     <div>

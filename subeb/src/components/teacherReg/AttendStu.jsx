@@ -4,22 +4,25 @@ import arrow from "../../assets/images/arrow-down-tray.png";
 import "./teacher-reg.css";
 import { Button, CheckBox, SelectInput } from "../custom-inputs/CustomInputs";
 import Table from "../table/Table";
-import {  weeks } from "../charts/Data";
+import { weeks } from "../charts/Data";
 import { AxiosAuthGet, AxiosAuthPost } from "../../axios/axios";
-import { LoadingSpin, SuccessAlert } from "../alerts/Alerts";
+import { ErrorAlert, LoadingSpin, SuccessAlert } from "../alerts/Alerts";
 import useSuccessDisplay from "../../hooks/useSuccessDisplay";
 import useSuccessMsg from "../../hooks/useSuccessMsg";
+import { saveAs } from 'file-saver';
+import atob from 'atob';
 
 const AttendStu = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isDownload, 
-    // setIsDownload
-] = useState(false);
+  const [isDLoading, setIsDLoading] = useState(false);
+  const [isDownload, setIsDownload] = useState(false);
   const { successDisplay, setSuccessDisplay } = useSuccessDisplay();
   const { successMsg, setSuccessMsg } = useSuccessMsg();
   const [teachData, setTeachData] = useState();
   const [teacherId, setTeacherId] = useState("");
   const [dayClick, setDayClick] = useState("");
+  const [errMessage, setErrMessage] = useState("");
+  const [errDisplay, setErrDisplay] = useState(false);
   const [teacherSingle, setTeacherSingle] = useState();
   const [plWeek, setPlWeek] = useState("Week 1");
   const weekArr = weeks;
@@ -46,6 +49,7 @@ const AttendStu = () => {
       });
     // eslint-disable-next-line
   }, [plWeek]);
+
 
   const clickCheckMon = (e, row) => {
     setDayClick(e.target.id);
@@ -124,27 +128,104 @@ const AttendStu = () => {
     }
   };
 
+  const clickDownload = () =>{
+    setIsDownload(true);
+    setIsDLoading(true);
+    AxiosAuthGet(url)
+      .then((res) => {
+        // console.log(res);
+
+        // Replace this with your Base64 PDF data
+        const base64PdfData = res.data.download.file;
+    
+        // Decode the Base64 data
+        const binaryPdf = atob(base64PdfData);
+    
+        // Create a Blob from the decoded binary data
+        const arrayBuffer = new ArrayBuffer(binaryPdf.length);
+        const uint8Array = new Uint8Array(arrayBuffer);
+        for (let i = 0; i < binaryPdf.length; i++) {
+          uint8Array[i] = binaryPdf.charCodeAt(i);
+        }
+        const blob = new Blob([uint8Array], { type: 'application/pdf' });
+    
+        // Trigger the download
+        saveAs(blob, res.data.download.fileName);
+        setIsDLoading(false);
+      })
+      .catch((err) => {
+        // console.log(err.response);
+        setIsDLoading(false);
+      });
+  };
+
   const dataObj = {
     week: plWeek,
     day: dayClick,
-    present: teacherSingle?.attendance[0]?.present && !checkMonValues.includes(teacherId) ? teacherSingle?.attendance[0]?.present : teacherSingle?.attendance[1]?.present && !checkTueValues.includes(teacherId) ? teacherSingle?.attendance[1]?.present : teacherSingle?.attendance[2]?.present && !checkWedValues.includes(teacherId) ? teacherSingle?.attendance[2]?.present : teacherSingle?.attendance[3]?.present && !checkThuValues.includes(teacherId) ? teacherSingle?.attendance[3]?.present : teacherSingle?.attendance[4]?.present && !checkFriValues.includes(teacherId) ? teacherSingle?.attendance[4]?.present : checkMonValues.includes(teacherId) || checkTueValues.includes(teacherId) || checkWedValues.includes(teacherId) || checkThuValues.includes(teacherId) || checkFriValues.includes(teacherId) ? true : false,
-    studentId: teacherId
+    present:
+      teacherSingle?.attendance[0]?.present &&
+      !checkMonValues.includes(teacherId)
+        ? teacherSingle?.attendance[0]?.present
+        : teacherSingle?.attendance[1]?.present &&
+          !checkTueValues.includes(teacherId)
+        ? teacherSingle?.attendance[1]?.present
+        : teacherSingle?.attendance[2]?.present &&
+          !checkWedValues.includes(teacherId)
+        ? teacherSingle?.attendance[2]?.present
+        : teacherSingle?.attendance[3]?.present &&
+          !checkThuValues.includes(teacherId)
+        ? teacherSingle?.attendance[3]?.present
+        : teacherSingle?.attendance[4]?.present &&
+          !checkFriValues.includes(teacherId)
+        ? teacherSingle?.attendance[4]?.present
+        : checkMonValues.includes(teacherId) ||
+          checkTueValues.includes(teacherId) ||
+          checkWedValues.includes(teacherId) ||
+          checkThuValues.includes(teacherId) ||
+          checkFriValues.includes(teacherId)
+        ? true
+        : false,
+    studentId: teacherId,
   };
 
   useEffect(() => {
     // console.log(dataObj);
     setIsLoading(true);
-    AxiosAuthPost(postUrl, dataObj).then((res) => {
+    AxiosAuthPost(postUrl, dataObj)
+      .then((res) => {
         // console.log(res);
         setSuccessDisplay(true);
         setSuccessMsg(res.message);
         setIsLoading(false);
-    }).catch((err) => {
+        setTimeout(function () {
+          window.location.reload();
+        }, 2000);
+      })
+      .catch((err) => {
         // console.log(err.response);
+        for (let i = 0; i < err?.response?.data?.errors?.length; i++) {
+          if (err?.response?.data?.errors[i]?.fieldName === "day") {
+            if (
+              err.response.data.errors[i].error !== '"" is not a valid choice.'
+            ) {
+              setErrDisplay(true);
+              setErrMessage(err.response.data.errors[i].error);
+              setTimeout(function () {
+                window.location.reload();
+              }, 2000);
+            }
+          }
+        }
         setIsLoading(false);
-    })
+      });
     // eslint-disable-next-line
-  }, [checkMonValues,checkTueValues,checkWedValues,checkThuValues,checkFriValues]);
+  }, [
+    checkMonValues,
+    checkTueValues,
+    checkWedValues,
+    checkThuValues,
+    checkFriValues,
+  ]);
 
   const CustomCell1 = ({ row }) => (
     <div>
@@ -265,6 +346,11 @@ const AttendStu = () => {
         setDisplay={setSuccessDisplay}
         message={successMsg}
       />
+      <ErrorAlert
+        display={errDisplay}
+        setDisplay={setErrDisplay}
+        message={errMessage}
+      />
       <div className="sch-admin_head">
         <div className="head-left">
           <SelectInput
@@ -278,7 +364,8 @@ const AttendStu = () => {
             btnText={"Download"}
             btnClass={"btn-small"}
             btnImg={arrow}
-            // btnClick={clickAdd}
+            btnClick={clickDownload}
+            loading={isDLoading}
           />
         </div>
       </div>
