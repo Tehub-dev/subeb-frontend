@@ -336,6 +336,7 @@ const AttendStu = () => {
       sortable: true,
     },
   ];
+  
 
   return isLoading ? (
     <LoadingSpin />

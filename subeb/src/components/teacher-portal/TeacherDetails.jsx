@@ -54,7 +54,7 @@ const TeacherDetails = () => {
     <div>
       <AuthHead
         title={"Personal Details"}
-        text={"Register as a teacher on ondo state school management system"}
+        text={"Complete your registration as a teacher"}
       />
       <form className="teacher-form">
         <Input

@@ -184,7 +184,7 @@ const SchoolDetails = () => {
       <ErrorAlert display={errDisplay} setDisplay={setErrDisplay} message={errClass || errEmail || errPhone || errSchool} />
       <AuthHead
         title={"School Details"}
-        text={"Register as a teacher on ondo state school management system"}
+        text={"Almost there! Fill in the form below with your school details"}
       />
       <form className="teacher-form">
         <SearchSelect

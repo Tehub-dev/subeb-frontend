@@ -176,7 +176,7 @@ const GalleryComp = () => {
     <div className='gallery'>
         <div className="gallery-head">
             <h2>Gallery</h2>
-            <p>Welcome to our E-Library the ultimate platform for educational institutions. We've designed this system with the vision to make learning and school administration more efficient, accessible, and engaging.Welcome to our E-Library the ultimate platform for educational institutions. We've designed this system with the vision to make learning and school administration more efficient, accessible, and engaging.</p>
+            <p>Take a glance through every project that we’ve undergone and achieved in the last year, including events that have been organized to empower both teachers and students and promote a conducive learning environment for both parties.</p>
         </div>
         <div className="gallery-img_cont">
             {galleryImg.map((item,idx) => {
