@@ -133,7 +133,7 @@ const TeacherAttend = () => {
   const clickDownload = () => {
     setIsDownload(true);
     setIsDLoading(true);
-    AxiosAuthGet(`teachers/attendance/?week=${plWeek}&day=${plDays}&download=${isDownload}`)
+    AxiosAuthGet(`teachers/attendance/?week=${plWeek}&day=${plDays}&download=${true}`)
       .then((res) => {
         // console.log(res);
 

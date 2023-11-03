@@ -131,7 +131,7 @@ const AttendStu = () => {
   const clickDownload = () =>{
     setIsDownload(true);
     setIsDLoading(true);
-    AxiosAuthGet(url)
+    AxiosAuthGet(`students/attendance/?week=${plWeek}&download=${true}`)
       .then((res) => {
         // console.log(res);
 
@@ -372,7 +372,7 @@ const AttendStu = () => {
       <div className="admin-body">
         <div className="admin-body_head">
           <h3>
-            Teachers <span>{teachData?.length}</span>
+            Students <span>{teachData?.length}</span>
           </h3>
         </div>
         <Table columns={columns} data={teachData} />
