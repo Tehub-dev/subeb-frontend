@@ -10,9 +10,6 @@ function DashboardGrid({school, teacher, student, isTeacher, isStudent}) {
             <span className='num'>
                 {school}
             </span>
-            <span className='raise'>
-            +11.01%
-            </span>
         </div>
       </div>}
       {!isStudent && <div className='card'>
@@ -21,9 +18,6 @@ function DashboardGrid({school, teacher, student, isTeacher, isStudent}) {
         <span className='num'>
                 {teacher}
         </span>
-        <span className='raise'>
-            +11.01%
-        </span>
         </div>
       </div>}
       <div className='card'>
@@ -31,9 +25,6 @@ function DashboardGrid({school, teacher, student, isTeacher, isStudent}) {
         <div className='card-des'>
         <span className='num'>
                 {student}
-            </span>
-            <span className='raise'>
-            +11.01%
             </span>
         </div>
       </div>

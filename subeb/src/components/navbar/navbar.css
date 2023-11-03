@@ -3,6 +3,10 @@
     padding: 30px 0;
     position: relative;
 }
+.logo img{
+    width: 100px;
+    height: 100px;
+}
 .desktop-nav{
     width: 90%;
     margin: 0 auto;

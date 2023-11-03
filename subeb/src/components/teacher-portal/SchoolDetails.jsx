@@ -5,7 +5,7 @@ import AuthHead from "../auth-head/AuthHead";
 import SearchSelect from "../custom-inputs/SearchSelect";
 import { AxiosGet, AxiosPost } from "../../axios/axios";
 import { Button } from "../custom-inputs/CustomInputs";
-import { SuccessAlert } from "../alerts/Alerts";
+import { ErrorAlert, SuccessAlert } from "../alerts/Alerts";
 import { useNavigate } from "react-router-dom";
 
 const SchoolDetails = () => {
@@ -19,6 +19,11 @@ const SchoolDetails = () => {
   const [classItem, setClassItem] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [searching, setSearching] = useState(false);
+  const [errDisplay, setErrDisplay] = useState(false);
+  const [errPhone, setErrPhone] = useState(false);
+  const [errEmail, setErrEmail] = useState(false);
+  const [errSchool, setErrSchool] = useState(false);
+  const [errClass, setErrClass] = useState(false);
   const [schSearch, setSchSearch] = useState(false);
   const [classSearch, setClassSearch] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -85,11 +90,21 @@ const SchoolDetails = () => {
         }, 2000);
     }).catch((err) => {
         // console.log(err.response);
-        // for (let i = 0; i < err.response.data.errors.length; i++){
-        //     if (err.response.data.errors[i].fieldName === "credential"){
-        //         setErr(err.response.data.errors[i].error)
-        //     }
-        // }
+        for (let i = 0; i < err.response.data.errors.length; i++){
+          setErrDisplay(true);
+            if (err.response.data.errors[i].fieldName === "emailAddress"){
+                setErrEmail(err.response.data.errors[i].error);
+            }
+            if (err.response.data.errors[i].fieldName === "phoneNumber"){
+                setErrPhone(err.response.data.errors[i].error);
+            }
+            if (err.response.data.errors[i].fieldName === "schoolId"){
+                setErrSchool(err.response.data.errors[i].error);
+            }
+            if (err.response.data.errors[i].fieldName === "classId"){
+                setErrClass(err.response.data.errors[i].error);
+            }
+        }
         setIsLoading(false);
     })
   }
@@ -166,6 +181,7 @@ const SchoolDetails = () => {
   return (
     <div>
       <SuccessAlert  display={success} setDisplay={setSuccess} message={successMsg} />
+      <ErrorAlert display={errDisplay} setDisplay={setErrDisplay} message={errClass || errEmail || errPhone || errSchool} />
       <AuthHead
         title={"School Details"}
         text={"Register as a teacher on ondo state school management system"}

@@ -118,6 +118,10 @@ const LessNotesPopup = ({ display, setDisplay }) => {
       setSelectedFile();
     }
     localStorage.removeItem("updateDetails");
+    setErrSub("");
+    setErrClass("");
+    setErrWeek("");
+    setErrFile("");
     // eslint-disable-next-line 
   }, [display]);
 
