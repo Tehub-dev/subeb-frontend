@@ -8,7 +8,7 @@ import SearchComp from '../search/SearchComp';
 import useOverlay from '../../hooks/useOverlay';
 
 const SchoolLayout = () => {
-  const {isOpen, isNotification} = useContext(AuthContext)
+  // const {isOpen, isNotification} = useContext(AuthContext)
 
   const {displayOverlay} = useOverlay();
 
@@ -51,7 +51,7 @@ const SchoolLayout = () => {
   return (
     isLoggedIn ? 
     <div className='admin-layout'>
-        <div className={`side-nav ${isOpen? '' : 'open'}`}>
+        <div className={``}>
             <SchoolSidenav />
         </div>
         <Overlay display={displayOverlay} />
