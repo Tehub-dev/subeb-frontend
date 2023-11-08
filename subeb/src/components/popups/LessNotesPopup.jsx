@@ -25,6 +25,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
   const { selectedFile, setSelectedFile } = useSelectFile();
   const classes = JSON.parse(localStorage.getItem("classes"));
   const subjects = JSON.parse(localStorage.getItem("subj"));
+  const updateDetails = JSON.parse(localStorage.getItem("updateDetails"));
   const weeks = [
     {
       id: "1",
@@ -116,6 +117,11 @@ const LessNotesPopup = ({ display, setDisplay }) => {
       setActive("New Upload");
       setSelectedFile();
     }
+    localStorage.removeItem("updateDetails");
+    setErrSub("");
+    setErrClass("");
+    setErrWeek("");
+    setErrFile("");
     // eslint-disable-next-line 
   }, [display]);
 
@@ -272,7 +278,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
               setSearching={setSubSearch}
               dataChange={selectChange}
               optionClick={subOptClick}
-              formValue={subItem?.name || ""}
+              formValue={subItem ? subItem?.name || "" : updateDetails?.subject?.name}
               clickDrop={subDd}
               error={errSub}
             />
@@ -285,7 +291,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
               setSearching={setClassSearch}
               dataChange={selectChange}
               optionClick={classOptClick}
-              formValue={classItem?.name || ""}
+              formValue={classItem ? classItem?.name || "" : updateDetails?.class?.name}
               clickDrop={classDd}
               error={errClass}
             />
@@ -298,7 +304,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
               setSearching={setWeekSearch}
               dataChange={selectChange}
               optionClick={weekOptClick}
-              formValue={weekItem?.name || ""}
+              formValue={weekItem ? weekItem?.name || "" : updateDetails?.week}
               clickDrop={weekDd}
               error={errWeek}
             />

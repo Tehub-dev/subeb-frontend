@@ -4,10 +4,10 @@ import { XIcon } from "@heroicons/react/solid";
 import "./popup.css";
 import useOverlay from "../../hooks/useOverlay";
 
-const Popup = ({ children, display, setDisplay }) => {
+const Popup = ({ children, display, setDisplay, marginTop }) => {
   const { setDisplayOverlay } = useOverlay();
   return (
-    <div className={display ? "pop-up" : "none"}>
+    <div className={display ? "pop-up" : "none"} style={{marginTop: marginTop}}>
       <div
         className="close-div"
         onClick={() => {

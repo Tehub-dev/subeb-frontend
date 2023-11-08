@@ -41,6 +41,7 @@
     /* border: 1px solid green; */
     width: 20%;
     height: 100vh;
+    overflow-y: auto;
     background: var(--color-surface-light-hover, #F5F7F9);
     position: fixed;
 }

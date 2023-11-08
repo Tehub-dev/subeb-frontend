@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import RegStu from '../../../../components/student-reg/RegStu';
 
 const StudentReg = () => {
   return (
-    <div>StudentReg</div>
+    <div>
+      <RegStu />
+    </div>
   )
 }
 

@@ -56,6 +56,9 @@ const Login = () => {
               if(res.data.accountType === "Teacher"){
                 navigate("/teacher-overview");
               }
+              if(res.data.accountType === "Headmaster"){
+                navigate("/school-overview");
+              }
               window.location.reload();
             }, 2000);
         }
@@ -87,7 +90,7 @@ const Login = () => {
       />
       <form className="login-form">
         <Input
-          inputLabel={"Credential"}
+          inputLabel={"Email Address/Phone Number"}
           inputPlaceholder={"johndoe@example.com"}
           formChange={handleDataChange}
           formId={"credential"}

@@ -18,7 +18,8 @@ export const Input = ({
   formValue,
   iconLeft,
   error,
-  phone
+  phone, 
+  cal
 }) => {
   const inputChange = (e) => {
     if (formChange) {
@@ -36,7 +37,7 @@ export const Input = ({
           onChange={(e) => inputChange(e)}
           id={formId}
           value={formValue}
-          type={password ? "password" : phone ? 'number' : "text"}
+          type={password ? "password" : phone ? 'number' : cal ? "date" : "text"}
           placeholder={inputPlaceholder}
         />
         <img src={imgRight} alt={imgRightAlt} />
@@ -93,6 +94,7 @@ export const SelectInput = ({
   placeholder,
   setPlaceholder,
   opsArr,
+  optionClick
 }) => {
   const [showOps, setShowOps] = useState(false);
 
@@ -101,8 +103,11 @@ export const SelectInput = ({
   };
 
   const clickOptions = (item) => {
+    if(optionClick){
+      optionClick(item)
+    }
     if (setPlaceholder) {
-      setPlaceholder(item);
+      setPlaceholder(item.name);
       setShowOps(false);
     }
   };
@@ -125,14 +130,36 @@ export const SelectInput = ({
                 onClick={() => clickOptions(item)}
                 style={{
                   borderLeft:
-                    placeholder === item ? "4px solid #f08227" : undefined,
+                    placeholder === item.name ? "4px solid #f08227" : undefined,
                 }}
               >
-                <p>{item}</p>
+                <p>{item.name}</p>
               </div>
             );
           })}
       </div>
+    </div>
+  );
+};
+
+export const CheckBox = ({ checkboxChange, id, checkValue, checked }) => {
+  const handleCheckboxChange = (e) => {
+    if (checkboxChange) {
+      checkboxChange(e);
+    }
+  };
+  return (
+    <div>
+      <label className="container">
+        <input
+          type="checkbox"
+          id={id}
+          value={checkValue}
+          checked={checked}
+          onChange={handleCheckboxChange}
+        />
+        <span className="checkmark"></span>
+      </label>
     </div>
   );
 };

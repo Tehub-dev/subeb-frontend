@@ -32,6 +32,7 @@ const SchAdmin = ({ adminData }) => {
     setDisplayOverlay(true);
     setAdminEdit(true);
     localStorage.setItem("adminId", row.id);
+    localStorage.setItem("singleAdmin", JSON.stringify(row));
     setIsEdit(true);
   };
   const cancelEdit = () => {
@@ -145,7 +146,7 @@ const SchAdmin = ({ adminData }) => {
       <div className="admin-body">
         <div className="admin-body_head">
           <h3>
-            School Admins <span>100</span>
+            School Admins <span>{adminData?.length}</span>
           </h3>
         </div>
         <Table columns={columns} data={adminData} />

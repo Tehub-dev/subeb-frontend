@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react'
 import TeacherSidenav from '../side-navs/TeacherSidenav'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import "./layout.css";
+import useOverlay from '../../hooks/useOverlay';
+import SearchComp from '../search/SearchComp';
+import Overlay from '../overlay/Overlay';
 
 const TeachersLayout = () => {
 
   const { pathname } = useLocation();
 
   const navigate = useNavigate();
+  const {displayOverlay} = useOverlay();
 
   useEffect(() => {
     window.scrollTo({
@@ -32,6 +36,13 @@ const TeachersLayout = () => {
     // eslint-disable-next-line 
   }, [isLoggedIn]);
 
+  const clickProfile = () => {
+    navigate("/teach-profile");
+  }
+  const clickNot = () => {
+    navigate("/teach-nots");
+  }
+
 
   return (
     isLoggedIn ?
@@ -39,7 +50,9 @@ const TeachersLayout = () => {
         <div className="side-nav">
             <TeacherSidenav />
         </div>
+        <Overlay display={displayOverlay} />
         <div className="outlet-side">
+            <SearchComp clickNot={clickNot} clickProfile={clickProfile}  />
             <Outlet />
         </div>
     </div> : null

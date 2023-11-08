@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { AxiosAuthGet } from "../../../../axios/axios";
-// import LessonWeeks from '../../../../components/lesson-notes/LessonWeeks';
-// import LessonClasses from '../../../../components/lesson-notes/LessonClasses';
 import LessonSubjects from "../../../../components/lesson-notes/LessonSubjects";
 import Empty from "../../../../components/empty-state/Empty";
 import emptyNotes from "../../../../assets/images/emptyNotes.png";
@@ -14,33 +12,39 @@ import {
 } from "../../../../components/alerts/Alerts";
 import useSuccessDisplay from "../../../../hooks/useSuccessDisplay";
 import useSuccessMsg from "../../../../hooks/useSuccessMsg";
+import { useNavigate } from "react-router-dom";
 
 const LessonNotes = () => {
   const { successDisplay, setSuccessDisplay } = useSuccessDisplay();
   const { successMsg } = useSuccessMsg();
-  const url = "lesson-notes/";
+  const url = "lesson-notes/subjects";
   const { setDisplayOverlay } = useOverlay();
   const [lessonModal, setLessonModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [lessonNotes, setLessonNotes] = useState();
-  // const [ lessonNotesId , setLessonNotesId] = useState("");
+  const navigate = useNavigate();
 
   const clickUpload = () => {
     setDisplayOverlay(true);
     setLessonModal(true);
   };
   const clickSubject = (item) => {
-    // setLessonNotesId(item.id);
-    AxiosAuthGet(`lesson-notes/subjects/${item.id}/classes/`).then((res) => {
-      console.log(res);
-    });
+    localStorage.setItem("selectSub", JSON.stringify({
+      id: item.id,
+      name: item.subject
+    }));
+    localStorage.setItem("subId", item.id);
+    navigate("/lesson-notes-class");
   };
   useEffect(() => {
     setIsLoading(true);
     AxiosAuthGet(url)
       .then((res) => {
         // console.log(res);
-        setLessonNotes(res.data);
+        setLessonNotes(res.data.map(item => ({
+          id: item.subjectId,
+          subject: item.subjectName,
+        })));
         setIsLoading(false);
       })
       .catch((err) => {
@@ -70,13 +74,11 @@ const LessonNotes = () => {
         />
       )}
       <LessNotesPopup display={lessonModal} setDisplay={setLessonModal} />
-      <LessonSubjects
+      {lessonNotes?.length !== 0 && <LessonSubjects
         lessonSubjects={lessonNotes}
         clickBtn={clickUpload}
         clickSubject={clickSubject}
-      />
-      {/* <LessonClasses /> */}
-      {/* <LessonWeeks /> */}
+      />}
     </div>
   );
 };

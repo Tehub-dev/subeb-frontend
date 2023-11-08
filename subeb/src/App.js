@@ -39,6 +39,8 @@ import SchAdminProf from "./pages/app/sms-app/school-admin/SchAdminProf";
 import SchAdminNots from "./pages/app/sms-app/school-admin/SchAdminNots";
 import TeachNots from "./pages/app/sms-app/teachers/TeachNots";
 import TeachProfile from "./pages/app/sms-app/teachers/TeachProfile";
+import LessonClasses from "./components/lesson-notes/LessonClasses";
+import LessonWeeks from "./components/lesson-notes/LessonWeeks";
 
 
 function App() {
@@ -65,6 +67,8 @@ function App() {
         <Route element={<AdminLayout />}>
           <Route path="/adminoverview" element={<AdminOverview />} />
           <Route path="/lesson-notes" element={<LessonNotes />} />
+          <Route path="/lesson-notes-class" element={<LessonClasses />} />
+          <Route path="/lesson-notes-weeks" element={<LessonWeeks />} />
           <Route path="/school-admin" element={<SchoolAdmins />} />
           <Route path="/school-mgt" element={<SchoolMgt />} />
           <Route path="/academic-cal" element={<AcademicCal />} />
@@ -75,6 +79,8 @@ function App() {
         <Route element={<SchoolLayout />}>
           <Route path="/school-overview" element={<SchoolOverview />} />
           <Route path="/school-lesson-notes" element={<SchoolLesson />} />
+          <Route path="/sch-lesson-class" element={<LessonClasses teacher={true} />} />
+          <Route path="/sch-lesson-weeks" element={<LessonWeeks teacher={true} />} />
           <Route path="/teachers-reg" element={<TeachersReg />} />
           <Route path="/teachers-att" element={<TeachersAtt />} />
           <Route path="/academic-cal-sch" element={<AcademicCalSch />} />
@@ -87,6 +93,7 @@ function App() {
           <Route path="/teacher-lesson-notes" element={<TeachersLesson />} />
           <Route path="/student-reg" element={<StudentReg />} />
           <Route path="/student-att" element={<StudentAtt />} />
+          <Route path="/stu-lesson-weeks" element={<LessonWeeks teacher={true} student={true} />} />
           <Route path="/academic-cal-tch" element={<AcademicCalTch />} />
           <Route path="/teach-profile" element={<TeachProfile />} />
           <Route path="/teach-nots" element={<TeachNots />} />

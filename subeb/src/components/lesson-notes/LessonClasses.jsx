@@ -1,47 +1,99 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
 import "./lesson-notes.css";
-import { SelectInput } from '../custom-inputs/CustomInputs';
+import { SelectInput } from "../custom-inputs/CustomInputs";
+import { AxiosAuthGet } from "../../axios/axios";
+import { LoadingSpin } from "../alerts/Alerts";
+import { useNavigate } from "react-router-dom";
 
-const LessonClasses = () => {
+const LessonClasses = ({teacher}) => {
+  const url = "lesson-notes/subjects";
+  const [subjects, setSubjects] = useState();
+  const selectSubject = JSON.parse(localStorage.getItem("selectSub"));
+  const [placeholder, setPlaceholder] = useState(selectSubject?.name);
+  const [notesClass, setNotesClass] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const subId = localStorage.getItem("subId");
+  const navigate = useNavigate();
 
-    const lessonClass = [
-        {
-            id: "1",
-            class: "Primary 1"
-        },
-        {
-            id: "2",
-            class: "Primary 2"
-        },
-        {
-            id: "3",
-            class: "Primary 3"
-        },
-        {
-            id: "4",
-            class: "Primary 4"
-        },
-        {
-            id: "5",
-            class: "Primary 5"
-        },
-    ]
+  const getClassNotes = () => {
+    setIsLoading(true);
+    AxiosAuthGet(`lesson-notes/subjects/${subId}/classes/`).then((res) => {
+      // console.log(res);
+      setNotesClass(
+        res.data.map((item) => ({
+          id: item.classId,
+          class: item.className,
+        }))
+      );
+      setIsLoading(false);
+    });
+  };
+  const getSubjects = () => {
+    AxiosAuthGet(url)
+      .then((res) => {
+        // console.log(res);
+        setSubjects(
+          res.data.map((item) => ({
+            id: item.subjectId,
+            name: item.subjectName,
+          }))
+        );
+      })
+      .catch((err) => {
+        // console.log(err.response);
+      });
+  };
+
+  const clickDd = (item) => {
+    localStorage.setItem("subId", item.id);
+    localStorage.setItem("selectSub", JSON.stringify({
+      id: item.id,
+      name: item.name
+    }));
+  }
+  const clickClass = (item) => {
+    localStorage.setItem("classId", item.id);
+    localStorage.setItem("subClassId", subId);
+    localStorage.setItem("selectClass", JSON.stringify({
+      id: item.id,
+      name: item.class
+    }));
+    if(teacher){
+      navigate("/sch-lesson-weeks");
+    } else{
+      navigate("/lesson-notes-weeks");
+    }
+  }
+
+  useEffect(() => {
+    getClassNotes();
+    getSubjects();
+    // eslint-disable-next-line
+  }, [subId]);
 
   return (
-    <div className='lesson-class'>
-        <div className="lesson-class_head">
-            <SelectInput placeholder={'Social Studies'} />
-        </div>
-        <div className="lesson-class_cont subjects-cont">
-            {lessonClass.map((item, idx) => {
-                return (
-                    <div key={idx} className="each-class each-subjects"><h3>{item.class}</h3></div>
-                )
-            })}
-        </div>
+    isLoading ? <LoadingSpin /> :
+    <div className="lesson-class">
+      <div className="lesson-class_head">
+        <SelectInput
+          opsArr={subjects}
+          placeholder={placeholder}
+          setPlaceholder={setPlaceholder}
+          optionClick={clickDd}
+        />
+      </div>
+      <div className="lesson-class_cont subjects-cont">
+        {notesClass?.map((item, idx) => {
+          return (
+            <div key={idx} className="each-class each-subjects" onClick={()=> clickClass(item)}>
+              <h3>{item.class}</h3>
+            </div>
+          );
+        })}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default LessonClasses
+export default LessonClasses;

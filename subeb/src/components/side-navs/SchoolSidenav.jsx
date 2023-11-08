@@ -16,7 +16,7 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthProvider";
 
 import "./side-nav.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const SchoolSidenav = () => {
   const {isOpen, setIsOpen} = useContext(AuthContext)
@@ -27,10 +27,19 @@ const SchoolSidenav = () => {
   
     const { pathname } = useLocation();
     const [active, setActive] = useState("");
+    const navigate = useNavigate();
   
     useEffect(() => {
       setActive(pathname.substring(1));
+      if(pathname.includes("lesson")){
+        setActive("school-lesson-notes")
+      }
     }, [pathname]);
+
+    const logoutClick = () => {
+      localStorage.clear();
+      navigate("/smslogin");
+    }
   
     const navLinks = [
       {
@@ -96,8 +105,8 @@ const SchoolSidenav = () => {
             );
           })}
         </div>
-        <div className="logot-btn">
-          <div className="logout each-link">
+        <div className="logot-btn"> 
+          <div className="logout each-link" onClick={logoutClick}>
               <img src={logout} alt="icon" />
               <p style={{color: "red"}}>Logout</p>
           </div>

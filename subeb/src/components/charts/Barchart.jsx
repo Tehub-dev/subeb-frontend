@@ -6,7 +6,7 @@ import Notification from "../notification/Notification";
 import { SelectInput } from "../custom-inputs/CustomInputs";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function Barchart({ chartData }) {
+function Barchart({ chartData, desktopNot, termPl, setTermPl, opsArr, weekArr, weekPl, setWeekPl }) {
   const options = {
     scales: {
       x: {
@@ -27,14 +27,14 @@ function Barchart({ chartData }) {
         <div className="bar-child_head">
             <h2>Students Attendance</h2>
             <div className="bar-child_select">
-                <SelectInput placeholder={"First Term"} />
-                <SelectInput placeholder={"Week 1"} />
+                <SelectInput placeholder={termPl} setPlaceholder={setTermPl} opsArr={opsArr} />
+                <SelectInput placeholder={weekPl} setPlaceholder={setWeekPl} opsArr={weekArr} />
             </div>
         </div>
         <Bar data={chartData} options={options} />
       </div>
       <div className="child not-child">
-        <Notification />
+        <Notification desktopNot={desktopNot} />
       </div>
     </div>
   );

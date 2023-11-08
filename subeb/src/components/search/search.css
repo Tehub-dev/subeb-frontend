@@ -21,11 +21,4 @@
     padding: 10px;
     cursor: pointer;
 }
-.btn-open{
-    display: none;
-}
-@media (max-width: 900px) {
-    .btn-open {
-        display: block;
-    }
-}
+
