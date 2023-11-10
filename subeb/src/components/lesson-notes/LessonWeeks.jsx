@@ -15,8 +15,6 @@ const LessonWeeks = ({ teacher, student }) => {
   const [classes, setClasses] = useState();
   const [weeks, setWeeks] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [isViewLoading, setIsViewLoading] = useState(false);
-  const [isDLoading, setIsDLoading] = useState(false);
   const [placeholder, setPlaceholder] = useState(selectSubject?.name);
   const [plClass, setPlClass] = useState(selectClass?.name);
   const subId = localStorage.getItem("subClassId");
@@ -97,7 +95,6 @@ const LessonWeeks = ({ teacher, student }) => {
   };
 
   const clickView = (item) => {
-    setIsViewLoading(true);
     AxiosAuthGet(
       `lesson-notes/subjects/${subjectId}/weeks/download/?week=${item.name}`
     )
@@ -111,15 +108,12 @@ const LessonWeeks = ({ teacher, student }) => {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        setIsViewLoading(false);
       })
       .catch((err) => {
         // console.log(err.response);
-        setIsViewLoading(false);
       });
   };
   const clickDownload = (item) => {
-    setIsDLoading(true);
     AxiosAuthGet(
       `lesson-notes/subjects/${subjectId}/weeks/download/?week=${item.name}`
     )
@@ -134,11 +128,9 @@ const LessonWeeks = ({ teacher, student }) => {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        setIsDLoading(false);
       })
       .catch((err) => {
         // console.log(err.response);
-        setIsDLoading(false);
       });
   };
 
@@ -239,13 +231,11 @@ const LessonWeeks = ({ teacher, student }) => {
                   <Button
                     btnText={"View"}
                     btnClass={"btn-small-white"}
-                    loading={isViewLoading}
                     btnClick={() => clickView(item)}
                   />
                   <Button
                     btnText={"Download"}
                     btnClass={"btn-small"}
-                    loading={isDLoading}
                     btnClick={() => clickDownload(item)}
                   />
                 </div>
