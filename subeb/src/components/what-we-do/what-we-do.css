@@ -1,10 +1,22 @@
 
 .whatwe-do{
     padding: 70px 0;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.whatwedo-left{
+    width: 35%;
+}
+.whatwedo-right{
+    width: 63%;
 }
 .whatwe-do_head h2{
     color: var(--color-grey-grey-700, #242424);
-    text-align: center;
     font-family: Work Sans;
     font-size: 31px;
     font-style: normal;
@@ -14,7 +26,6 @@
 }
 .whatwe-do_head p{
     color: var(--color-grey-grey-400, #5C5C5C);
-    text-align: center;
     font-family: Helvetica;
     font-size: 16px;
     font-style: normal;
@@ -27,7 +38,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     padding: 30px 0;
 }
@@ -78,5 +89,11 @@
     }
     .faq-p{
         font-size: 14px;
+    }
+    .whatwedo-left, .whatwedo-right{
+        width: 100%;
+    }
+    .whatwedo-left img{
+        width: 100%;
     }
 }

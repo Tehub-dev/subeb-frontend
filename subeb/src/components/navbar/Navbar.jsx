@@ -6,7 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ArrowDown2, CloseSquare, HambergerMenu } from "iconsax-react";
 import useOverlay from "../../hooks/useOverlay";
 
-const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
+const Navbar = ({ bgColor, listColor, homeMobile, mobileBg, logoWhite }) => {
   const activeLink = {
     color: "#F26722",
     fontWeight: "700",
@@ -52,9 +52,8 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
 
   const navPrograms = [
     {
-      id: "sms",
-      name: "School Management System",
-      link: "smslanding",
+      id: "census",
+      name: "Census Management",
     },
     {
       id: "library",
@@ -103,7 +102,7 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
         <div className="logo-list_container">
           <div className="logo">
             <Link to="/" style={{ textDecoration: "none" }}>
-              <img src={logo} alt="logo" onClick={() => setPrograms(false)} />
+              <img src={logoWhite ? logoWhite : logo} alt="logo" onClick={() => setPrograms(false)} />
             </Link>
           </div>
           <div className="nav-list">
@@ -134,9 +133,9 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
           </div>
         </div>
         <div className="contact-us">
-          <Link to="/contactus" style={{ textDecoration: "none" }}>
+          <Link to="/smslanding" style={{ textDecoration: "none" }}>
             <button className="btn" onClick={() => setPrograms(false)}>
-              contact us
+            School Management System
             </button>
           </Link>
         </div>
@@ -158,7 +157,7 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
         <nav className="mobile-nav" style={{ background: mobileBg }}>
           <div className="mobile-logo">
             <Link to="/" style={{ textDecoration: "none" }}>
-              <img src={logo} alt="logo" />
+              <img src={logoWhite ? logoWhite : logo} alt="logo" />
             </Link>
           </div>
           <div className="menu-bar">
@@ -197,7 +196,7 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
             );
           })}
           <div className="contact-us">
-            <Link to="/contactus" style={{ textDecoration: "none" }}>
+            <Link to="/smslanding" style={{ textDecoration: "none" }}>
               <button
                 className="btn"
                 onClick={() => {
@@ -206,7 +205,7 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg }) => {
                   setDisplayOverlay(false);
                 }}
               >
-                contact us
+                School Management System
               </button>
             </Link>
           </div>
