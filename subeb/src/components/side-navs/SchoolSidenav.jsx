@@ -15,7 +15,7 @@ import close from "../../assets/images/close.png";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthProvider";
 
-import "./side-nav.css";
+import "./side-nav.css"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const SchoolSidenav = () => {
@@ -80,13 +80,17 @@ const SchoolSidenav = () => {
     ];
   
     return (
-      <div className="sidenav">
-        <div className="sidenav_logo">
-          <img src={logo} alt="logo" />
+      < div className="side-nav">
+        <div className="sidenav_logo">  
+        <div style={{display: "flex"}}>
+        <img src={logo} alt="logo" />
           <h2>
             School Management <br /> System
           </h2>
-          <button onClick={()=> setIsOpen(false)}><img src={close} className="btn-close"/></button>
+        </div>
+        <div>
+        <button onClick={()=> setIsOpen(false)}><img src={close} className="btn-close"/></button>
+        </div>
         </div>
         <div className="sidenav-links">
           {navLinks.map((item, idx) => {
