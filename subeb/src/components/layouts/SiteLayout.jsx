@@ -5,6 +5,7 @@ import Navbar from "../navbar/Navbar";
 import Footer from "../footer/Footer";
 import useOverlay from "../../hooks/useOverlay";
 import Overlay from "../overlay/Overlay";
+import logoWhite from "../../assets/images/logo-white.png";
 
 const SiteLayout = () => {
   const { pathname } = useLocation();
@@ -25,6 +26,7 @@ const SiteLayout = () => {
         mobileBg={pathname === "/" ? "#162625" : undefined}
         homeMobile={pathname === "/" ? "white" : undefined}
         listColor={pathname === "/" ? true : false}
+        logoWhite={pathname === "/" && logoWhite }
       />
       <Outlet />
       <Footer />
