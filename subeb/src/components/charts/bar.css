@@ -42,7 +42,13 @@
     width: 0%;
     display: hidden;
   }
+  .bar {
+    display: block;
+  }
   .bar-child {
+    width: 100%;
+  }
+  .bar .not-child {
     width: 100%;
   }
 }
