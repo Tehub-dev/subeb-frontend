@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import "./layout.css";
@@ -6,9 +6,11 @@ import SchoolSidenav from '../side-navs/SchoolSidenav';
 import Overlay from '../overlay/Overlay';
 import SearchComp from '../search/SearchComp';
 import useOverlay from '../../hooks/useOverlay';
+import AuthContext from '../../context/AuthProvider';
+
 
 const SchoolLayout = () => {
-  // const {isOpen, isNotification} = useContext(AuthContext)
+  const {isOpen,} = useContext(AuthContext)
 
   const {displayOverlay} = useOverlay();
 
@@ -51,7 +53,7 @@ const SchoolLayout = () => {
   return (
     isLoggedIn ? 
     <div className='admin-layout'>
-        <div className={``}>
+        <div className={`side-nav ${ isOpen ? '' : 'open'}`}>
             <SchoolSidenav />
         </div>
         <Overlay display={displayOverlay} />

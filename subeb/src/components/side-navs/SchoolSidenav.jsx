@@ -80,7 +80,7 @@ const SchoolSidenav = () => {
     ];
   
     return (
-      < div className="side-nav">
+      < div className="sidenav">
         <div className="sidenav_logo">  
         <div style={{display: "flex"}}>
         <img src={logo} alt="logo" />

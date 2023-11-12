@@ -9,7 +9,7 @@ import { UserIcon, BellIcon } from '@heroicons/react/solid';
 import "./search.css";
 
 const SearchComp = ({clickProfile, clickNot}) => {
-    const { setIsOpen, setIsNotification , isNotification} = useContext(AuthContext)
+    const { setIsOpen} = useContext(AuthContext) //setIsNotification , isNotification
 
     const profileClick = () => {
         if (clickProfile){
@@ -36,7 +36,7 @@ const SearchComp = ({clickProfile, clickNot}) => {
             </div>
             <div className="icon-cont" onClick={()=>{
                 notClick()
-                setIsNotification(!isNotification)
+                // setIsNotification(!isNotification)
             }}>
                 <BellIcon className='bell-icon' />
             </div>

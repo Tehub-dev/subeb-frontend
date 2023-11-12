@@ -88,8 +88,8 @@ const AdminLayout = () => {
   
   return (
     false ?
-    <div style={{position: "relative"}} className='admin-layout '>
-        <div style={{background: 'blue', position: 'absolute'}} className="side-nav ">
+    <div style={{position: "relative"}} className='admin-layout'>
+        <div style={{background: 'blue', position: 'absolute'}} className="side-nav">
             <AdminSidenav />
         </div>
         <Overlay display={displayOverlay} />
