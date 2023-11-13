@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 import "./layout.css";
@@ -8,8 +8,10 @@ import Overlay from '../overlay/Overlay';
 import useOverlay from "../../hooks/useOverlay";
 import { AxiosAuthGet, AxiosGet } from '../../axios/axios';
 import useSuccessDisplay from '../../hooks/useSuccessDisplay';
+import AuthContext from '../../context/AuthProvider';
 
 const AdminLayout = () => {
+  const {isOpen,} = useContext(AuthContext)
 
   const {displayOverlay} = useOverlay();
   const classUrl = "lookup/classes/";
@@ -89,7 +91,7 @@ const AdminLayout = () => {
   return (
     false ?
     <div style={{position: "relative"}} className='admin-layout'>
-        <div style={{background: 'blue', position: 'absolute'}} className="side-nav">
+        <div style={{background: 'blue', position: 'absolute'}} className={`side-nav ${ isOpen ? '' : 'open'}`}>
             <AdminSidenav />
         </div>
         <Overlay display={displayOverlay} />

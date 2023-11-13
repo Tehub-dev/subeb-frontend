@@ -26,7 +26,7 @@ const SearchComp = ({clickProfile, clickNot}) => {
   return (
     <div className='search'>
         <button onClick={()=> {
-            setIsOpen(true)}}><img src={open} className='btn-open'/></button>
+            setIsOpen(true)}}><img src={open} className='btn-open' alt='open'/></button>
         <div className="search-input">
             <Input iconLeft={<SearchNormal1 />} inputPlaceholder={"Search"} />
         </div>

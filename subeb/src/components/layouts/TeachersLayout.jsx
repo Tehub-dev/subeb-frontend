@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import TeacherSidenav from '../side-navs/TeacherSidenav'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import "./layout.css";
 import useOverlay from '../../hooks/useOverlay';
 import SearchComp from '../search/SearchComp';
 import Overlay from '../overlay/Overlay';
+import AuthContext from '../../context/AuthProvider';
 
 const TeachersLayout = () => {
+  const {isOpen,} = useContext(AuthContext)
 
   const { pathname } = useLocation();
 
@@ -47,7 +49,7 @@ const TeachersLayout = () => {
   return (
     isLoggedIn ?
     <div className='admin-layout'>
-        <div className="side-nav">
+        <div className={`side-nav ${ isOpen ? '' : 'open'}`}>
             <TeacherSidenav />
         </div>
         <Overlay display={displayOverlay} />

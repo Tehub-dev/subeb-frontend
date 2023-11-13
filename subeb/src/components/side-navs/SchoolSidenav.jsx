@@ -89,7 +89,7 @@ const SchoolSidenav = () => {
           </h2>
         </div>
         <div>
-        <button onClick={()=> setIsOpen(false)}><img src={close} className="btn-close"/></button>
+        <button onClick={()=> setIsOpen(false)}><img src={close} className="btn-close" alt="close"/></button>
         </div>
         </div>
         <div className="sidenav-links">
