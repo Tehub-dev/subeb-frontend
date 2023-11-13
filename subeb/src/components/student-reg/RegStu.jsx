@@ -10,6 +10,7 @@ import { RegPopup, SuccessAlert } from "../alerts/Alerts";
 import { AxiosAuthPost } from "../../axios/axios";
 import useSuccessDisplay from "../../hooks/useSuccessDisplay";
 import useSuccessMsg from "../../hooks/useSuccessMsg";
+import SearchSelect from "../custom-inputs/SearchSelect";
 
 const RegStu = ({ display, setDisplay }) => {
   const url = "students/";
@@ -18,12 +19,34 @@ const RegStu = ({ display, setDisplay }) => {
   const { successDisplay, setSuccessDisplay } = useSuccessDisplay();
   const { successMsg, setSuccessMsg } = useSuccessMsg();
   const [isReg, setIsReg] = useState(false);
+  const [searching, setSearching] = useState(false);
+  const [genderItem, setGenderItem] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isPopup, setIsPopup] = useState(true);
   const [errLname, setErrLname] = useState("");
+  const [errAge, setErrAge] = useState("");
+  const [errGender, setErrGender] = useState("");
+  const [errGuardianName, setErrGuardianName] = useState("");
+  const [errGuardianPhoneNumber, setErrGuardianPhoneNumber] = useState("");
+  const genderArr = [
+    {
+      id: "Male",
+      name: "Male"
+    },
+    {
+      id: "Female",
+      name: "Female"
+    },
+  ]
+  const [
+    // genderArray,
+     setGenderArray] = useState([]);
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
+    age: "",
+    guardianName: "",
+    guardianPhoneNumber: "",
   });
 
   const handleDataChange = (e) => {
@@ -33,11 +56,45 @@ const RegStu = ({ display, setDisplay }) => {
     if (e.target.id === "lastName") {
       setErrLname("");
     }
+    if (e.target.id === "age") {
+      setErrAge("");
+    }
+    if (e.target.id === "guardianName") {
+      setErrGuardianName("");
+    }
+    if (e.target.id === "guardianPhoneNumber") {
+      setErrGuardianPhoneNumber("");
+    }
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
     setData(newData);
     // console.log(data);
   };
+
+  const selectChange = (e) => {
+    if (e.target.id === "gender") {
+      if (e.target.value) {
+        setSearching(true);
+        setGenderItem("");
+        setGenderArray(
+          genderArr.filter((item) =>
+            item.name.toLowerCase().includes(e.target.value.toLowerCase())
+          )
+        );
+      }
+    }
+   else {
+    setSearching(false);
+  }
+}
+
+const optionClick = (item) => {
+  setGenderItem(item);
+};
+const clickDropDown = () => {
+  setGenderArray(genderArr);
+  setSearching(!searching);
+};
 
   const clickReg = () => {
     setIsReg(true);
@@ -53,9 +110,14 @@ const RegStu = ({ display, setDisplay }) => {
     // eslint-disable-next-line
   }, []);
 
+  const dataObj = {
+    ...data,
+    gender: genderItem?.name
+  }
+
   const regClick = () => {
     setIsLoading(true);
-    AxiosAuthPost(url, data)
+    AxiosAuthPost(url, dataObj)
       .then((res) => {
         // console.log(res);
         setSuccessDisplay(true);
@@ -65,7 +127,11 @@ const RegStu = ({ display, setDisplay }) => {
         setData({
           firstName: "",
           lastName: "",
+          age: "",
+          guardianName: "",
+          guardianPhoneNumber: "",
         });
+        setGenderItem("");
         setIsLoading(false);
       })
       .catch((err) => {
@@ -78,6 +144,18 @@ const RegStu = ({ display, setDisplay }) => {
           }
           if (err?.response?.data?.errors[i]?.fieldName === "lastName") {
             setErrLname(err.response.data.errors[i].error);
+          }
+          if (err?.response?.data?.errors[i]?.fieldName === "age") {
+            setErrAge(err.response.data.errors[i].error);
+          }
+          if (err?.response?.data?.errors[i]?.fieldName === "guardianName") {
+            setErrGuardianName(err.response.data.errors[i].error);
+          }
+          if (err?.response?.data?.errors[i]?.fieldName === "guardianPhoneNumber") {
+            setErrGuardianPhoneNumber(err.response.data.errors[i].error);
+          }
+          if (err?.response?.data?.errors[i]?.fieldName === "gender") {
+            setErrGender(err.response.data.errors[i].error);
           }
         }
         setIsLoading(false);
@@ -99,7 +177,7 @@ const RegStu = ({ display, setDisplay }) => {
         setDisplay={setSuccessDisplay}
         message={successMsg}
       />
-      <Popup display={isPopup} setDisplay={setDisplay} marginTop={"80px"}>
+      <Popup display={isPopup} setDisplay={setDisplay}>
         <div className="lesson-notes_popup">
           <div className="sch-admin_input">
             <Input
@@ -117,6 +195,44 @@ const RegStu = ({ display, setDisplay }) => {
               formId={"lastName"}
               formValue={data.lastName}
               error={errLname}
+            />
+            <SearchSelect
+              formLabel={"Gender"}
+              placeholder={"Select Gender"}
+              dataChange={selectChange}
+              formId={"gender"}
+              optionsArray={genderArr}
+              searching={searching}
+              setSearching={setSearching}
+              optionClick={optionClick}
+              formValue={genderItem?.name || ""}
+              clickDrop={clickDropDown}
+              error={errGender}
+            />
+            <Input
+              inputLabel={"Age"}
+              inputPlaceholder={"Enter Age"}
+              formChange={handleDataChange}
+              formId={"age"}
+              formValue={data.age}
+              error={errAge}
+              phone={true}
+            />
+            <Input
+              inputLabel={"Guardian's Name"}
+              inputPlaceholder={"Enter Guardian's name"}
+              formChange={handleDataChange}
+              formId={"guardianName"}
+              formValue={data.guardianName}
+              error={errGuardianName}
+            />
+            <Input
+              inputLabel={"Guardian's Phone Number"}
+              inputPlaceholder={"Enter Guardian's Phone Number"}
+              formChange={handleDataChange}
+              formId={"guardianPhoneNumber"}
+              formValue={data.guardianPhoneNumber}
+              error={errGuardianPhoneNumber}
             />
           </div>
           <div className="sch-admin_btn">
