@@ -20,6 +20,12 @@
       transform: translateX(0); /* Move to the left (0% represents the starting point) */
     }
 }
+@media (max-width: 900px) {
+  .overlay {
+    width: 100%;
+    margin-left: 15%;
+  }
+}
   
   
   

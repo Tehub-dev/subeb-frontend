@@ -192,6 +192,6 @@
 }
 @media (max-width: 900px) {
   .spinner {
-    margin-left: 100px;
+    padding: 0 5px;
   }
 }
