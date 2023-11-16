@@ -107,3 +107,9 @@
     justify-content: center;
     padding: 20px 0 0;
 }
+@media (max-width: 900px) {
+    .pop-up {
+        width: 80%;
+        left: 10%;
+    }
+}

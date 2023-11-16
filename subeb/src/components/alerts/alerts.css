@@ -129,3 +129,13 @@
     top: 40%;
     left: 50%;
 }
+@media (max-width: 900px) {
+    .update-popup {
+        width: 80%;
+        margin-left: 7%;
+    }
+    .spinner-img {
+        top: 35%;
+        left: 27%;
+    }
+}

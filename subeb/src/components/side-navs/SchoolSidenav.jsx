@@ -11,11 +11,15 @@ import reg from "../../assets/images/reg.png";
 import regWhite from "../../assets/images/regWhite.png";
 import book from "../../assets/images/book.png";
 import bookWhite from "../../assets/images/bookWhite.png";
+import close from "../../assets/images/close.png";
+import { useContext } from "react";
+import AuthContext from "../../context/AuthProvider";
 
-import "./side-nav.css";
+import "./side-nav.css"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const SchoolSidenav = () => {
+  const {isOpen, setIsOpen} = useContext(AuthContext)
     
     const activeLink = {
       background: "#F26722"
@@ -76,17 +80,23 @@ const SchoolSidenav = () => {
     ];
   
     return (
-      <div className="sidenav">
-        <div className="sidenav_logo">
-          <img src={logo} alt="logo" />
+      < div className="sidenav">
+        <div className="sidenav_logo">  
+        <div style={{display: "flex"}}>
+        <img src={logo} alt="logo" />
           <h2>
             School Management <br /> System
           </h2>
+        </div>
+        <div>
+        <button onClick={()=> setIsOpen(false)}><img src={close} className="btn-close" alt="close"/></button>
+        </div>
         </div>
         <div className="sidenav-links">
           {navLinks.map((item, idx) => {
             return (
               <Link
+              onClick={()=> setIsOpen(false)}
                 to={item.link && "/" + item.link}
                 style={{ textDecoration: "none" }}
                 key={idx}

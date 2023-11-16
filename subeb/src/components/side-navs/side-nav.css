@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    justify-content: space-between;
 }
 .sidenav_logo h2{
     color: var(--color-grey-grey-700, #242424);
@@ -36,4 +37,13 @@
     font-weight: 500;
     line-height: 140%; /* 19.6px */
     letter-spacing: 0.1px;
+}
+.btn-close {
+    display: none;
+}
+@media (max-width: 900px) {
+    .btn-close {
+        display: block;
+        margin-right: 50px;
+    }
 }

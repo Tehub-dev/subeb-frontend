@@ -35,3 +35,23 @@
   display: flex;
   gap: 15px;
 }
+
+
+@media (max-width: 900px) {
+  .not-child {
+    width: 0%;
+    display: hidden;
+  }
+  .bar {
+    display: block;
+  }
+  .bar-child {
+    width: 100%;
+  }
+  .bar .not-child {
+    width: 100%;
+  }
+  .bar-child_head h2 {
+    font-size: 14px;
+  }
+}

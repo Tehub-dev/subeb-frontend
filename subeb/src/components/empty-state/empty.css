@@ -40,3 +40,9 @@
     font-weight: 700;
     line-height: 140%; /* 19.6px */
 }
+@media (max-width: 900px) {
+    .empty-cont {
+        width: 90%;
+        margin-top: 35%;
+    }
+}

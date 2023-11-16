@@ -59,3 +59,10 @@
     /* 16.8px */
     letter-spacing: 0.4px;
 }
+@media (max-width: 900px) {
+    .dashboard {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}

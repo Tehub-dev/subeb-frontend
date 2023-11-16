@@ -190,3 +190,8 @@
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+@media (max-width: 900px) {
+  .spinner {
+    padding: 0 5px;
+  }
+}

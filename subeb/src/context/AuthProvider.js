@@ -12,10 +12,11 @@ export const AuthProvider = ({ children }) => {
     const [selectClass, setSelectClass] = useState();
     const [isEdit, setIsEdit] = useState(false);
     const [openMenu, setOpenMenu] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
   return (
     <AuthContext.Provider
-      value={{displayOverlay, setDisplayOverlay, selectedFile, setSelectedFile,successMsg, setSuccessMsg,successDisplay, setSuccessDisplay,isEdit, setIsEdit, selectSubject, setSelectSubject,openMenu, setOpenMenu,selectClass, setSelectClass}}
+      value={{displayOverlay, setDisplayOverlay, selectedFile, setSelectedFile,successMsg, setSuccessMsg,successDisplay, setSuccessDisplay,isEdit, setIsEdit, selectSubject, setSelectSubject,openMenu, setOpenMenu,selectClass, setSelectClass,isOpen,setIsOpen}}
     >
       {children}
     </AuthContext.Provider>

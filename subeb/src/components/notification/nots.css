@@ -4,6 +4,7 @@
     border: 1px solid var(--color-surface-normal-active, #EBEEF2);
     background: var(--color-surface-white, #FFF);
     margin: 40px 0;
+
 }
 .not-head{
     border-bottom: 1px solid var(--color-surface-normal-active, #EBEEF2);
