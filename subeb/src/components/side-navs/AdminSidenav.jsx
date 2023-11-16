@@ -20,7 +20,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useOverlay from "../../hooks/useOverlay";
 
 const AdminSidenav = () => {
-  const {isOpen, setIsOpen} = useContext(AuthContext)
+  const {
+    // isOpen,
+    setIsOpen} = useContext(AuthContext)
     
   const activeLink = {
     background: "#F26722"

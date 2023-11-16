@@ -21,7 +21,9 @@ import useOverlay from "../../hooks/useOverlay";
 
 
 const TeacherSidenav = () => {
-  const {isOpen, setIsOpen} = useContext(AuthContext)
+  const {
+    // isOpen,
+     setIsOpen} = useContext(AuthContext)
 
     const activeLink = {
       background: "#F26722"
