@@ -43,5 +43,6 @@
 @media (max-width: 900px) {
     .empty-cont {
         width: 90%;
+        margin-top: 35%;
     }
 }

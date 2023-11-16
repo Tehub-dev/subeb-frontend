@@ -52,3 +52,8 @@
 .line-btw{
     border: 1px solid  #EBEBEB;
 }
+@media (max-width:900px) {
+    .personal-input{
+        width: 100%;
+    }
+}

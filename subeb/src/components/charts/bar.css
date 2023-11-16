@@ -51,4 +51,7 @@
   .bar .not-child {
     width: 100%;
   }
+  .bar-child_head h2 {
+    font-size: 14px;
+  }
 }

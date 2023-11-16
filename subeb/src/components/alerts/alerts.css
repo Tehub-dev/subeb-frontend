@@ -131,7 +131,8 @@
 }
 @media (max-width: 900px) {
     .update-popup {
-        width: 70%;
+        width: 80%;
+        margin-left: 7%;
     }
     .spinner-img {
         top: 35%;
