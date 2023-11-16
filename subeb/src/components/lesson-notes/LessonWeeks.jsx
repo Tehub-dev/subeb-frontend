@@ -94,7 +94,7 @@ const LessonWeeks = ({ teacher, student }) => {
     );
   };
 
-  const clickDownload = (item) => {
+  const clickView = (item) => {
     AxiosAuthGet(
       `lesson-notes/subjects/${subjectId}/weeks/download/?week=${item.name}`
     )
@@ -105,6 +105,26 @@ const LessonWeeks = ({ teacher, student }) => {
         const link = document.createElement("a");
         link.href = pdfUrl;
         link.download = "document.pdf"; // specify the filename
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+      .catch((err) => {
+        // console.log(err.response);
+      });
+  };
+  const clickDownload = (item) => {
+    AxiosAuthGet(
+      `lesson-notes/subjects/${subjectId}/weeks/download/?week=${item.name}`
+    )
+      .then((res) => {
+        // console.log(res);
+
+        const pdfUrl = res.data[0].file;;
+        const link = document.createElement("a");
+        link.href = pdfUrl;
+        link.download = "document.pdf"; 
+        link.target = "_blank";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -208,6 +228,11 @@ const LessonWeeks = ({ teacher, student }) => {
               )}
               {teacher && (
                 <div className="each-week_btn">
+                  <Button
+                    btnText={"View"}
+                    btnClass={"btn-small-white"}
+                    btnClick={() => clickView(item)}
+                  />
                   <Button
                     btnText={"Download"}
                     btnClass={"btn-small"}
