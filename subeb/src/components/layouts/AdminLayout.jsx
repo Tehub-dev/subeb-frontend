@@ -89,9 +89,9 @@ const AdminLayout = () => {
   
   
   return (
-    false ?
-    <div style={{position: "relative"}} className='admin-layout'>
-        <div style={{background: 'blue', position: 'absolute'}} className={`side-nav ${ isOpen ? '' : 'open'}`}>
+    isLoggedIn ?
+    <div className='admin-layout'>
+        <div className={`side-nav ${ isOpen ? '' : 'open'}`}>
             <AdminSidenav />
         </div>
         <Overlay display={displayOverlay} />

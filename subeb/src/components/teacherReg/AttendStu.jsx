@@ -13,6 +13,8 @@ import { saveAs } from 'file-saver';
 import atob from 'atob';
 
 const AttendStu = () => {
+  
+  const atk = JSON.parse(localStorage.getItem("atk"));
   const [isLoading, setIsLoading] = useState(false);
   const [isDLoading, setIsDLoading] = useState(false);
   const [isDownload, setIsDownload] = useState(false);
@@ -24,7 +26,7 @@ const AttendStu = () => {
   const [errMessage, setErrMessage] = useState("");
   const [errDisplay, setErrDisplay] = useState(false);
   const [teacherSingle, setTeacherSingle] = useState();
-  const [plWeek, setPlWeek] = useState("Week 1");
+  const [plWeek, setPlWeek] = useState(atk?.data?.currentWeek);
   const weekArr = weeks;
   const url = `students/attendance/?week=${plWeek}&download=${isDownload}`;
   const postUrl = `students/attendance/?week=${plWeek}`;

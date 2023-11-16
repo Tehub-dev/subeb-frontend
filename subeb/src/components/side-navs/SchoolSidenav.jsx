@@ -19,7 +19,9 @@ import "./side-nav.css"
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const SchoolSidenav = () => {
-  const {isOpen, setIsOpen} = useContext(AuthContext)
+  const {
+    // isOpen,
+     setIsOpen} = useContext(AuthContext)
     
     const activeLink = {
       background: "#F26722"

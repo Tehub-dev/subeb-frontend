@@ -33,15 +33,15 @@ const AdminOverview = () => {
     setIsLoading(true);
     AxiosAuthGet(url)
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       setDesktopData(res.data);
       setStudentData(res.data.studentAttendance);
       // setBarData(studentData.map((data) => data.dayCount));
-      // setIsLoading(false);
+      setIsLoading(false);
     })
     .catch((err) => {
-      // setIsLoading(false);
-      console.log(err.response);
+      setIsLoading(false);
+      // console.log(err.response);
     });
     // eslint-disable-next-line
   }, [plTerm, plWeek]);
