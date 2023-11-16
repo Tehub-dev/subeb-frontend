@@ -109,7 +109,7 @@
 }
 @media (max-width: 900px) {
     .pop-up {
-        width: 60%;
-        left: 30%;
+        width: 80%;
+        left: 10%;
     }
 }
