@@ -12,17 +12,19 @@ const LessonWeeks = ({ teacher, student }) => {
   const selectSubject = JSON.parse(localStorage.getItem("selectSub"));
   const selectClass = JSON.parse(localStorage.getItem("selectClass"));
   const [subjects, setSubjects] = useState();
+
   const [classes, setClasses] = useState();
   const [weeks, setWeeks] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [placeholder, setPlaceholder] = useState(selectSubject?.name);
   const [plClass, setPlClass] = useState(selectClass?.name);
-  const subId = localStorage.getItem("subClassId");
+  const [subId, setSubId]= useState(localStorage.getItem("subClassId"));
   const subjectId = localStorage.getItem("subId");
-  const classId = localStorage.getItem("classId");
+  const [classId, setClassId ]= useState(localStorage.getItem("classId"));
   const weeksUrl = `lesson-notes/subjects/${subId}/classes/${classId}/weeks/`;
   const stuUrl = `lesson-notes/subjects/${subjectId}/weeks/`;
   const [lessonModal, setLessonModal] = useState(false);
+  
 
   const getSubjects = () => {
     AxiosAuthGet(url)
@@ -74,6 +76,18 @@ const LessonWeeks = ({ teacher, student }) => {
 
   const clickDd = (item) => {
     localStorage.setItem("subId", item.id);
+    setSubId(item.id);
+    AxiosAuthGet(`lesson-notes/subjects/${item.id}/classes/`).then((res) => {
+      // console.log(res);
+      setClasses(
+        res.data.map((item) => ({
+          id: item.classId,
+          name: item.className,
+        }))
+      );
+      setPlClass(res.data[0].className);
+      setClassId(res.data[0].classId);
+    });
     localStorage.setItem(
       "selectSub",
       JSON.stringify({
@@ -85,6 +99,7 @@ const LessonWeeks = ({ teacher, student }) => {
 
   const clickDdClass = (item) => {
     localStorage.setItem("classId", item.id);
+    setClassId(item.id);
     localStorage.setItem(
       "selectClass",
       JSON.stringify({
