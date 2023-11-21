@@ -45,14 +45,11 @@ const SchAdmin = ({ adminData, azPl, opsArr, optionClick, setPlaceholder }) => {
     setAdminEdit(false);
   };
   const deleteId = localStorage.getItem("adminId");
-  const deleteUrl = `school-admin/${deleteId}/status/`;
-  const deleteObj = {
-    accountStatus: "Inactive",
-  };
+  const deleteUrl = `school-admin/${deleteId}`;
 
   const removeAdmin = () => {
     setIsLoading(true);
-    AxiosDelete(deleteUrl, deleteObj)
+    AxiosDelete(deleteUrl)
       .then((res) => {
         // console.log(res);
         setIsLoading(false);
@@ -61,7 +58,7 @@ const SchAdmin = ({ adminData, azPl, opsArr, optionClick, setPlaceholder }) => {
         setSuccessDisplay(true);
       })
       .catch((err) => {
-        // console.log(err.response);
+        console.log(err.response);
         setIsLoading(false);
       });
   };

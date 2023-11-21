@@ -13,6 +13,7 @@ import {
 import useSuccessMsg from "../../../../hooks/useSuccessMsg";
 import useSuccessDisplay from "../../../../hooks/useSuccessDisplay";
 import SchAdmin from "../../../../components/schAdmin/SchAdmin";
+import { az } from "../../../../components/charts/Data";
 const SchoolAdmins = () => {
   const url = "school-admin/";
   const { successDisplay, setSuccessDisplay } = useSuccessDisplay();
@@ -22,16 +23,7 @@ const SchoolAdmins = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [adminData, setAdminData] = useState();
   const [plAz, setPlAz] = useState("A-Z");
-  const azArray = [
-    {
-      id: "a-z",
-      name: "A-Z"
-    },
-    {
-      id: "z-a",
-      name: "Z-A"
-    }
-  ];
+  const azArray = az;
 
   const clickAz = (item) => {
     if(item.id === "a-z"){
