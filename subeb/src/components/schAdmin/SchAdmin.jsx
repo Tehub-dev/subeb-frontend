@@ -48,7 +48,6 @@ const SchAdmin = ({ adminData, azPl, opsArr, optionClick, setPlaceholder }) => {
   const deleteUrl = `school-admin/${deleteId}`;
 
   const removeAdmin = () => {
-    // console.log(deleteUrl);
     setIsLoading(true);
     AxiosDelete(deleteUrl)
       .then((res) => {
