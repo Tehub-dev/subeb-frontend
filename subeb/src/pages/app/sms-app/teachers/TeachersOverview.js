@@ -4,29 +4,17 @@ import Barchart from "../../../../components/charts/Barchart";
 import Chart from "../../../../components/charts/Chart";
 import { AxiosAuthGet } from "../../../../axios/axios";
 import { LoadingSpin } from "../../../../components/alerts/Alerts";
-import { weeks } from "../../../../components/charts/Data";
+import { terms, weeks } from "../../../../components/charts/Data";
 
 const TeachersOverview = () => {
+  const schData = JSON.parse(localStorage.getItem("atk"));
   const [desktopData, setDesktopData] = useState();
   const [studentData, setStudentData] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [plTerm, setPlTerm] = useState("First Term");
-  const [plWeek, setPlWeek] = useState("Week 1");
+  const [plTerm, setPlTerm] = useState(schData.data.currentTerm);
+  const [plWeek, setPlWeek] = useState(schData.data.currentWeek);
   const weekArr = weeks;
-  const termArr = [
-    {
-      id: "First Term",
-      name: "First Term",
-    },
-    {
-      id: "Second Term",
-      name: "Second Term",
-    },
-    {
-      id: "Third Term",
-      name: "Third Term",
-    },
-  ];
+  const termArr = terms;
   const url = `dashboard/?week=${plWeek}&term=${plTerm}`;
 
   useEffect(() => {

@@ -26,7 +26,7 @@ const AcademicCal = () => {
     setIsLoading(true);
     AxiosAuthGet(url)
       .then((res) => {
-        // console.log(res);
+        // console.log(res.data);
         setAcadData(
           res?.data.map((item) => {
             return { holiday: item.name, date: item.value };

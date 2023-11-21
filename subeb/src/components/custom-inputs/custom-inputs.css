@@ -77,6 +77,7 @@
 .select-cont {
   display: inline-block;
   /* border: 1px solid red; */
+  position: relative;
 }
 .select-input {
   border: 1px solid var(--color-grey-grey-50, #ebebeb);
@@ -103,11 +104,13 @@
   text-transform: capitalize;
 }
 .select-options {
+  /* border: 1px solid red; */
+  position: absolute;
   display: flex;
   flex-direction: column;
   gap: 15px;
   padding: 10px 15px;
-  height: 200px;
+  max-height: 200px;
   overflow-y: auto;
   background: white;
 }

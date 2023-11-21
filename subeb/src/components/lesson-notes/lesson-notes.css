@@ -1,5 +1,6 @@
 
 .lesson-sub_head{
+    /* border: 1px solid red; */
     display: flex;
     gap: 20px;
     align-items: center;

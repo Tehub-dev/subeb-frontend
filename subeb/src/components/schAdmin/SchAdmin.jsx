@@ -13,7 +13,7 @@ import { AxiosDelete } from "../../axios/axios";
 import useSuccessDisplay from "../../hooks/useSuccessDisplay";
 import useSuccessMsg from "../../hooks/useSuccessMsg";
 
-const SchAdmin = ({ adminData }) => {
+const SchAdmin = ({ adminData, azPl, opsArr, optionClick, setPlaceholder }) => {
   const { setDisplayOverlay } = useOverlay();
   const [adminModal, setAdminModal] = useState(false);
   const [adminDelete, setAdminDelete] = useState(false);
@@ -132,7 +132,12 @@ const SchAdmin = ({ adminData }) => {
       <div className="sch-admin_head">
         <div className="head-left">
           <p>Sort by : </p>
-          <SelectInput placeholder={"A-Z"} />
+          <SelectInput
+            placeholder={azPl}
+            setPlaceholder={setPlaceholder}
+            opsArr={opsArr}
+            optionClick={optionClick}
+          />
         </div>
         <div className="head-right">
           <Button

@@ -13,6 +13,7 @@ import { saveAs } from 'file-saver';
 import atob from 'atob';
 
 const TeacherAttend = () => {
+  const schData = JSON.parse(localStorage.getItem("atk"));
   const [isLoading, setIsLoading] = useState(false);
   const [isDownload, setIsDownload] = useState(false);
   const [isDLoading, setIsDLoading] = useState(false);
@@ -23,8 +24,8 @@ const TeacherAttend = () => {
   const [teacherSingle, setTeacherSingle] = useState();
   const [errMessage, setErrMessage] = useState("");
   const [errDisplay, setErrDisplay] = useState(false);
-  const [plDays, setPlDays] = useState("Monday");
-  const [plWeek, setPlWeek] = useState("Week 1");
+  const [plDays, setPlDays] = useState(schData.data.currentDay);
+  const [plWeek, setPlWeek] = useState(schData.data.currentWeek);
   const weekArr = weeks;
   const daysArr = days;
   const url = `teachers/attendance/?week=${plWeek}&day=${plDays}&download=${isDownload}`;
@@ -38,8 +39,8 @@ const TeacherAttend = () => {
       .then((res) => {
         // console.log(res);
         setTeachData(res.data.attendanceData);
-        setPlDays(res.data.day);
-        setPlWeek(res.data.week);
+        // setPlDays(res.data.day);
+        // setPlWeek(res.data.week);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -81,7 +82,7 @@ const TeacherAttend = () => {
 
   const dataObj = {
     week: plWeek,
-    day: "Wednesday",
+    day: plDays,
     checkIn:
       teacherSingle?.attendance?.checkIn && !checkInValues.includes(teacherId)
         ? teacherSingle?.attendance?.checkIn
