@@ -119,7 +119,8 @@ const LessonWeeks = ({ teacher, student }) => {
         const pdfUrl = res.data[0].file;;
         const link = document.createElement("a");
         link.href = pdfUrl;
-        link.download = "document.pdf"; // specify the filename
+        link.download = "document.pdf";
+        link.target = "_blank"; 
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -139,7 +140,6 @@ const LessonWeeks = ({ teacher, student }) => {
         const link = document.createElement("a");
         link.href = pdfUrl;
         link.download = "document.pdf"; 
-        link.target = "_blank";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);

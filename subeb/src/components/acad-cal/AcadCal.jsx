@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, SelectInput } from '../custom-inputs/CustomInputs';
+import { Button, 
+  // SelectInput 
+} from '../custom-inputs/CustomInputs';
 import { Edit } from 'iconsax-react';
 
 import "./adcal.css";
@@ -7,6 +9,7 @@ import "../schAdmin/sch-admin.css";
 import Table from '../table/Table';
 
 const AcadCal = ({acadData, clickAdd, teacher}) => {
+
 
     const columns = [
         {
@@ -26,7 +29,7 @@ const AcadCal = ({acadData, clickAdd, teacher}) => {
     <div className='acad-cal'>
     <div className="sch-admin_head">
       <div className="head-left">
-        <SelectInput placeholder={"First Term"} />
+        {/* <SelectInput placeholder={term} /> */}
       </div>
       {!teacher && <div className="head-right">
         <Button

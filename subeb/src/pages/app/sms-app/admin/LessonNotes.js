@@ -13,6 +13,7 @@ import {
 import useSuccessDisplay from "../../../../hooks/useSuccessDisplay";
 import useSuccessMsg from "../../../../hooks/useSuccessMsg";
 import { useNavigate } from "react-router-dom";
+import { az } from "../../../../components/charts/Data";
 
 const LessonNotes = () => {
   const { successDisplay, setSuccessDisplay } = useSuccessDisplay();
@@ -23,6 +24,8 @@ const LessonNotes = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [lessonNotes, setLessonNotes] = useState();
   const navigate = useNavigate();
+  const [plAz, setPlAz] = useState("A-Z");
+  const azArray = az;
 
   const clickUpload = () => {
     setDisplayOverlay(true);
@@ -36,6 +39,16 @@ const LessonNotes = () => {
     localStorage.setItem("subId", item.id);
     navigate("/lesson-notes-class");
   };
+
+  const clickAz = (item) => {
+    if(item.id === "a-z"){
+      lessonNotes.sort((a, b) => a.subject.localeCompare(b.subject));
+    }
+    if(item.id === "z-a"){
+      lessonNotes.sort((a, b) => b.subject.localeCompare(a.subject));
+    }
+  }
+
   useEffect(() => {
     setIsLoading(true);
     AxiosAuthGet(url)
@@ -44,7 +57,7 @@ const LessonNotes = () => {
         setLessonNotes(res.data.map(item => ({
           id: item.subjectId,
           subject: item.subjectName,
-        })));
+        })).sort((a, b) => a.subject.localeCompare(b.subject)));
         setIsLoading(false);
       })
       .catch((err) => {
@@ -78,6 +91,10 @@ const LessonNotes = () => {
         lessonSubjects={lessonNotes}
         clickBtn={clickUpload}
         clickSubject={clickSubject}
+        setPlaceholder={setPlAz}
+        azPl={plAz}
+        opsArr={azArray}
+        optionClick={clickAz}
       />}
     </div>
   );
