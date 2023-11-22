@@ -21,7 +21,8 @@ export const Input = ({
   phone, 
   cal,
   dateText,
-  formClick
+  formClick,
+  autoComplete
 }) => {
   const inputChange = (e) => {
     if (formChange) {
@@ -42,6 +43,7 @@ export const Input = ({
           onClick={formClick}
           id={formId}
           value={formValue}
+          autoComplete={autoComplete}
           type={password ? "password" : phone ? 'number' : cal ? "date" : "text"}
           placeholder={inputPlaceholder}
         />

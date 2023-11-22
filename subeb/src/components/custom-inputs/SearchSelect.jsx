@@ -39,6 +39,7 @@ const SearchSelect = ({
         formChange={dataChange}
         formValue={formValue}
         formId={formId}
+        autoComplete={"off"}
         formClick={clickDropMenu}
         icon={<ArrowDown2 onClick={clickDropMenu} style={{cursor: "pointer"}} />}
       />
