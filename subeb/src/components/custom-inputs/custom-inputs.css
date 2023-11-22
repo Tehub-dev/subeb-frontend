@@ -32,6 +32,16 @@
 .custom-input_input input {
   width: 100%;
 }
+.custom-input_input p{
+  width: 100%;
+  color: var(--color-grey-grey-200, #A1A1A1);
+  font-family: Helvetica;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 22.4px */
+  letter-spacing: 0.5px;
+}
 
 .go-back {
   border: 1px solid var(--color-grey-grey-200, #a1a1a1);

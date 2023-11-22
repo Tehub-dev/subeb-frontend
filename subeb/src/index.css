@@ -147,6 +147,43 @@ button, input, select{
   text-transform: capitalize;
 }
 
+::-webkit-datetime-edit {
+  /* padding: 1em; */
+}
+::-webkit-datetime-edit-fields-wrapper {
+  background: red;
+}
+::-webkit-datetime-edit-text {
+  color: red;
+  /* padding: 0 0.3em; */
+  display: none;
+}
+::-webkit-datetime-edit-month-field {
+  color: blue;
+  display: none;
+}
+::-webkit-datetime-edit-day-field {
+  color: green;
+  display: none;
+}
+::-webkit-datetime-edit-year-field {
+  color: purple;
+  display: none;
+}
+::-webkit-inner-spin-button {
+  display: none;
+}
+::-webkit-calendar-picker-indicator {
+  /* background: transparent;
+  background: white; */
+  /* opacity: 0.1; */
+  /* width: 80%;
+  height: 40px;
+  position: absolute;
+  left: 0;
+  z-index: 3; */
+}
+
 @media (max-width: 900px) {
   .btn{
     font-size: 14px;

@@ -211,7 +211,7 @@ const AddSchAdmin = ({ display, setDisplay }) => {
             setSearching={setSchSearch}
             dataChange={selectChange}
             optionClick={schOptClick}
-            formValue={schItem?.name || ""}
+            formValue={schItem?.name}
             clickDrop={schDd}
             error={errSch}
           />
