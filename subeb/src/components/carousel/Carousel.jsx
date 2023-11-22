@@ -67,7 +67,7 @@ function Carousel() {
       <button className='arrow left' onClick={prevSlide}><img src={iconleft} alt="" /></button>
       {slides.map((item, idx) => {
         return (
-          <div key={idx}>
+          <div className='slide-imgdiv' key={idx}>
             {<img src={item.img} alt={item.alt} className={slide === idx ? "slide" : "slide slide-hidden"}/>}
           </div>
         )
