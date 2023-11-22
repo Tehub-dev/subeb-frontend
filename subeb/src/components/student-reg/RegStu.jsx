@@ -39,7 +39,7 @@ const RegStu = ({ display, setDisplay }) => {
     },
   ]
   const [
-    // genderArray,
+    genderArray,
      setGenderArray] = useState([]);
   const [data, setData] = useState({
     firstName: "",
@@ -201,11 +201,11 @@ const clickDropDown = () => {
               placeholder={"Select Gender"}
               dataChange={selectChange}
               formId={"gender"}
-              optionsArray={genderArr}
+              optionsArray={genderArray}
               searching={searching}
               setSearching={setSearching}
               optionClick={optionClick}
-              formValue={genderItem?.name || ""}
+              formValue={genderItem?.name }
               clickDrop={clickDropDown}
               error={errGender}
             />

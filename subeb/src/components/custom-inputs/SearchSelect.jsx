@@ -39,6 +39,7 @@ const SearchSelect = ({
         formChange={dataChange}
         formValue={formValue}
         formId={formId}
+        formClick={clickDropMenu}
         icon={<ArrowDown2 onClick={clickDropMenu} style={{cursor: "pointer"}} />}
       />
       <div className={searching ? "dropdown-plate" : undefined}>

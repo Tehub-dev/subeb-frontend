@@ -4,6 +4,9 @@
     justify-content: space-between;
     align-items: center;
 }
+.search button{
+    display: none;
+}
 .search-input{
     width: 45%;
 }

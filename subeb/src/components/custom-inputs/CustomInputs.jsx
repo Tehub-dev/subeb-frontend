@@ -19,7 +19,9 @@ export const Input = ({
   iconLeft,
   error,
   phone, 
-  cal
+  cal,
+  dateText,
+  formClick
 }) => {
   const inputChange = (e) => {
     if (formChange) {
@@ -33,8 +35,11 @@ export const Input = ({
       <div className="custom-input_input">
         {iconLeft}
         <img src={imgleft} alt={imgLeftAlt} />
+        {cal && !formValue && <p>{dateText}</p>}
+        {cal && formValue && <p>{formValue}</p>}
         <input
           onChange={(e) => inputChange(e)}
+          onClick={formClick}
           id={formId}
           value={formValue}
           type={password ? "password" : phone ? 'number' : cal ? "date" : "text"}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Popup from "./Popup";
 
 import "./popup.css";
@@ -11,7 +11,7 @@ import useSuccessMsg from "../../hooks/useSuccessMsg";
 import useOverlay from "../../hooks/useOverlay";
 
 const AddAcadCal = ({ display, setDisplay }) => {
-    const url = "academic-calendar/";
+  const url = "academic-calendar/";
   const term = [
     {
       id: "First Term",
@@ -42,9 +42,22 @@ const AddAcadCal = ({ display, setDisplay }) => {
   });
   const [termSearch, setTermSearch] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const {setSuccessDisplay} = useSuccessDisplay();
-  const {setSuccessMsg} = useSuccessMsg();
-  const { setDisplayOverlay} = useOverlay();
+  const { setSuccessDisplay } = useSuccessDisplay();
+  const { setSuccessMsg } = useSuccessMsg();
+  const { setDisplayOverlay } = useOverlay();
+
+  useEffect(() => {
+    if (!display) {
+      setData({
+        resumptionDate: "",
+        vacationDate: "",
+        midTermStart: "",
+        midTermEnd: "",
+      });  
+    setTermArr([]);
+    setTermItem();
+    }
+  }, [display]);
 
   const handleDataChange = (e) => {
     if (e.target.id === "resumptionDate") {
@@ -94,19 +107,21 @@ const AddAcadCal = ({ display, setDisplay }) => {
     term: termId,
     resumptionDate: data?.resumptionDate,
     vacationDate: data?.vacationDate,
-    midTermDates: [data?.midTermStart, data?.midTermEnd]
-  }
+    midTermDates: [data?.midTermStart, data?.midTermEnd],
+  };
 
   const addCal = () => {
     setIsLoading(true);
-    AxiosAuthPost(url, dataObj).then((res) => {
+    AxiosAuthPost(url, dataObj)
+      .then((res) => {
         // console.log(res);
         setDisplay(false);
         setSuccessDisplay(true);
         setDisplayOverlay(false);
         setSuccessMsg(res.message);
         setIsLoading(false);
-    }).catch((err) => {
+      })
+      .catch((err) => {
         // console.log(err.response);
         for (let i = 0; i < err?.response?.data?.errors?.length; i++) {
           if (err?.response?.data?.errors[i]?.fieldName === "resumptionDate") {
@@ -124,8 +139,8 @@ const AddAcadCal = ({ display, setDisplay }) => {
           }
         }
         setIsLoading(false);
-    })
-  }
+      });
+  };
 
   return (
     <Popup display={display} setDisplay={setDisplay}>
@@ -140,43 +155,43 @@ const AddAcadCal = ({ display, setDisplay }) => {
             setSearching={setTermSearch}
             dataChange={selectChange}
             optionClick={termOptClick}
-            formValue={termItem?.name || ""}
+            formValue={termItem?.name}
             clickDrop={termDd}
             error={errTerm}
           />
           <Input
             inputLabel={"Resumption Date"}
-            inputPlaceholder={"Choose Resumption Date"}
+            dateText={"Choose Resumption Date"}
             formChange={handleDataChange}
             formId={"resumptionDate"}
             formValue={data?.resumptionDate}
             error={errResume}
             cal={true}
           />
-          <div className="mid-term">
-            <Input
-              inputLabel={"Mid-Term Start Date"}
-              inputPlaceholder={"Choose Mid-Term Start Date"}
-              formChange={handleDataChange}
-              formId={"midTermStart"}
-              formValue={data?.midTermStart}
-              error={errMidStart}
-              cal={true}
-            />{" "}
-            <span>-</span>
-            <Input
-              inputLabel={"Mid-Term End Date"}
-              inputPlaceholder={"Choose Mid-Term End Date"}
-              formChange={handleDataChange}
-              formId={"midTermEnd"}
-              formValue={data?.midTermEnd}
-              error={errMidEnd}
-              cal={true}
-            />
-          </div>
+          {/* <div className="mid-term"> */}
+          <Input
+            inputLabel={"Mid-Term Start Date"}
+            dateText={"Choose Mid-Term Start Date"}
+            formChange={handleDataChange}
+            formId={"midTermStart"}
+            formValue={data?.midTermStart}
+            error={errMidStart}
+            cal={true}
+          />{" "}
+          {/* <span>-</span> */}
+          <Input
+            inputLabel={"Mid-Term End Date"}
+            dateText={"Choose Mid-Term End Date"}
+            formChange={handleDataChange}
+            formId={"midTermEnd"}
+            formValue={data?.midTermEnd}
+            error={errMidEnd}
+            cal={true}
+          />
+          {/* </div> */}
           <Input
             inputLabel={"Vacation Date"}
-            inputPlaceholder={"Choose Vacation Date"}
+            dateText={"Choose Vacation Date"}
             formChange={handleDataChange}
             formId={"vacationDate"}
             formValue={data?.vacationDate}
