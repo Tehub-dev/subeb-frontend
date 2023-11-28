@@ -41,6 +41,10 @@ import TeachNots from "./pages/app/sms-app/teachers/TeachNots";
 import TeachProfile from "./pages/app/sms-app/teachers/TeachProfile";
 import LessonClasses from "./components/lesson-notes/LessonClasses";
 import LessonWeeks from "./components/lesson-notes/LessonWeeks";
+import CensusLand from "./pages/app/census/CensusLand";
+import CensusInst from "./components/census/CensusInst";
+import SchoolCode from "./pages/app/census/SchoolCode";
+import SchoolIdent from "./components/school-identification/SchoolIdent";
 
 
 function App() {
@@ -98,6 +102,12 @@ function App() {
           <Route path="/teach-profile" element={<TeachProfile />} />
           <Route path="/teach-nots" element={<TeachNots />} />
         </Route>
+
+        <Route path="/census-landing" element={<CensusLand />} />
+        <Route path="/census-instructions" element={<CensusInst />} />
+        <Route path="/school-code" element={<SchoolCode />} />
+        <Route path="/school-identification" element={<SchoolIdent />} />
+
 
 
         <Route path="*" element={<NoPage />} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo-white.png";
 
 import "./logo-div.css";
 
@@ -7,7 +7,7 @@ const LogoDiv = () => {
 
     const mobileWindow = window.innerWidth;
 
-    const logoImg = mobileWindow > 900 ? [logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo] : [logo, logo, logo, logo, logo];
+    const logoImg = mobileWindow > 900 ? [logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo, logo] : [logo, logo, logo, logo];
 
 
 

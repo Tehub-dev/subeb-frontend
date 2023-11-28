@@ -147,9 +147,9 @@ button, input, select{
   text-transform: capitalize;
 }
 
-::-webkit-datetime-edit {
-  /* padding: 1em; */
-}
+/* ::-webkit-datetime-edit {
+  padding: 1em;
+} */
 ::-webkit-datetime-edit-fields-wrapper {
   background: red;
 }
@@ -177,9 +177,10 @@ button, input, select{
   /* background: transparent;
   background: white; */
   /* opacity: 0.1; */
-  /* width: 80%;
-  height: 40px;
-  position: absolute;
+  color: var(--color-grey-grey-200, #A1A1A1);
+  width: 20px;
+  height: 20px;
+  /* position: absolute;
   left: 0;
   z-index: 3; */
 }

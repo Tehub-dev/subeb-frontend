@@ -40,6 +40,7 @@ export const Input = ({
         {cal && formValue && <p>{formValue}</p>}
         <input
           onChange={(e) => inputChange(e)}
+          style={{cursor: autoComplete && "pointer"}}
           onClick={formClick}
           id={formId}
           value={formValue}
@@ -149,7 +150,7 @@ export const SelectInput = ({
   );
 };
 
-export const CheckBox = ({ checkboxChange, id, checkValue, checked }) => {
+export const CheckBox = ({ checkboxChange, id, checkValue, checked, checks}) => {
   const handleCheckboxChange = (e) => {
     if (checkboxChange) {
       checkboxChange(e);
@@ -157,7 +158,7 @@ export const CheckBox = ({ checkboxChange, id, checkValue, checked }) => {
   };
   return (
     <div>
-      <label className="container">
+      <label className={"container"}>
         <input
           type="checkbox"
           id={id}
@@ -165,7 +166,7 @@ export const CheckBox = ({ checkboxChange, id, checkValue, checked }) => {
           checked={checked}
           onChange={handleCheckboxChange}
         />
-        <span className="checkmark"></span>
+        <span className={checks ? `checkmark check` : "checkmark"}></span>
       </label>
     </div>
   );

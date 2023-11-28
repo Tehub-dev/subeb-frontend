@@ -28,6 +28,9 @@
     display: none;
 }
 @media (max-width: 900px) {
+    .search button{
+        display: block;
+    }
     .btn-open {
         display: block;
         position: relative;
