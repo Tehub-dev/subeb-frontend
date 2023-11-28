@@ -54,6 +54,7 @@ const Navbar = ({ bgColor, listColor, homeMobile, mobileBg, logoWhite }) => {
     {
       id: "census",
       name: "Census Management",
+      link: "census-landing"
     },
     {
       id: "library",

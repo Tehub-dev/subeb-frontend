@@ -1,0 +1,97 @@
+
+.census-lp{
+    /* border: 1px solid red; */
+    padding-top: 40px;
+}
+.census-lp h1{
+    color: var(--color-grey-grey-700, #242424);
+    font-family: Work Sans;
+    font-size: 31px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 43.4px */
+    letter-spacing: 0.25px;
+    padding-top: 20px;
+}
+.census-lp h2{
+    color: var(--color-grey-grey-400, #5C5C5C);
+    font-family: Work Sans;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 36.4px */
+    letter-spacing: 0.5px;
+    padding: 10px 0 40px;
+}
+
+.census-inst{
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.census-inst h2{
+    color: var(--color-grey-grey-700, #242424);
+    font-family: Work Sans;
+    font-size: 31px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 43.4px */
+    letter-spacing: 0.25px;
+}
+.census-inst p{
+    color: var(--color-grey-grey-400, #5C5C5C);
+    font-family: Helvetica;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    letter-spacing: 0.5px;
+}
+.census-btn{
+    padding-top: 40px;
+}
+.enum-table table{
+    border-collapse: collapse;
+    width: 100%;
+}
+.enum-table table tbody tr{
+    width: 100% ;
+    /* border: 2px solid red; */
+}
+.enum-table table tbody tr td{
+    border: 1px solid var(--color-grey-grey-50, #EBEBEB);
+    padding: 12px 24px;
+    height: 72px;
+    width: 8%;
+}
+.enum-first_td{
+    width: 20% !important;
+    color: var(--color-grey-grey-700, #242424);
+    font-family: Work Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: 0.1px;
+}
+.enum-table table tbody tr td input{
+    width: 100%;
+    font-size: 30px;
+    /* border: 1px solid red; */
+    text-align: center;
+}
+.sub-td{
+    color: var(--color-grey-grey-300, #767676);
+    font-family: Work Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: 0.1px;
+    width: 20% !important;
+}
+.enum-btn{
+    padding-top: 30px;
+}
+

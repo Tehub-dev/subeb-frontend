@@ -1,0 +1,79 @@
+/* enrollment  */
+.no-of_children-table p{
+    color: var(--color-grey-grey-400, #5C5C5C);
+    font-family: Helvetica;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 22.4px */
+    letter-spacing: 0.5px;
+    padding: 40px 0 10px;
+}
+.no-of_children-table table{
+    border: 1px solid var(--color-grey-grey-50, #EBEBEB);
+    width: 100%;
+    border-collapse: collapse;
+    overflow: auto;
+}
+.no-of_children-table table thead th tr td{
+    border: 1px solid var(--color-grey-grey-50, #EBEBEB);
+    color: var(--color-grey-grey-400, #5C5C5C);
+    text-align: center;
+    font-family: Work Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: 0.1px;
+    padding: 5px;
+}
+.first-table_head{
+    width: 20%;
+    color: var(--color-grey-grey-700, #242424) !important;
+    font-family: Work Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 140%; /* 19.6px */
+    letter-spacing: 0.1px;
+    text-align: left !important;
+    padding: 12px 26px !important;
+}
+.second-table_head{
+    width: 70%;
+}
+.third-table_head{
+    width: 10%;
+}
+.small-data_head{
+    padding: 6px;
+    width: 14%;
+}
+.npc-input{
+    width: 5% !important;
+}
+.npc-input input{
+  width: 70% !important;
+  text-align: center;
+  color: var(--color-grey-grey-400, #5C5C5C);
+  text-align: center;
+  font-family: Work Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 140%; /* 19.6px */
+  letter-spacing: 0.1px;
+}
+/* .first-table_head-border{
+    border: none !important;
+}
+.remove-border{
+    border-bottom: none !important;
+} */
+
+.empty-table_head{
+    width: 5% !important;
+}
+.small-table_head{
+    width: 15% !important;
+}

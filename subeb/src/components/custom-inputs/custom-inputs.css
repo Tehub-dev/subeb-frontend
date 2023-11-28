@@ -172,6 +172,9 @@
   width: 25px;
   border: 1px solid #616161;
 }
+.check{
+  bottom: -19px;
+}
 
 /* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
