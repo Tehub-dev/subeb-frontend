@@ -8,7 +8,6 @@ const PrePrimary = () => {
       <p>Pre-primary enrolment by age for the current school year.</p>
       <table>
         <thead>
-          <th>
             <tr>
               <td className="first-table_head">Pupil age</td>
               <td colSpan={2} className="small-data_head">
@@ -264,7 +263,7 @@ const PrePrimary = () => {
                 <input type="text" />
               </td>
             </tr>
-          </th>
+
         </thead>
       </table>
     </div>

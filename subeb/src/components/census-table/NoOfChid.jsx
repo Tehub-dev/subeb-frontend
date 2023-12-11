@@ -11,7 +11,6 @@ const NoOfChid = () => {
     </p>
       <table>
         <thead>
-          <th>
             <tr>
               <td className="first-table_head remove-border" rowSpan={3}>
                 How many children were enrolled with Birth certificates
@@ -136,7 +135,7 @@ const NoOfChid = () => {
                 <input type="text" />
               </td>
             </tr>
-          </th>
+
         </thead>
       </table>
     </div>

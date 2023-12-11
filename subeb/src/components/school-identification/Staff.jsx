@@ -101,7 +101,6 @@ const Staff = () => {
       <div className="staff-table no-of_children-table">
         <table>
           <thead>
-            <th>
               <tr>
                 <td className=""></td>
                 <td className="">Male</td>
@@ -151,7 +150,7 @@ const Staff = () => {
                   <input type="text" />
                 </td>
               </tr>
-            </th>
+
           </thead>
         </table>
       </div>

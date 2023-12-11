@@ -1,90 +1,39 @@
-import React from 'react';
+import React from "react";
 
-import "./census-table.css";
+import "./sch-ident.css";
+import { Button } from "../custom-inputs/CustomInputs";
+import { ArrowRight } from "iconsax-react";
 
-const Orphans = () => {
+const PupilBook = () => {
   return (
-    <div className="primary no-of_children-table">
-      <p>Number of orphans By Grade</p>
-
-      <table>
-        <thead>
+    <div className="identification">
+      <h2>PUPIL/TEACHER BOOK</h2>
+      <div className="no-of_children-table">
+        <p>
+          Number of core subject textbooks available to pupils provided by
+          government.
+        </p>
+        <table>
+          <thead>
             <tr>
-              <td className="first-table_head small-table_head" rowSpan={2}>Type</td>
-              <td colSpan={2} className="small-data_head">
-              ECCD (KG1-KG2)
+              <td rowSpan={2} style={{ color: "#242424" }}>
+                Subject Area
               </td>
-              <td colSpan={2} className="small-data_head">
-              NURS (NR1-NR2)
-              </td>
-              <td colSpan={2} className="small-data_head">
-                PRY1
-              </td>
-              <td colSpan={2} className="small-data_head">
-                PRY2
-              </td>
-              <td colSpan={2} className="small-data_head">
-                PRY3
-              </td>
-              <td colSpan={2} className="small-data_head">
-                PRY4
-              </td>
-              <td colSpan={2} className="small-data_head">
-                PRY5
-              </td>
-              <td colSpan={2} className="small-data_head">
-                PRY6
+              <td colSpan={7}>
+                Number of Pupils Book Made Available for each Subject
               </td>
             </tr>
             <tr>
-              <td>Male</td>
-              <td>Female</td>
-              <td>Male</td>
-              <td>Female</td>
-              <td>Male</td>
-              <td>Female</td>
-              <td>Male</td>
-              <td>Female</td>
-              <td>Male</td>
-              <td>Female</td>
-              <td>Male</td>
-              <td>Female</td>
-              <td>Male</td>
-              <td>Female</td>
-              <td>Male</td>
-              <td>Female</td>
+              <td>Pre-Primary</td>
+              <td>PRY1</td>
+              <td>PRY2</td>
+              <td>PRY3</td>
+              <td>PRY4</td>
+              <td>PRY5</td>
+              <td>PRY6</td>
             </tr>
             <tr>
-              <td className="first-table_head small-table_head">
-              Lost Mother
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
+              <td className="first-table_head-pupil">English</td>
               <td className="npc-input">
                 <input type="text" />
               </td>
@@ -108,34 +57,7 @@ const Orphans = () => {
               </td>
             </tr>
             <tr>
-              <td className="first-table_head small-table_head">Lost Father</td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
+              <td className="first-table_head-pupil">Mathematics</td>
               <td className="npc-input">
                 <input type="text" />
               </td>
@@ -159,7 +81,7 @@ const Orphans = () => {
               </td>
             </tr>
             <tr>
-              <td className="first-table_head small-table_head">Lost Both</td>
+              <td className="first-table_head-pupil">Social Studies </td>
               <td className="npc-input">
                 <input type="text" />
               </td>
@@ -181,11 +103,10 @@ const Orphans = () => {
               <td className="npc-input">
                 <input type="text" />
               </td>
-              <td className="npc-input">
-                <input type="text" />
-              </td>
-              <td className="npc-input">
-                <input type="text" />
+            </tr>
+            <tr>
+              <td className="first-table_head-pupil">
+                Basic Science / Technology
               </td>
               <td className="npc-input">
                 <input type="text" />
@@ -209,11 +130,176 @@ const Orphans = () => {
                 <input type="text" />
               </td>
             </tr>
-
-        </thead>
-      </table>
+          </thead>
+        </table>
+      </div>
+      <div className="no-of_children-table">
+        <p>
+          Number of core subject Teachers’ Textbooks available in the School
+          provided by government.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <td rowSpan={2} style={{ color: "#242424" }}>
+                Subject Area
+              </td>
+              <td colSpan={7}>
+                Number of Teachers Book Made Available for each Subject
+              </td>
+            </tr>
+            <tr>
+              <td>Pre-Primary</td>
+              <td>PRY1</td>
+              <td>PRY2</td>
+              <td>PRY3</td>
+              <td>PRY4</td>
+              <td>PRY5</td>
+              <td>PRY6</td>
+            </tr>
+            <tr>
+              <td className="first-table_head-pupil">English</td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+            </tr>
+            <tr>
+              <td className="first-table_head-pupil">Mathematics</td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+            </tr>
+            <tr>
+              <td className="first-table_head-pupil">Social Studies </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+            </tr>
+            <tr>
+              <td className="first-table_head-pupil">
+                Basic Science / Technology
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+              <td className="npc-input">
+                <input type="text" />
+              </td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      <div className="no-of_children-table">
+        <p>Care Giver Manuals provided by the School in  the current Academic Year</p>
+        <table>
+            <thead>
+                <tr>
+                    <td>Care Giver Manuals</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Care Giver Guide/Hand Book</td>
+                    <td><input type="radio" /></td>
+                    <td><input type="radio" /></td>
+                </tr>
+                <tr>
+                    <td>National Policy on ECCDE/Pre-primary School</td>
+                    <td><input type="radio" /></td>
+                    <td><input type="radio" /></td>
+                </tr>
+                <tr>
+                    <td>National Curriculum</td>
+                    <td><input type="radio" /></td>
+                    <td><input type="radio" /></td>
+                </tr>
+                <tr>
+                    <td>Toy Making Manuals</td>
+                    <td><input type="radio" /></td>
+                    <td><input type="radio" /></td>
+                </tr>
+            </thead>
+        </table>
+      </div>
+        <div className="enrol-btn">
+          <Button
+            btnClass={"btn-small"}
+            rightIcon={<ArrowRight />}
+            btnText={"Next"}
+            // btnClick={clickBtn}
+          />
+        </div>
     </div>
-  )
-}
+  );
+};
 
-export default Orphans
+export default PupilBook;
