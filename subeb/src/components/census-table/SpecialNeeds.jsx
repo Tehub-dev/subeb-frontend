@@ -9,7 +9,6 @@ const SpecialNeeds = () => {
 
       <table>
         <thead>
-          <th>
             <tr>
               <td className="first-table_head small-table_head" rowSpan={2}>Challenge that impacts the ability to learn</td>
               <td colSpan={2} className="small-data_head">
@@ -363,7 +362,7 @@ const SpecialNeeds = () => {
                 <input type="text" />
               </td>
             </tr>
-          </th>
+
         </thead>
       </table>
     </div>

@@ -8,7 +8,6 @@ const Primary = () => {
     <p>New entrants in primary 1.</p>
     <table>
       <thead>
-        <th>
           <tr>
             <td className="empty-table_head "></td>
             <td colSpan={2} className="small-data_head">
@@ -160,7 +159,7 @@ const Primary = () => {
               <input type="text" />
             </td>
           </tr>
-        </th>
+
       </thead>
     </table>
   </div>

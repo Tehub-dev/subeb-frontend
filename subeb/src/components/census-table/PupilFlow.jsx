@@ -9,7 +9,6 @@ const PupilFlow = () => {
 
       <table>
         <thead>
-          <th>
             <tr>
               <td className="first-table_head small-table_head" rowSpan={2}>Pupil Flow</td>
               <td colSpan={2} className="small-data_head">
@@ -205,7 +204,7 @@ const PupilFlow = () => {
                 <input type="text" />
               </td>
             </tr>
-          </th>
+
         </thead>
       </table>
     </div>

@@ -9,7 +9,6 @@ const PryEnrol = () => {
 
       <table>
         <thead>
-          <th>
             <tr>
               <td className="first-table_head small-table_head"></td>
               <td colSpan={2} className="small-data_head">
@@ -513,7 +512,6 @@ const PryEnrol = () => {
                 <input type="text" />
               </td>
             </tr>
-          </th>
         </thead>
       </table>
     </div>

@@ -15,7 +15,7 @@
     border-collapse: collapse;
     overflow: auto;
 }
-.no-of_children-table table thead th tr td{
+.no-of_children-table table thead tr td{
     border: 1px solid var(--color-grey-grey-50, #EBEBEB);
     color: var(--color-grey-grey-400, #5C5C5C);
     text-align: center;
@@ -53,7 +53,7 @@
     width: 5% !important;
 }
 .npc-input input{
-  width: 70% !important;
+  width: 100% !important;
   text-align: center;
   color: var(--color-grey-grey-400, #5C5C5C);
   text-align: center;
@@ -76,4 +76,32 @@
 }
 .small-table_head{
     width: 15% !important;
+}
+.class-table table thead tr td{
+    padding: 12px 0;
+}
+.class-table table thead tr td:first-child{
+    width: 2% !important;
+}
+.class-table table thead tr td input{
+    color: var(--color-grey-grey-100, #C0C0C0);
+}
+
+.useable-toilet_first-td{
+    width: 15% !important;
+}
+.smaller-td{
+    width: 5% !important;
+}
+
+.radio-div{
+    width: 30%;
+}
+input[type="radio"]{
+    width: 24px;
+    height: 24px;
+    border: 0px 1px 1px 0px rgba(0, 0, 0, 0.12), 0px 0px 0px 1px rgba(103, 110, 118, 0.16), 0px 2px 5px 0px rgba(103, 110, 118, 0.08);
+}
+.radio-checkbox{
+    height: 50px;
 }
