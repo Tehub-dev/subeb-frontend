@@ -15,6 +15,7 @@
 .admin-body{
     margin: 30px 0;
     border: 1px solid var(--color-grey-grey-100, #C0C0C0);
+    position: relative;
 }
 .admin-body_head h3{
     color: var(--color-grey-grey-700, #242424);
@@ -44,5 +45,29 @@
 .pencil-icon{
     width: 24px;
     height: 24px;
+    cursor: pointer;
+}
+
+.more-list{
+    /* border: 1px solid red; */
+    background: white;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 0;
+    left: 60px;
+    z-index: 2;
+}
+.more-list p{
+    color: #000;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    display: flex;
+    gap: 5px;
+    align-items: center;
     cursor: pointer;
 }

@@ -9,27 +9,16 @@ import { AxiosAuthPost } from "../../axios/axios";
 import useSuccessDisplay from "../../hooks/useSuccessDisplay";
 import useSuccessMsg from "../../hooks/useSuccessMsg";
 import useOverlay from "../../hooks/useOverlay";
+import { terms } from "../charts/Data";
 
 const AddAcadCal = ({ display, setDisplay }) => {
   const url = "academic-calendar/";
-  const term = [
-    {
-      id: "First Term",
-      name: "First Term",
-    },
-    {
-      id: "Second Term",
-      name: "Second Term",
-    },
-    {
-      id: "Third Term",
-      name: "Third Term",
-    },
-  ];
+  const term = terms;
   const [termArr, setTermArr] = useState(term);
   const [errTerm, setErrTerm] = useState("");
   const [errResume, setErrResume] = useState("");
   const [errVacate, setErrVacate] = useState("");
+  const [errSession, setErrSession] = useState("");
   const [errMidStart, setErrMidStart] = useState("");
   const [errMidEnd, setErrMidEnd] = useState("");
   const [termItem, setTermItem] = useState();
@@ -39,6 +28,7 @@ const AddAcadCal = ({ display, setDisplay }) => {
     vacationDate: "",
     midTermStart: "",
     midTermEnd: "",
+    academicSession: "",
   });
   const [termSearch, setTermSearch] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -53,13 +43,14 @@ const AddAcadCal = ({ display, setDisplay }) => {
         vacationDate: "",
         midTermStart: "",
         midTermEnd: "",
-      });  
-    setTermArr([]);
-    setTermItem();
+      });
+      setTermArr([]);
+      setTermItem();
     }
   }, [display]);
 
   const handleDataChange = (e) => {
+    const regex = /^\d{4}\/\d{4}$/;
     if (e.target.id === "resumptionDate") {
       setErrResume("");
     }
@@ -71,6 +62,14 @@ const AddAcadCal = ({ display, setDisplay }) => {
     }
     if (e.target.id === "midTermEnd") {
       setErrMidEnd("");
+    }
+    if (e.target.id === "academicSession") {
+      // setErrSession("");
+      if (regex.test(e.target.value)) {
+        setErrSession("");
+      } else {
+        setErrSession("Input must be in the format YYYY/YYYY");
+      }
     }
     const newData = { ...data };
     newData[e.target.id] = e.target.value;
@@ -107,6 +106,8 @@ const AddAcadCal = ({ display, setDisplay }) => {
     term: termId,
     resumptionDate: data?.resumptionDate,
     vacationDate: data?.vacationDate,
+    vacationDate: data?.vacationDate,
+    academicSession: data?.academicSession,
     midTermDates: [data?.midTermStart, data?.midTermEnd],
   };
 
@@ -133,6 +134,9 @@ const AddAcadCal = ({ display, setDisplay }) => {
           if (err?.response?.data?.errors[i]?.fieldName === "term") {
             setErrTerm(err.response.data.errors[i].error);
           }
+          if (err?.response?.data?.errors[i]?.fieldName === "academicSession") {
+            setErrSession(err.response.data.errors[i].error);
+          }
           if (err?.response?.data?.errors[i]?.fieldName === "midTermDates") {
             setErrMidEnd(err.response.data.errors[i].error[0]);
             setErrMidStart(err.response.data.errors[i].error[1]);
@@ -158,6 +162,14 @@ const AddAcadCal = ({ display, setDisplay }) => {
             formValue={termItem?.name}
             clickDrop={termDd}
             error={errTerm}
+          />
+          <Input
+            inputLabel={"Academic Session"}
+            inputPlaceholder={"Enter Academic Session"}
+            formChange={handleDataChange}
+            formId={"academicSession"}
+            formValue={data?.academicSession}
+            error={errSession}
           />
           <Input
             inputLabel={"Resumption Date"}

@@ -15,7 +15,7 @@ const AdminOverview = () => {
   const [plWeek, setPlWeek] = useState(schData.data.currentWeek);
   const weekArr = weeks;
   const termArr = terms;
-  const url = `dashboard/?week=${plWeek}&term=${plTerm}`;
+  const url = `dashboard/super-admin/?week=${plWeek}&term=${plTerm}`;
   
   useEffect(() => {
     setIsLoading(true);

@@ -212,6 +212,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
   };
 
   const uploadNote = () => {
+    // console.log(dataObj);
     setLoading(true);
     AxiosFormData(url, dataObj)
       .then((res) => {
