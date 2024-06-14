@@ -61,6 +61,7 @@ function App() {
         </Route>
 
         <Route path="/smslanding" element={<SmsLP />} />
+        
         <Route element={<AuthLayout />}>
           <Route path="/smslogin" element={<SmsLogin />} />
           <Route path="/teacherportal" element={<Teacherportal />} />

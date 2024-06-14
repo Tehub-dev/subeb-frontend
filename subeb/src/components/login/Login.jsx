@@ -66,15 +66,15 @@ const Login = () => {
     }).catch((err) => {
         // console.log(err.response);
         setIsLoading(false);
-        if (err.response.status === 401){
-            setErrMessage(err.response.data.message);
+        if (err?.response?.status === 401){
+            setErrMessage(err?.response?.data?.message);
         } else {
-            for (let i = 0; i < err.response.data.errors.length; i++){
-                if (err.response.data.errors[i].fieldName === "credential"){
-                    setCredErr(err.response.data.errors[i].error)
+            for (let i = 0; i < err?.response?.data?.errors?.length; i++){
+                if (err?.response?.data?.errors[i]?.fieldName === "credential"){
+                    setCredErr(err?.response?.data?.errors[i]?.error)
                 }
-                if (err.response.data.errors[i].fieldName === "password"){
-                    setPassErr(err.response.data.errors[i].error)
+                if (err?.response?.data?.errors[i]?.fieldName === "password"){
+                    setPassErr(err?.response?.data?.errors[i]?.error)
                 }
             }
         }

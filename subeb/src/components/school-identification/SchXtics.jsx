@@ -173,7 +173,7 @@ const SchXtics = () => {
                     {item.check3 && <p>{item.check3}{item.check3text}</p>}
                     {item.check4 && <p>{item.check4}{item.check4text}</p>}
                 </div>}
-                {item.input2 || item.input3 || item.input && <div className="xtics-item_inputs">
+                {(item.input2 || item.input3 || item.input) && <div className="xtics-item_inputs">
                     {item.input && item.input}
                     {item.input2 && item.input2}
                     {item.input3 && item.input3}

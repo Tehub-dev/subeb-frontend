@@ -138,7 +138,7 @@ export const SelectInput = ({
                 onClick={() => clickOptions(item)}
                 style={{
                   borderLeft:
-                    placeholder === item.name ? "4px solid #f08227" : undefined,
+                    placeholder === item?.name ? "4px solid #f08227" : undefined,
                 }}
               >
                 <p>{item.name}</p>

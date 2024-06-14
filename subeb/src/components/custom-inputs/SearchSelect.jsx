@@ -46,7 +46,7 @@ const SearchSelect = ({
       <div className={searching ? "dropdown-plate" : undefined}>
         {searching && optionsArray?.length === 0 && <p>nothing to show here</p>}
         {searching &&
-          optionsArray.map((item, idx) => {
+          optionsArray?.map((item, idx) => {
             return (
               <p
                 className={isSelect === item.id ? "selected-item" : undefined}
