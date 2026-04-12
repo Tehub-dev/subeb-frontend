@@ -106,7 +106,6 @@ const AddAcadCal = ({ display, setDisplay }) => {
     term: termId,
     resumptionDate: data?.resumptionDate,
     vacationDate: data?.vacationDate,
-    vacationDate: data?.vacationDate,
     academicSession: data?.academicSession,
     midTermDates: [data?.midTermStart, data?.midTermEnd],
   };
