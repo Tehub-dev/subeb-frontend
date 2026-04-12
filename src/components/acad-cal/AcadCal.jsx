@@ -13,8 +13,10 @@ const AcadCal = ({acadData, clickAdd, teacher}) => {
 
   const termArr = terms;
   const [plTerm, setPlTerm] = useState(acadData?.term);
-  const [plSession, setPlSession] = useState(acadData?.academicSession);
-  const sessionArr = [plSession]
+  // const [plSession, 
+  //   // setPlSession
+  // ] = useState(acadData?.academicSession);
+  // const sessionArr = [plSession]
   // console.log(plSession);
 
 
