@@ -45,7 +45,7 @@ const TeacherAttend = () => {
       })
       .catch((err) => {
         setIsLoading(false);
-        // console.log(err.response);
+        console.log(err.response);
       });
     // eslint-disable-next-line
   }, [plDays, plWeek]);
