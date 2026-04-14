@@ -17,11 +17,12 @@ const AcademicCalTch = () => {
     AxiosAuthGet(url)
       .then((res) => {
         // console.log(res);
-        setAcadData(
-          res?.data.map((item) => {
-            return { holiday: item.name, date: item.value };
-          })
-        );
+        // setAcadData(
+        //   res?.data.map((item) => {
+        //     return { holiday: item.name, date: item.value };
+        //   })
+        // );
+        setAcadData(res.data);
         setIsLoading(false);
       })
       .catch((err) => {

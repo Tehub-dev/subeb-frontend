@@ -9,11 +9,10 @@ import { AxiosAuthGet, AxiosAuthPost } from "../../axios/axios";
 import { ErrorAlert, LoadingSpin, SuccessAlert } from "../alerts/Alerts";
 import useSuccessDisplay from "../../hooks/useSuccessDisplay";
 import useSuccessMsg from "../../hooks/useSuccessMsg";
-import { saveAs } from 'file-saver';
-import atob from 'atob';
+import { saveAs } from "file-saver";
+import atob from "atob";
 
 const AttendStu = () => {
-  
   const atk = JSON.parse(localStorage.getItem("atk"));
   const [isLoading, setIsLoading] = useState(false);
   const [isDLoading, setIsDLoading] = useState(false);
@@ -21,15 +20,22 @@ const AttendStu = () => {
   const { successDisplay, setSuccessDisplay } = useSuccessDisplay();
   const { successMsg, setSuccessMsg } = useSuccessMsg();
   const [teachData, setTeachData] = useState();
-  const [teacherId, setTeacherId] = useState("");
-  const [dayClick, setDayClick] = useState("");
+  const [
+    // teacherId,
+    
+    setTeacherId] = useState("");
+  const [
+    // dayClick,
+     setDayClick] = useState("");
   const [errMessage, setErrMessage] = useState("");
   const [errDisplay, setErrDisplay] = useState(false);
-  const [teacherSingle, setTeacherSingle] = useState();
+  const [
+    // teacherSingle,
+     setTeacherSingle] = useState();
   const [plWeek, setPlWeek] = useState(atk?.data?.currentWeek);
   const weekArr = weeks;
-  const url = `students/attendance/?week=${plWeek}&download=${isDownload}`;
-  const postUrl = `students/attendance/?week=${plWeek}`;
+  const url = `student-attendance/?week=${plWeek}&download=${isDownload}`;
+  const postUrl = `student-attendance/?week=${plWeek}`;
   const [checkMonValues, setCheckMonValues] = useState([]);
   const [checkTueValues, setCheckTueValues] = useState([]);
   const [checkWedValues, setCheckWedValues] = useState([]);
@@ -52,6 +58,65 @@ const AttendStu = () => {
     // eslint-disable-next-line
   }, [plWeek]);
 
+  // const dataObj = {
+  //   week: plWeek,
+  //   day: dayClick,
+  //   present:
+  //     teacherSingle?.attendance[0]?.present &&
+  //     !checkMonValues.includes(teacherId)
+  //       ? teacherSingle?.attendance[0]?.present
+  //       : teacherSingle?.attendance[1]?.present &&
+  //           !checkTueValues.includes(teacherId)
+  //         ? teacherSingle?.attendance[1]?.present
+  //         : teacherSingle?.attendance[2]?.present &&
+  //             !checkWedValues.includes(teacherId)
+  //           ? teacherSingle?.attendance[2]?.present
+  //           : teacherSingle?.attendance[3]?.present &&
+  //               !checkThuValues.includes(teacherId)
+  //             ? teacherSingle?.attendance[3]?.present
+  //             : teacherSingle?.attendance[4]?.present &&
+  //                 !checkFriValues.includes(teacherId)
+  //               ? teacherSingle?.attendance[4]?.present
+  //               : checkMonValues.includes(teacherId) ||
+  //                   checkTueValues.includes(teacherId) ||
+  //                   checkWedValues.includes(teacherId) ||
+  //                   checkThuValues.includes(teacherId) ||
+  //                   checkFriValues.includes(teacherId)
+  //                 ? true
+  //                 : false,
+  //   studentId: teacherId,
+  // };
+  const postAttendance = (dataObj) => {
+    // console.log(dataObj);
+    setIsLoading(true);
+    AxiosAuthPost(postUrl, dataObj)
+      .then((res) => {
+        // console.log(res);
+        setSuccessDisplay(true);
+        setSuccessMsg(res.message);
+        setIsLoading(false);
+        // setTimeout(function () {
+        //   window.location.reload();
+        // }, 2000);
+      })
+      .catch((err) => {
+        // console.log(err.response);
+        for (let i = 0; i < err?.response?.data?.errors?.length; i++) {
+          if (err?.response?.data?.errors[i]?.fieldName === "day") {
+            if (
+              err.response.data.errors[i].error !== '"" is not a valid choice.'
+            ) {
+              setErrDisplay(true);
+              setErrMessage(err.response.data.errors[i].error);
+              // setTimeout(function () {
+              //   window.location.reload();
+              // }, 2000);
+            }
+          }
+        }
+        setIsLoading(false);
+      });
+  };
 
   const clickCheckMon = (e, row) => {
     setDayClick(e.target.id);
@@ -64,9 +129,18 @@ const AttendStu = () => {
     } else {
       // Remove the unchecked value from the array
       setCheckMonValues((prevValues) =>
-        prevValues.filter((item) => item !== value)
+        prevValues.filter((item) => item !== value),
       );
     }
+    const dataObj = {
+      week: plWeek,
+      day: "Monday",
+      present: checked,
+      studentId: row?.studentId,
+    };
+    // console.log(dataObj);
+    
+    postAttendance(dataObj);
   };
 
   const clickCheckTues = (e, row) => {
@@ -80,9 +154,17 @@ const AttendStu = () => {
     } else {
       // Remove the unchecked value from the array
       setCheckTueValues((prevValues) =>
-        prevValues.filter((item) => item !== value)
+        prevValues.filter((item) => item !== value),
       );
     }
+    const dataObj = {
+      week: plWeek,
+      day: "Tuesday",
+      present: checked,
+      studentId: row?.studentId,
+    };
+    
+    postAttendance(dataObj);
   };
   const clickCheckWed = (e, row) => {
     setDayClick(e.target.id);
@@ -95,9 +177,17 @@ const AttendStu = () => {
     } else {
       // Remove the unchecked value from the array
       setCheckWedValues((prevValues) =>
-        prevValues.filter((item) => item !== value)
+        prevValues.filter((item) => item !== value),
       );
     }
+    const dataObj = {
+      week: plWeek,
+      day: "Wednessday",
+      present: checked,
+      studentId: row?.studentId,
+    };
+    
+    postAttendance(dataObj);
   };
   const clickCheckThu = (e, row) => {
     setDayClick(e.target.id);
@@ -110,9 +200,17 @@ const AttendStu = () => {
     } else {
       // Remove the unchecked value from the array
       setCheckThuValues((prevValues) =>
-        prevValues.filter((item) => item !== value)
+        prevValues.filter((item) => item !== value),
       );
     }
+    const dataObj = {
+      week: plWeek,
+      day: "Thursday",
+      present: checked,
+      studentId: row?.studentId,
+    };
+    
+    postAttendance(dataObj);
   };
   const clickCheckFri = (e, row) => {
     setDayClick(e.target.id);
@@ -125,32 +223,40 @@ const AttendStu = () => {
     } else {
       // Remove the unchecked value from the array
       setCheckFriValues((prevValues) =>
-        prevValues.filter((item) => item !== value)
+        prevValues.filter((item) => item !== value),
       );
     }
+    const dataObj = {
+      week: plWeek,
+      day: "Friday",
+      present: checked,
+      studentId: row?.studentId,
+    };
+    
+    postAttendance(dataObj);
   };
 
-  const clickDownload = () =>{
+  const clickDownload = () => {
     setIsDownload(true);
     setIsDLoading(true);
-    AxiosAuthGet(`students/attendance/?week=${plWeek}&download=${true}`)
+    AxiosAuthGet(`student-attendance/?week=${plWeek}&download=${true}`)
       .then((res) => {
         // console.log(res);
 
         // Replace this with your Base64 PDF data
         const base64PdfData = res.data.download.file;
-    
+
         // Decode the Base64 data
         const binaryPdf = atob(base64PdfData);
-    
+
         // Create a Blob from the decoded binary data
         const arrayBuffer = new ArrayBuffer(binaryPdf.length);
         const uint8Array = new Uint8Array(arrayBuffer);
         for (let i = 0; i < binaryPdf.length; i++) {
           uint8Array[i] = binaryPdf.charCodeAt(i);
         }
-        const blob = new Blob([uint8Array], { type: 'application/pdf' });
-    
+        const blob = new Blob([uint8Array], { type: "application/pdf" });
+
         // Trigger the download
         saveAs(blob, res.data.download.fileName);
         setIsDLoading(false);
@@ -161,73 +267,16 @@ const AttendStu = () => {
       });
   };
 
-  const dataObj = {
-    week: plWeek,
-    day: dayClick,
-    present:
-      teacherSingle?.attendance[0]?.present &&
-      !checkMonValues.includes(teacherId)
-        ? teacherSingle?.attendance[0]?.present
-        : teacherSingle?.attendance[1]?.present &&
-          !checkTueValues.includes(teacherId)
-        ? teacherSingle?.attendance[1]?.present
-        : teacherSingle?.attendance[2]?.present &&
-          !checkWedValues.includes(teacherId)
-        ? teacherSingle?.attendance[2]?.present
-        : teacherSingle?.attendance[3]?.present &&
-          !checkThuValues.includes(teacherId)
-        ? teacherSingle?.attendance[3]?.present
-        : teacherSingle?.attendance[4]?.present &&
-          !checkFriValues.includes(teacherId)
-        ? teacherSingle?.attendance[4]?.present
-        : checkMonValues.includes(teacherId) ||
-          checkTueValues.includes(teacherId) ||
-          checkWedValues.includes(teacherId) ||
-          checkThuValues.includes(teacherId) ||
-          checkFriValues.includes(teacherId)
-        ? true
-        : false,
-    studentId: teacherId,
-  };
 
-  useEffect(() => {
-    // console.log(dataObj);
-    setIsLoading(true);
-    AxiosAuthPost(postUrl, dataObj)
-      .then((res) => {
-        // console.log(res);
-        setSuccessDisplay(true);
-        setSuccessMsg(res.message);
-        setIsLoading(false);
-        setTimeout(function () {
-          window.location.reload();
-        }, 2000);
-      })
-      .catch((err) => {
-        // console.log(err.response);
-        for (let i = 0; i < err?.response?.data?.errors?.length; i++) {
-          if (err?.response?.data?.errors[i]?.fieldName === "day") {
-            if (
-              err.response.data.errors[i].error !== '"" is not a valid choice.'
-            ) {
-              setErrDisplay(true);
-              setErrMessage(err.response.data.errors[i].error);
-              setTimeout(function () {
-                window.location.reload();
-              }, 2000);
-            }
-          }
-        }
-        setIsLoading(false);
-      });
-    // eslint-disable-next-line
-  }, [
-    checkMonValues,
-    checkTueValues,
-    checkWedValues,
-    checkThuValues,
-    checkFriValues,
-  ]);
+  // useEffect(() => {
+  //   // eslint-disable-next-line
+  // }, [
+  //   checkMonValues,
+  //   checkTueValues,
+  //   checkWedValues,
+  //   checkThuValues,
+  //   checkFriValues,
+  // ]);
 
   const CustomCell1 = ({ row }) => (
     <div>
@@ -338,7 +387,6 @@ const AttendStu = () => {
       sortable: true,
     },
   ];
-  
 
   return isLoading ? (
     <LoadingSpin />

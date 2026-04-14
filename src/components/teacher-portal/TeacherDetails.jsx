@@ -42,7 +42,7 @@ const TeacherDetails = () => {
   };
 
   const clickCont = () => {
-    if( data.emailAddress && data.firstName && data.lastName && data.password && data.phoneNumber && !passErr){
+    if(  data.firstName && data.lastName && data.password && data.phoneNumber && !passErr){
         localStorage.setItem("data", JSON.stringify(data));
         navigate("/schooldetails");
     } else {
