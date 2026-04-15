@@ -206,13 +206,13 @@ const LessNotesPopup = ({ display, setDisplay }) => {
 
   const dataObj = {
     file: selectedFile,
-    subjectId: subId,
-    classId: classId,
+    subject_id: subId,
+    class_id: classId,
     week: weekItem?.name,
   };
 
   const uploadNote = () => {
-    console.log(dataObj);
+    // console.log(dataObj);
     setLoading(true);
     AxiosFormData(url, dataObj)
       .then((res) => {
@@ -224,7 +224,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
         setLoading(false);
       })
       .catch((err) => {
-        // console.log(err.response);
+        console.log(err.response);
         for (let i = 0; i < err?.response?.data?.errors?.length; i++) {
           if (err?.response?.data?.errors[i]?.fieldName === "subjectId") {
             setErrSub(err.response.data.errors[i].error);
