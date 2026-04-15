@@ -21,16 +21,16 @@ const AttendStu = () => {
   const { successMsg, setSuccessMsg } = useSuccessMsg();
   const [teachData, setTeachData] = useState();
   const [
-    // teacherId,
+    teacherId,
     
     setTeacherId] = useState("");
   const [
-    // dayClick,
+    dayClick,
      setDayClick] = useState("");
   const [errMessage, setErrMessage] = useState("");
   const [errDisplay, setErrDisplay] = useState(false);
   const [
-    // teacherSingle,
+    teacherSingle,
      setTeacherSingle] = useState();
   const [plWeek, setPlWeek] = useState(atk?.data?.currentWeek);
   const weekArr = weeks;
