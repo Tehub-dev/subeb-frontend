@@ -175,7 +175,7 @@ const AttendStu = () => {
     }
     const dataObj = {
       week: plWeek,
-      day: "Wednessday",
+      day: "Wednesday",
       present: checked,
       studentId: row?.studentId,
     };
