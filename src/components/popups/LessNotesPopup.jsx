@@ -224,7 +224,7 @@ const LessNotesPopup = ({ display, setDisplay }) => {
         setLoading(false);
       })
       .catch((err) => {
-        // console.log(err.response);
+        console.log(err.response);
         for (let i = 0; i < err?.response?.data?.errors?.length; i++) {
           if (err?.response?.data?.errors[i]?.fieldName === "subjectId") {
             setErrSub(err.response.data.errors[i].error);
