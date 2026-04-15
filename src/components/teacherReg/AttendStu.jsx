@@ -20,18 +20,11 @@ const AttendStu = () => {
   const { successDisplay, setSuccessDisplay } = useSuccessDisplay();
   const { successMsg, setSuccessMsg } = useSuccessMsg();
   const [teachData, setTeachData] = useState();
-  const [
-    teacherId,
-    
-    setTeacherId] = useState("");
-  const [
-    dayClick,
-     setDayClick] = useState("");
+  // const [teacherId, setTeacherId] = useState("");
+  // const [dayClick, setDayClick] = useState("");
   const [errMessage, setErrMessage] = useState("");
   const [errDisplay, setErrDisplay] = useState(false);
-  const [
-    teacherSingle,
-     setTeacherSingle] = useState();
+  // const [teacherSingle, setTeacherSingle] = useState();
   const [plWeek, setPlWeek] = useState(atk?.data?.currentWeek);
   const weekArr = weeks;
   const url = `student-attendance/?week=${plWeek}&download=${isDownload}`;
@@ -119,9 +112,9 @@ const AttendStu = () => {
   };
 
   const clickCheckMon = (e, row) => {
-    setDayClick(e.target.id);
-    setTeacherId(row?.studentId);
-    setTeacherSingle(row);
+    // setDayClick(e.target.id);
+    // setTeacherId(row?.studentId);
+    // setTeacherSingle(row);
     const { value, checked } = e.target;
     if (checked) {
       // Add the checked value to the array
@@ -139,14 +132,14 @@ const AttendStu = () => {
       studentId: row?.studentId,
     };
     // console.log(dataObj);
-    
+
     postAttendance(dataObj);
   };
 
   const clickCheckTues = (e, row) => {
-    setDayClick(e.target.id);
-    setTeacherId(row?.studentId);
-    setTeacherSingle(row);
+    // setDayClick(e.target.id);
+    // setTeacherId(row?.studentId);
+    // setTeacherSingle(row);
     const { value, checked } = e.target;
     if (checked) {
       // Add the checked value to the array
@@ -163,13 +156,13 @@ const AttendStu = () => {
       present: checked,
       studentId: row?.studentId,
     };
-    
+
     postAttendance(dataObj);
   };
   const clickCheckWed = (e, row) => {
-    setDayClick(e.target.id);
-    setTeacherId(row?.studentId);
-    setTeacherSingle(row);
+    // setDayClick(e.target.id);
+    // setTeacherId(row?.studentId);
+    // setTeacherSingle(row);
     const { value, checked } = e.target;
     if (checked) {
       // Add the checked value to the array
@@ -186,13 +179,13 @@ const AttendStu = () => {
       present: checked,
       studentId: row?.studentId,
     };
-    
+
     postAttendance(dataObj);
   };
   const clickCheckThu = (e, row) => {
-    setDayClick(e.target.id);
-    setTeacherId(row?.studentId);
-    setTeacherSingle(row);
+    // setDayClick(e.target.id);
+    // setTeacherId(row?.studentId);
+    // setTeacherSingle(row);
     const { value, checked } = e.target;
     if (checked) {
       // Add the checked value to the array
@@ -209,13 +202,13 @@ const AttendStu = () => {
       present: checked,
       studentId: row?.studentId,
     };
-    
+
     postAttendance(dataObj);
   };
   const clickCheckFri = (e, row) => {
-    setDayClick(e.target.id);
-    setTeacherId(row?.studentId);
-    setTeacherSingle(row);
+    // setDayClick(e.target.id);
+    // setTeacherId(row?.studentId);
+    // setTeacherSingle(row);
     const { value, checked } = e.target;
     if (checked) {
       // Add the checked value to the array
@@ -232,7 +225,7 @@ const AttendStu = () => {
       present: checked,
       studentId: row?.studentId,
     };
-    
+
     postAttendance(dataObj);
   };
 
@@ -266,7 +259,6 @@ const AttendStu = () => {
         setIsDLoading(false);
       });
   };
-
 
   // useEffect(() => {
   //   // eslint-disable-next-line
